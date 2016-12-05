@@ -22,8 +22,11 @@ const NSString *googleMapsApiKey = @"AIzaSyCu5vMkMJiusQx5_PFDVgmBYZ76C8uDQhc";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
     [GMSServices provideAPIKey:googleMapsApiKey];
     
+    
+    // инициализация региона и категории по умолчанию
     [UserData setRegionId:@"2"];
     [UserData setRegionName:@"Алматы"];
     

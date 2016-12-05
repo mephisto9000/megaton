@@ -30,8 +30,10 @@ const NSString *TO_FAVORITE = @"toFavorite";
 
 
 @synthesize tableView;
-//@synthesize view;
 
+
+
+// вид загрузился - инициализируем значения tableView и массив с иконками
 -(void) viewDidLoad
 {
     [super viewDidLoad];
@@ -39,12 +41,15 @@ const NSString *TO_FAVORITE = @"toFavorite";
     menuItems = [NSArray arrayWithObjects:@"Категории", @"Поиск", @"Поиск на карте", @"Избранное", @"О приложении", nil];
     menuIcons = [NSArray arrayWithObjects:@"ic_menu_way.png", @"ic_menu_search.png", @"ic_pin.png", @"star_white.png", @"ic_menu_about.png", nil];
     
+    
+    // сколько будет позиций в таблице
     rowNum = [menuItems count];
     
-    
+    //градиентная заливка
     UIView *bgView = [[UIView alloc] initWithFrame: self.view.frame];  //  CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = bgView.bounds;
+    
     
     UIColor *c1 = [UIColor colorWithRed:56.0/255.0 green:133.0/250.0 blue:194.0/255.0 alpha:1];
     UIColor *c2 = [UIColor colorWithRed:36.0/255.0 green:184.0/250.0 blue:188.0/255.0 alpha:1];
@@ -84,11 +89,13 @@ const NSString *TO_FAVORITE = @"toFavorite";
     return rowNum;
 }
 
-
+//создаем яцейки таблицы
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
     UITableViewCell *cell = nil;
+    
+    //с дизайна забирается ячейка menuCell
     cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
     
     if(!cell){
@@ -97,14 +104,13 @@ const NSString *TO_FAVORITE = @"toFavorite";
     
     
     
-    //if (indexPath.row == 2 || indexPath.row ==  4)
-           cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
+    
+    cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
     
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.text = [menuItems objectAtIndex:indexPath.row];
     
     cell.textLabel.textColor = [UIColor whiteColor];
-    //cell.detailTextLabel.text = textLabelDetail;
     
     return cell;
     
@@ -131,6 +137,7 @@ const NSString *TO_FAVORITE = @"toFavorite";
     {
         CategoryDetailVC *cdvc = (CategoryDetailVC *) segue.destinationViewController;
         
+        //если идем на избранное, то берем контроллер CategoryDetail и передаем параметр  favorite
         [cdvc setIsFavourite:YES];
     }
 }

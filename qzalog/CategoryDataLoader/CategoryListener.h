@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+//интерфейс для загрузки категорий, его должен реализовывать контроллер CategoryVC
+
 @protocol CategoryListener <NSObject>
 
 -(void) categoryLoadComplete;

@@ -22,8 +22,11 @@
 
 @interface CategoryDetailVC () <CategoryDetailListener>
 {
+    
+    //класс для загрузки объявлений
     CategoryDetailDataLoader *cdLoader;
     
+    //данные в итоге приезжают в массив
     NSArray<CategoryDetail *> *catDetailArr;
     
     
@@ -33,7 +36,12 @@
     int selectedRow;
     
     NSString *categoryId;
+    
+    
+    //достигли ли ипоследнего объявления?
     BOOL lastItemReached;
+    
+    //сколько объявлений загрузили
     int itemCount;
 }
 
@@ -69,22 +77,28 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     if (self.isFavourite == FALSE)
         
     {
+    //если url не передан
     if (self.url == nil)
+        // загружаем данные категории
         [cdLoader setCategoryId:categoryId];
     else
+        // загружаем результаты по параметрам из формы поиска
         [cdLoader setSearchUrl:self.url];
     
     
-    
+    // включаем загрузчик
     [cdLoader loadCategoryDetailData];
     
     lastItemReached = FALSE;
     
-        
-        self.titleLabel.text = [UserData categoryName];
+    
+    // вверху пишем какая категория
+    self.titleLabel.text = [UserData categoryName];
     }
+    
     else
     {
+        //загружаем избранное в загрузчике
         [cdLoader loadFavorite];
         lastItemReached = TRUE;
         segmentedControl.hidden = YES;
@@ -94,16 +108,18 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 
     itemCount = 0;
     
+    
+    //подключаем фильтр к контроллеру
     [segmentedControl addTarget:self
                          action:@selector(segmentSwitch:)
                forControlEvents:UIControlEventValueChanged];
     
-    
+    //инициируем базу (коннект отрубается после каждого обращения
     dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
 
 }
 
-
+//метод для асинхронной загрузки изображений
 - (AFHTTPRequestOperationManager *)operationManager
 {
     if (!_operationManager)
@@ -128,21 +144,13 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     {
         cell = [[CategoryDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: @"categoryDetailCell"];
         
-        
-        
     }
     
-        
     
-    
-    
-    NSLog(@"loading cell # %i", (int) indexPath.row);
-    
-    
-    NSLog(@"cd.catDetId == %@", cd.catDetId);
-    
+    //сохраняем в ячейке objectId
     [cell setObjectId:cd.catDetId];
     
+    // сохраняем в ячейке dbManager
     [cell setDbManager:dbManager];
 
     
@@ -157,6 +165,8 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     cell.adImage.contentMode = UIViewContentModeScaleAspectFill;
     cell.adImage.image = NULL;
     
+    
+    //асинхронно скачиваем картинки
     [self.operationManager GET:cd.image
                     parameters:nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -164,10 +174,11 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            NSLog(@"Failed with error %@.", error);
                        }];
-        
+    
+    
+    // достигли низа, но не дна - загружаем еще объявления
     if (!lastItemReached && indexPath.row == [catDetailArr count] - 1)
     {
-        //[self launchReload];
         itemCount = [catDetailArr count];
         [cdLoader loadCategoryDetailData];
     }
@@ -185,17 +196,16 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    //NSLog(@"category detail count == %i", [catDetailArr count] );
-    
     return [catDetailArr count];
 }
 
-
+// метод при нажатии на фильтр
 - (void)segmentSwitch:(UISegmentedControl *)sender {
     
     NSInteger selectedSegment = sender.selectedSegmentIndex;
     
     NSLog(@"i'm here");
+    
     
     
     if (selectedSegment == 0) {
@@ -305,17 +315,14 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         SearchFormVC *sfcv = (SearchFormVC *) segue.destinationViewController;
         
         
-        //[sfcv setCategoryId:categoryId];
-        //sfvc  setCate
+
     }
     if ([segue.identifier isEqualToString:TO_OBJECT_DETAIL])
     {
         ObjectDetailVC *odvc = (ObjectDetailVC *) segue.destinationViewController;
         
         
-        NSLog(@"objId ==== %@", catDetailArr[selectedRow].catDetId);
-        
-        
+        //передаем objectId в контроллер объявления
         [odvc setObjectId:catDetailArr[selectedRow].catDetId];
         
         
@@ -323,7 +330,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 }
 
 
-
+//загрузка данных завершена
 -(void) categoryDetailLoadComplete
 {
     [self performSelectorOnMainThread:@selector(categoryDetailLoadCompleteMainThread) withObject:nil waitUntilDone:YES];
@@ -335,12 +342,13 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 {
     catDetailArr = [cdLoader catDetailData];
     
+    //достигли последнего элемента
     if (itemCount == [catDetailArr count] )
         lastItemReached = YES;
     else
     {
-        //[self segmentSwitch: segmentedControl];
-        
+        //не достигли
+        //просто обновляем таблицу
         [self.tableView reloadData];
     }
 }
@@ -349,13 +357,8 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    UIAlertView *messageAlert = [[UIAlertView alloc]
-                                 initWithTitle:@"Row Selected" message:@"You've selected a row" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    
-    // Display Alert Message
-    [messageAlert show]; */
-    
+ 
+    // выбрали объявление
     selectedRow = indexPath.row;
     
     [self performSegueWithIdentifier:TO_OBJECT_DETAIL sender:self];
@@ -363,15 +366,15 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 }
 
 
-
+// на форму поиска
 -(IBAction) jumpToSearchForm : (id) sender
 {
-    //NSLog(@"jump to search form");
     
     [self performSegueWithIdentifier:TO_SEARCH_FORM sender:self];
 }
 
 
+//назад
 -(IBAction) jumpBack: (id) sender
 {
     [self.navigationController popViewControllerAnimated:YES];

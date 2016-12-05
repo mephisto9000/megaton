@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "CategoryDetail.h"
 
+
+//класс с ДеталямиКатегорий - список объявлений
 @interface CategoryDetailVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+
+// переключатель (по дате / дороже / дешевле)
 @property(nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
 
 @property(nonatomic, retain)  NSString *url;
+
+//если избранное - надо включить флаг
 @property(nonatomic, assign) BOOL isFavourite;
 
 

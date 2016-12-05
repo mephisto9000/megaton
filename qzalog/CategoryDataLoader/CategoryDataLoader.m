@@ -47,6 +47,8 @@
 
 }
 
+
+//распарсиваем прилетевший json
 -(void) receivedGroupsJSON:(NSData *)objectNotation
 {
     NSLog(@"here somewhere?");
@@ -77,9 +79,11 @@
         
     }
     
+    //уведомляем контроллер что данны можно забирать
     [self.delegate categoryLoadComplete];
 }
 
+//ошибка
 -(void) fetchingGroupsFailedWithError:(NSError *)error
 {
     NSLog(@"error while fetching json: %@", [error.userInfo description]);

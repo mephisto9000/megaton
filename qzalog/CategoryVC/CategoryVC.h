@@ -11,6 +11,7 @@
 #import "CategoryCell.h"
 
 
+//контроллер категорий
 @interface CategoryVC : UIViewController<UITableViewDataSource, UITableViewDelegate, CategoryListener>
 
 @property(nonatomic, retain) IBOutlet UITableView *tableView;

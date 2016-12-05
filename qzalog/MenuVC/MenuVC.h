@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+//класс где мы храним меню
 @interface MenuVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 {
     IBOutlet UITableView *tableView;
 }
 
+
 @property(nonatomic, retain) IBOutlet UITableView *tableView;
-//@property(nonatomic, retain) IBOutlet UIView *view;
+
 
 @end

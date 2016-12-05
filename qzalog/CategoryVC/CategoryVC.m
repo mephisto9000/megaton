@@ -69,17 +69,20 @@ const NSString *TO_SEARCH = @"toSearch";
     NSLog(@"loading cell # %i", (int) indexPath.row);
     
     
-    // Set the loaded data to the appropriate cell labels.
     
+    //забираем данные для ячеек категорий из 2-мерного массива categoriesInfo
     NSInteger catId = [[[self.categoriesInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfCategoryId] integerValue];
+    
+    //объект категорию забираем из ассоциативного массива catData по catId
     Category *cat = (Category *)[catData objectForKey: [NSNumber numberWithInteger:catId]];
     
+    
+    // поля смотрим на дизайне в ячейке categoryCell
     cell.titleLabel.text = [NSString stringWithFormat:@"%@", [[self.categoriesInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfName]];
     
     cell.countLabel.text =  [NSString stringWithFormat:@"%ld", (long)[cat amount]];
     
     NSString *fname = [NSString stringWithFormat:@"category%d.png", catId];
-    
     
     NSLog(@"fname == %@", fname);
     
@@ -87,17 +90,20 @@ const NSString *TO_SEARCH = @"toSearch";
     return cell;
 }
 
-
+//щелкнули по ячейке
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
+    //запомним выбранную ячейку
     selectedRow = (int) indexPath.row;
     
+    //переходим на контроллер CategoryDetail
     [self performSegueWithIdentifier:CATEGORY_DETAIL sender:self];
     
 }
 
 
+//подгрузка данных по категориям из базы
 -(void) loadData
 {
     
@@ -110,13 +116,14 @@ const NSString *TO_SEARCH = @"toSearch";
     }
     self.categoriesInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
     
-    // Reload the table view.
     
-     indexOfId = [self.dbManager.arrColumnNames indexOfObject:@"id"];
-     indexOfName = [self.dbManager.arrColumnNames indexOfObject:@"name"];
-     indexOfCategoryId = [self.dbManager.arrColumnNames indexOfObject:@"category_id"];
     
-    NSLog(@"id == %i %i", (int)indexOfId, (int) indexOfName);
+    //запоминаем на каких индексах нужные поля
+    indexOfId = [self.dbManager.arrColumnNames indexOfObject:@"id"];
+    indexOfName = [self.dbManager.arrColumnNames indexOfObject:@"name"];
+    indexOfCategoryId = [self.dbManager.arrColumnNames indexOfObject:@"category_id"];
+    
+    
     
 }
 
@@ -124,25 +131,29 @@ const NSString *TO_SEARCH = @"toSearch";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    //загружаем базу
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
     
+    //после ждем когда данные загрузятся
     [self loadData];
     
+    
+    //загрузка данных по количеству объявлений категорий
     cdl = [CategoryDataLoader new];
-    
     [cdl setDelegate:self];
-    
     [cdl loadCategoryData];
     
     
 }
 
-
+//загрузка категорий закончена
 -(void) categoryLoadComplete
 {
     
     NSLog(@"category load complete");
     
+    //обновляем вид в главном потоке (без этого тупит)
     [self performSelectorOnMainThread:@selector(categoryLoadCompleteMainThread) withObject:nil waitUntilDone:YES];
     
 }
@@ -156,8 +167,6 @@ const NSString *TO_SEARCH = @"toSearch";
 -(void) categoryLoadCompleteMainThread
 {
     catData = cdl.catData;
-    //[self loadData];
-    
     
     [self.tableView reloadData];
 }
@@ -181,10 +190,11 @@ const NSString *TO_SEARCH = @"toSearch";
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 
+    
+    //если щелкнули по категории и переходим на детали категорий - добавляем в контроллер categoryId и categoryName
     if ([segue.identifier isEqualToString :CATEGORY_DETAIL])
-
     {
-        NSLog(@"here!!!!! %i", selectedRow);
+        
         CategoryDetailVC *catDetailVC = segue.destinationViewController;
 
 
