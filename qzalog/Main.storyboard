@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a7y-EY-ATr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kvb-fP-op0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -111,12 +111,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="9T2-FF-eMF"/>
                     <connections>
-                        <segue destination="hA7-97-IcX" kind="show" identifier="goMenu" id="uzr-ls-AU5"/>
+                        <segue destination="kvb-fP-op0" kind="show" identifier="goMenu" id="uzr-ls-AU5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH3-9Y-geQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039.2" y="181.25937031484258"/>
+            <point key="canvasLocation" x="50" y="558"/>
         </scene>
         <!--MenuVC-->
         <scene sceneID="pcT-eA-pT3">
@@ -175,7 +175,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Rf-P5-s69" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2061.5999999999999" y="180.35982008995504"/>
+            <point key="canvasLocation" x="2930" y="180"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="PDN-Ii-FK0">
@@ -213,7 +213,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Карта" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBU-a8-HA1">
-                                <frame key="frameInset" minX="111" minY="40" height="21" maxX="113"/>
+                                <frame key="frameInset" minX="110" minY="40" height="21" maxX="113"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -329,7 +329,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="E9X-xB-iHt" id="sNT-qq-DdW"/>
-                        <segue destination="hA7-97-IcX" kind="show" identifier="toMenu" id="NAD-HI-peH"/>
+                        <segue destination="kvb-fP-op0" kind="show" identifier="toMenu" id="NAD-HI-peH"/>
                         <segue destination="rlV-Pi-hPc" kind="show" identifier="toCategoryDetail" id="rfv-u6-hh6"/>
                         <segue destination="IOt-bf-hT9" kind="show" identifier="toSearch" id="i5z-76-O30"/>
                     </connections>
@@ -363,7 +363,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FDR-zd-vBf">
-                                                    <frame key="frameInset" minY="-2" height="66.80%" maxX="2"/>
+                                                    <frame key="frameInset" minX="-1" minY="-2" height="66.80%" maxX="2"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjN-Kb-xXD">
@@ -464,7 +464,7 @@
                                 <color key="barTintColor" red="0.054901960784313725" green="0.36078431372549019" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wxg-cL-2Yi">
-                                <frame key="frameInset" minX="37" minY="69" height="29" maxX="36"/>
+                                <frame key="frameInset" minX="36" minY="69" height="29" maxX="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <segments>
@@ -498,7 +498,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3JC-qs-gI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4048.8000000000002" y="31.934032983508249"/>
+            <point key="canvasLocation" x="4988" y="31.934032983508249"/>
         </scene>
         <!--Object DetailVC-->
         <scene sceneID="KIK-Rq-HpC">
@@ -1034,7 +1034,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tZq-iG-VYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6416.8000000000002" y="-234.33283358320841"/>
+            <point key="canvasLocation" x="7356" y="-234.33283358320841"/>
         </scene>
         <!--Region SpinnerVC-->
         <scene sceneID="vxY-Gu-CFA">
@@ -1073,25 +1073,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2iP-3h-Qko" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6416.8000000000002" y="749.7751124437782"/>
+            <point key="canvasLocation" x="7356" y="749.7751124437782"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Yle-qd-2JG">
+        <scene sceneID="Y3X-Ie-drL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="a7y-EY-ATr" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kvb-fP-op0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z9i-nE-sxc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ALu-87-LGg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="wdb-7j-wQY" kind="relationship" relationship="rootViewController" id="sj2-h5-GB7"/>
+                        <segue destination="hA7-97-IcX" kind="relationship" relationship="rootViewController" id="5mG-4q-XSt"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Yw-ss-vch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tal-IG-04S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="181.25937031484258"/>
+            <point key="canvasLocation" x="2061.5999999999999" y="180.35982008995504"/>
         </scene>
     </scenes>
     <resources>
@@ -1105,8 +1105,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uzr-ls-AU5"/>
-        <segue reference="rfv-u6-hh6"/>
-        <segue reference="cw5-ri-YAf"/>
+        <segue reference="4Lc-hZ-xw1"/>
+        <segue reference="Yt3-Lz-UJ9"/>
         <segue reference="3OL-So-uj9"/>
     </inferredMetricsTieBreakers>
 </document>
