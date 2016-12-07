@@ -160,6 +160,25 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     cell.infoLabel.text = cd.info;
     cell.priceLabel.text = cd.price;
     
+    
+    if (cd.discount > 0)
+    {
+        NSMutableAttributedString *discountString = [[NSMutableAttributedString alloc] initWithString:cd.discount];
+    
+    // making text property to strike text- NSStrikethroughStyleAttributeName
+    [discountString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [discountString length])];
+    
+    // using text on label
+    [cell.oldPriceLabel  setAttributedText:discountString];
+        [cell.oldPriceLabel sizeToFit];
+        cell.oldPriceLabel.hidden = NO;
+    }
+    else
+    {
+        cell.oldPriceLabel.hidden = YES;
+    }
+    
+    
     [cell.priceLabel sizeToFit];
     
     cell.adImage.contentMode = UIViewContentModeScaleAspectFill;

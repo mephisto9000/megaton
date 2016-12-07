@@ -16,6 +16,8 @@
 @property(nonatomic, retain) IBOutlet UILabel *addrLabel;
 @property(nonatomic, retain) IBOutlet UILabel *infoLabel;
 
+
+@property(nonatomic, retain) IBOutlet UILabel *oldPriceLabel;
 @property(nonatomic, retain) IBOutlet UILabel *priceLabel;
 @property(nonatomic, retain) NSString *objectId;
 
