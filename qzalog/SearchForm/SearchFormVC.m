@@ -16,13 +16,15 @@
 #import "SearchCell.h"
 #import "CategoryDetailVC.h"
 #import "UserData.h"
-
+#import "RegionCell.h"
 
 @interface SearchFormVC ()
 {
     SearchObject *searchObjectForSpinner;
     
     NSArray *categoriesInfoBackup;
+    
+    RegionCell *regionCell;
     
 }
 
@@ -36,6 +38,9 @@
 const NSString *TO_SPINNER = @"toSpinner";
 const NSString *TO_CATEGORY_SPINNER = @"toCategorySpinner";
 const NSString *TO_REGION_SPINNER = @"toRegionSpinner";
+
+const NSString *TO_REGION_TABLE = @"toRegionTable";
+
 const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
 
 //const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
@@ -87,7 +92,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         self.regionId = [UserData regionId];
         
     if (self.regionId == nil)
-        self.regionId = @"2";
+        self.regionId = nil ; //@"";
     
     
     
@@ -99,7 +104,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     
     if (_regionName == nil)
-        _regionName = @"Алматы";
+        _regionName = @"Не важно"; //"@"Алматы";
     
     
     
@@ -169,6 +174,10 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     {
         [_regionButton setTitle: self.regionName forState:UIControlStateNormal];
         _regionId = regionId;
+        
+        //regionCell.regionLabel.text = self.regionName;
+        [regionCell updateRegionName: self.regionName];
+        
     }
     
     
@@ -199,7 +208,9 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     //NSLog(@"numROws == %i", [catDetailArr count]);
     //if (self.)
     
-    return [self.categoriesInfo count];
+    
+    // +regionCell
+    return [self.categoriesInfo count] +1 ;
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -210,11 +221,34 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
 
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ((indexPath.row) == 0)
+        [self performSegueWithIdentifier:TO_REGION_TABLE sender:self];
+    
+    
+}
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     // Dequeue the cell.
     
     
-    SearchObject *so = (SearchObject *) self.categoriesInfo[indexPath.row];
+    if (indexPath.row == 0)
+    {
+       RegionCell *cell = (RegionCell *)[tableView dequeueReusableCellWithIdentifier:@"regionCell" forIndexPath:indexPath];
+        
+        if (cell == nil)
+            cell =  [ [RegionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"regionCell"];
+        
+        regionCell = cell;
+        
+        return cell;
+    }
+    
+    
+    
+    SearchObject *so = (SearchObject *) self.categoriesInfo[indexPath.row - 1];
     
     
     

@@ -21,6 +21,8 @@
 		1B22AC361DF48DAF008B4B15 /* ic_menu_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B22AC351DF48DAF008B4B15 /* ic_menu_search.png */; };
 		1B22AC381DF48DFB008B4B15 /* ic_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B22AC371DF48DFB008B4B15 /* ic_pin.png */; };
 		1B22AC3A1DF48E1D008B4B15 /* ic_menu_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B22AC391DF48E1D008B4B15 /* ic_menu_way.png */; };
+		1B22AC4C1DF72BFB008B4B15 /* RegionTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */; };
+		1B22AC4F1DF72E53008B4B15 /* RegionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B22AC4E1DF72E53008B4B15 /* RegionCell.m */; };
 		1B5473B01DE034EE00903E21 /* CategoryCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473AD1DE033EB00903E21 /* CategoryCell.h */; };
 		1B5473B11DE034EE00903E21 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473AE1DE033EB00903E21 /* CategoryCell.m */; };
 		1B5473B51DE0507D00903E21 /* CategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473B41DE0507D00903E21 /* CategoryDetailVC.m */; };
@@ -114,6 +116,10 @@
 		1B22AC351DF48DAF008B4B15 /* ic_menu_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_menu_search.png; sourceTree = "<group>"; };
 		1B22AC371DF48DFB008B4B15 /* ic_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_pin.png; sourceTree = "<group>"; };
 		1B22AC391DF48E1D008B4B15 /* ic_menu_way.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_menu_way.png; sourceTree = "<group>"; };
+		1B22AC4A1DF72BFB008B4B15 /* RegionTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegionTableVC.h; path = SearchForm/RegionTableVC.h; sourceTree = "<group>"; };
+		1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionTableVC.m; path = SearchForm/RegionTableVC.m; sourceTree = "<group>"; };
+		1B22AC4D1DF72E53008B4B15 /* RegionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegionCell.h; path = SearchForm/RegionCell.h; sourceTree = "<group>"; };
+		1B22AC4E1DF72E53008B4B15 /* RegionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionCell.m; path = SearchForm/RegionCell.m; sourceTree = "<group>"; };
 		1B5473A71DE020AF00903E21 /* MeetupCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetupCommunicatorDelegate.h; path = CategoryDataLoader/MeetupCommunicatorDelegate.h; sourceTree = "<group>"; };
 		1B5473A91DE02B3F00903E21 /* CategoryListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryListener.h; path = CategoryDataLoader/CategoryListener.h; sourceTree = "<group>"; };
 		1B5473AD1DE033EB00903E21 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCell.h; path = CategoryVC/CategoryCell.h; sourceTree = "<group>"; };
@@ -290,6 +296,8 @@
 				1BCD65F91DE83CEF00E9BEED /* CategorySpinnerVC.m */,
 				1BCD65FB1DE9ACC800E9BEED /* RegionSpinnerVC.h */,
 				1BCD65FC1DE9ACC800E9BEED /* RegionSpinnerVC.m */,
+				1B22AC4A1DF72BFB008B4B15 /* RegionTableVC.h */,
+				1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */,
 			);
 			name = SearchForm;
 			sourceTree = "<group>";
@@ -472,6 +480,8 @@
 				1BCD65EE1DE5234500E9BEED /* SearchSelectCell.m */,
 				1BCD65F01DE526CF00E9BEED /* SearchEditCell.h */,
 				1BCD65F11DE526CF00E9BEED /* SearchEditCell.m */,
+				1B22AC4D1DF72E53008B4B15 /* RegionCell.h */,
+				1B22AC4E1DF72E53008B4B15 /* RegionCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -734,6 +744,7 @@
 				1BCD65EF1DE5234500E9BEED /* SearchSelectCell.m in Sources */,
 				1B662B131DD8B65E00BAB071 /* DBManager.m in Sources */,
 				1BCD66041DEAAE6C00E9BEED /* ObjectDetail.m in Sources */,
+				1B22AC4F1DF72E53008B4B15 /* RegionCell.m in Sources */,
 				1B662B321DD8C62F00BAB071 /* Category.m in Sources */,
 				1B662AD31DD8977C00BAB071 /* InitVC.m in Sources */,
 				1B1829C21DED545200C9154A /* MapVC.m in Sources */,
@@ -755,6 +766,7 @@
 				1B5473C31DE2DAFF00903E21 /* SearchFormVC.m in Sources */,
 				1B662B2E1DD8C37500BAB071 /* CategoryDataLoader.m in Sources */,
 				1B662B081DD8ABA900BAB071 /* MenuVC.m in Sources */,
+				1B22AC4C1DF72BFB008B4B15 /* RegionTableVC.m in Sources */,
 				1BCD66011DEAAE4000E9BEED /* ObjectDetailVC.m in Sources */,
 				1B5473CB1DE325D000903E21 /* ObjectValue.m in Sources */,
 				1B5473B51DE0507D00903E21 /* CategoryDetailVC.m in Sources */,

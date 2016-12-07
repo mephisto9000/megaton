@@ -89,7 +89,7 @@ const NSString *TO_FAVORITE = @"toFavorite";
     return rowNum;
 }
 
-//создаем яцейки таблицы
+//создаем ячейки таблицы
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
