@@ -41,7 +41,7 @@
     
     // считаем сначала, что региона нет
     currentRegionId = -1;
-    regionName = @"не важно";
+    regionName = @"Не важно";
 }
 
 
@@ -163,7 +163,12 @@ SearchFormVC *sfvc = (SearchFormVC *) [self.navigationController.viewControllers
 
 // [self.searchObject setPlaceholder:self.searchObject.values[row].name];
 
+    
+if (currentRegionId == -1)
+  [UserData setRegionId:   nil];  //  [ currentRegionId  st];
+    else
 [UserData setRegionId:    [@(currentRegionId) stringValue]];  //  [ currentRegionId  st];
+
 [UserData setRegionName: regionName ];
 
 [sfvc setRegionName: regionName];

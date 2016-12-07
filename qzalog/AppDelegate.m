@@ -27,8 +27,8 @@ const NSString *googleMapsApiKey = @"AIzaSyCu5vMkMJiusQx5_PFDVgmBYZ76C8uDQhc";
     
     
     // инициализация региона и категории по умолчанию
-    [UserData setRegionId:@"2"];
-    [UserData setRegionName:@"Алматы"];
+    [UserData setRegionId:nil];
+    [UserData setRegionName:@"Не важно"];
     
     [UserData setCategoryId:@"31"];
     [UserData setCategoryName:@"Квартиры"];

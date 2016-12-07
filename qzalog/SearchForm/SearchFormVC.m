@@ -169,7 +169,15 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     NSLog(@"setRegionId");
     
     if (self.regionName == nil)
+    {
         [_regionButton setTitle: @"Регион" forState:UIControlStateNormal];
+        
+        
+        _regionId = nil;;
+        [regionCell updateRegionName: @"Не важно"];
+        
+        
+    }
     else
     {
         [_regionButton setTitle: self.regionName forState:UIControlStateNormal];
@@ -179,6 +187,10 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         [regionCell updateRegionName: self.regionName];
         
     }
+    
+    
+    [UserData setRegionId:_regionId];
+    [UserData setRegionName:_regionName];
     
     
     /*
@@ -387,7 +399,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
             NSLog(@"appending cell %i", i);
             
             //so.
-            NSIndexPath *nowPath = [NSIndexPath indexPathForRow:i inSection:0];
+            NSIndexPath *nowPath = [NSIndexPath indexPathForRow:i+1 inSection:0];
             
             id<SearchCell> cell = (id<SearchCell> )[self.tableView cellForRowAtIndexPath:nowPath];
             
@@ -426,6 +438,12 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
 {
     //self.categoriesInfo = [NSMutableArray arrayWithArray:categoriesInfoBackup];
     
+    self.regionName = nil;
+    [self setRegionId:nil];
+    
+    
+    
+    
     for (int i = 0; i < [self.categoriesInfo count]; i++)
     {
         //Ca
@@ -433,7 +451,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         //if (so.type == 2)
          //   so.placeholder = @"Не важно";
         
-        NSIndexPath *nowPath = [NSIndexPath indexPathForRow:i inSection:0];
+        NSIndexPath *nowPath = [NSIndexPath indexPathForRow:i+1 inSection:0];
         
         id<SearchCell> cell = (id<SearchCell> )[self.tableView cellForRowAtIndexPath:nowPath];
                                              
