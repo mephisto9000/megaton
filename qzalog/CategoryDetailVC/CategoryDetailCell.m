@@ -21,6 +21,8 @@
 @synthesize starButton;
 @synthesize objectId;
 @synthesize priceLabel;
+@synthesize oldPriceLabel;
+
 @synthesize dbManager = _dbManager;
 
 

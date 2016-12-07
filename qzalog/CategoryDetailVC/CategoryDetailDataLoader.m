@@ -192,7 +192,7 @@
         NSString *image = (NSString*) [obj objectForKey:@"image"];
         NSString *region = (NSString *) [obj objectForKey:@"region"];
         NSString *price = (NSString*) [obj objectForKey:@"price"];
-        int discount = [[obj objectForKey:@"discount"] intValue];
+        NSString *discount = (NSString*) [obj objectForKey:@"discount"];
         NSString *info = (NSString *) [obj objectForKey:@"info"];
         
         
@@ -203,7 +203,7 @@
         NSLog(@"image == %@", image);
         NSLog(@"region == %@", region);
         NSLog(@"price == %@", price);
-        NSLog(@"discount == %i", discount);
+        NSLog(@"discount == %@", discount);
         NSLog(@"info == %@", info);
         
         

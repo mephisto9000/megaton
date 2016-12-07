@@ -20,7 +20,7 @@
 @property(nonatomic, assign) int intPrice;
 
 
-@property(nonatomic, assign) int discount;
+@property(nonatomic, retain) NSString  *discount;
 @property(nonatomic, retain) NSString *info;
 
 

@@ -54,7 +54,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kau-Sx-oTW">
-                                <frame key="frameInset" minX="179" height="5.63%" maxX="30" maxY="116"/>
+                                <frame key="frameInset" minX="179" height="5.81%" maxX="30" maxY="116"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="+7 (727) 258-53-00"/>
@@ -387,7 +387,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vti-vj-X6Y">
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="newPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vti-vj-X6Y">
                                                     <frame key="frameInset" minX="8" minY="145" width="261" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -403,6 +403,14 @@
                                                         <action selector="starButtonClicked:" destination="zDD-ar-uos" eventType="touchUpInside" id="MGk-H9-nU5"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.64999997615814209" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="oldPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AJ-2S-9rz">
+                                                    <frame key="frameInset" minX="8" minY="123" width="261" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -410,6 +418,7 @@
                                             <outlet property="adTextLabel" destination="PwY-Gc-RVl" id="orO-Pi-lgi"/>
                                             <outlet property="addrLabel" destination="TjN-Kb-xXD" id="xIR-VN-7cr"/>
                                             <outlet property="infoLabel" destination="BYi-z8-AVX" id="i0a-Ci-uKx"/>
+                                            <outlet property="oldPriceLabel" destination="7AJ-2S-9rz" id="ft6-hO-W8X"/>
                                             <outlet property="priceLabel" destination="Vti-vj-X6Y" id="F7M-Sq-me4"/>
                                             <outlet property="starButton" destination="1Bh-px-L5j" id="gta-jp-YQo"/>
                                         </connections>
@@ -1214,8 +1223,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uzr-ls-AU5"/>
-        <segue reference="Yt3-Lz-UJ9"/>
         <segue reference="lee-TP-Yzt"/>
+        <segue reference="cw5-ri-YAf"/>
         <segue reference="3OL-So-uj9"/>
     </inferredMetricsTieBreakers>
 </document>
