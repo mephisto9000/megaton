@@ -10,6 +10,7 @@
 
 @interface DetailInfo : NSObject
 
+@property(nonatomic, assign) NSInteger infoId;
 @property(nonatomic, retain) NSString *title;
 @property(nonatomic, retain) NSString *value;
 

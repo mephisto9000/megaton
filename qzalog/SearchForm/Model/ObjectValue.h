@@ -10,6 +10,8 @@
 
 @interface ObjectValue : NSObject
 
+
+@property(nonatomic, assign) NSInteger ordId;
 @property(nonatomic, retain) NSString *valId;
 @property(nonatomic, retain) NSString *name;
 

@@ -10,6 +10,7 @@
 
 @implementation DetailImage
 
+@synthesize imgId;
 @synthesize little;
 @synthesize big;
 

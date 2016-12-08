@@ -64,7 +64,7 @@
     [self.navigationController popViewControllerAnimated:YES];
     
     int row = (int) [picker selectedRowInComponent:0];
-    [self.searchObject setPlaceholder:self.searchObject.values[row].name];
+    [self.searchObject setPlaceholder: spinnerData[row]] ; //]  self.searchObject.values[row].name];
 
 
 
@@ -77,9 +77,12 @@
     
     spinnerData = [NSMutableArray new];
     
+    [spinnerData addObject: searchObject.savedPlaceholder];
+    
     for (ObjectValue *ov in _searchObject.values)
     {
         [spinnerData addObject: ov.name];
+        //NSLog(@"selector id == %d", ov.ordId);
     }
 
     

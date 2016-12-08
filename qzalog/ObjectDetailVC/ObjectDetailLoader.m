@@ -87,9 +87,39 @@
             DetailImage *image = [DetailImage new];
             [image setLittle: [((NSDictionary *)[imagesObj objectForKey:key]) objectForKey:@"little"]];
             [image setBig: [((NSDictionary *)[imagesObj objectForKey:key]) objectForKey:@"big"]];
+            [image setImgId:[(NSString *) key intValue]];
             
             [images addObject:image];
         }
+    
+    images =  [[images sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        DetailImage *cat1 = obj1;
+        DetailImage *cat2 = obj2;
+        
+        
+        if (cat1.imgId < cat2.imgId) {
+            return (NSComparisonResult) NSOrderedAscending;
+        }
+        else if (cat1.imgId > cat2.imgId)
+        {
+            return (NSComparisonResult) NSOrderedDescending;
+        }
+        
+        
+        return (NSComparisonResult) NSOrderedSame;
+    }
+                ] mutableCopy];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
         NSDictionary *infoArrayObj = [obj objectForKey:@"infoArray"];
         NSMutableArray<DetailInfo *> *infoArray = [NSMutableArray<DetailInfo *> new];
@@ -101,11 +131,35 @@
             
             [detailInfo setTitle: [infoTmp objectForKey:@"title"]];
             [detailInfo setValue: [infoTmp objectForKey:@"value"]];
+            [detailInfo setInfoId:[(NSString *) key intValue]];
             
             [infoArray addObject:detailInfo];
             
             
         }
+    
+    infoArray =  [[infoArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        DetailInfo *cat1 = obj1;
+        DetailInfo *cat2 = obj2;
+        
+        
+        if (cat1.infoId < cat2.infoId) {
+            return (NSComparisonResult) NSOrderedAscending;
+        }
+        else if (cat1.infoId > cat2.infoId)
+        {
+            return (NSComparisonResult) NSOrderedDescending;
+        }
+        
+        
+        return (NSComparisonResult) NSOrderedSame;
+    }
+                ] mutableCopy];
+    
+    
+    
+    
+    
     
         NSString *description = [obj objectForKey:@"description"];
         float coordX = [[obj objectForKey:@"coordX"] floatValue];

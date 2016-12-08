@@ -10,6 +10,8 @@
 
 @interface DetailImage : NSObject
 
+
+@property(nonatomic, assign) NSInteger imgId;
 @property(nonatomic, retain) NSString *little;
 @property(nonatomic, retain) NSString *big;
 

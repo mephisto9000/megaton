@@ -178,11 +178,36 @@ const NSString *DB_NAME = @"qzalog.db";
                 [ov setValId:[objValue objectForKey:@"id"]];
                 [ov setName:[objValue objectForKey:@"name"]];
                 
+                
+                [ov setOrdId:[(NSString *) key intValue] ];
+                
+                
+                
                 [values addObject:ov];
 
             }
             
         }
+        
+        values =  [[values sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            ObjectValue *cat1 = obj1;
+            ObjectValue *cat2 = obj2;
+            
+            
+            if (cat1.ordId < cat2.ordId) {
+                return (NSComparisonResult) NSOrderedAscending;
+            }
+            else if (cat1.ordId > cat2.ordId)
+            {
+                return (NSComparisonResult) NSOrderedDescending;
+            }
+            
+            
+            return (NSComparisonResult) NSOrderedSame;
+        }
+                    ] mutableCopy];
+        
+        
         
         [sObject setTitle:title];
         [sObject setUnits:units];
@@ -260,14 +285,37 @@ const NSString *DB_NAME = @"qzalog.db";
                 
                 NSDictionary *objValue = [jsonValues objectForKey:key];
                 
+                
+                
+                NSLog(@"value id == %d", [(NSString *) key intValue]);
+                
                 [ov setValId:[objValue objectForKey:@"id"]];
                 [ov setName:[objValue objectForKey:@"name"]];
+                [ov setOrdId:[(NSString *) key intValue] ];
                 
                 [values addObject:ov];
                 
             }
             
         }
+        
+        values =  [[values sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            ObjectValue *cat1 = obj1;
+            ObjectValue *cat2 = obj2;
+            
+            
+            if (cat1.ordId < cat2.ordId) {
+                return (NSComparisonResult) NSOrderedAscending;
+            }
+            else if (cat1.ordId > cat2.ordId)
+            {
+                return (NSComparisonResult) NSOrderedDescending;
+            }
+            
+            
+            return (NSComparisonResult) NSOrderedSame;
+        }
+        ] mutableCopy];
         
         [sObject setTitle:title];
         [sObject setUnits:units];
@@ -300,7 +348,27 @@ const NSString *DB_NAME = @"qzalog.db";
         
         [self.searchObjects addObject:sObject];
     }
+    
+    
+    NSArray<SearchObject *> *searchObjectsTmp = [self.searchObjects sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        SearchObject *cat1 = obj1;
+        SearchObject *cat2 = obj2;
         
+        
+        if (cat1.position < cat2.position) {
+            return (NSComparisonResult) NSOrderedAscending;
+        }
+        else if (cat1.position > cat2.position)
+        {
+            return (NSComparisonResult) NSOrderedDescending;
+        }
+        
+        
+        return (NSComparisonResult) NSOrderedSame;
+    }
+    ];
+
+    
     
     
     //self.searchObjects = tmpObjects;
@@ -309,7 +377,7 @@ const NSString *DB_NAME = @"qzalog.db";
     
     //[self.delegate categoryDetailLoadComplete];
     
-    [delegate loadComplete : self.searchObjects];
+    [delegate loadComplete :  searchObjectsTmp];
 }
 
 

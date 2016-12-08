@@ -10,6 +10,7 @@
 
 @implementation ObjectValue
 
+@synthesize ordId;
 @synthesize valId;
 @synthesize name;
 
