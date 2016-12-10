@@ -21,6 +21,7 @@
 
 -(void) loadCategoryDetailData;
 -(void) loadFavorite;
+-(void) loadFromMap: (NSArray<NSString *>  *) objIds;
 
 -(void) setPriceDesc;
 -(void) setPriceAsc;

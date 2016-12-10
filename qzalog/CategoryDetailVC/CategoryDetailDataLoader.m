@@ -74,6 +74,41 @@
 }
 
 
+-(void) loadFromMap: (NSArray<NSString *>  *) objIds
+{
+    
+    NSMutableString *request = [NSMutableString stringWithFormat:@"http://qzalog.kz/_mobile_selected_objects?"];
+    
+    for (int i = 0; i < [objIds count]; i++)
+    {
+        NSString *likedObj = [NSString stringWithFormat:@"%@", objIds[i] ];
+        
+        if (i > 0)
+            [request appendString:@"&"];
+        
+        [request appendString:[NSString stringWithFormat:@"objects[%i]=%@", i, likedObj]];
+    }
+    
+    
+    NSURL *url = [NSURL URLWithString: request];
+    
+    NSLog(@"url == %@", request);
+    
+    
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        
+        if (error) {
+            [self fetchingGroupsFailedWithError:error];
+        } else {
+            [self receivedGroupsJSON:data];
+        }
+    }];
+    
+
+    
+}
+
+
 -(void) loadFavorite
 {
     DBManager *dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];

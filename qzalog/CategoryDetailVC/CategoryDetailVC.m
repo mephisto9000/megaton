@@ -57,6 +57,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 @synthesize segmentedControl;
 @synthesize url;
 @synthesize titleLabel;
+@synthesize objIds;
 
 
 -(void) setCategory:(NSString *)categoryId1
@@ -74,6 +75,8 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     [cdLoader setDelegate:self];
     
     
+    if (self.objIds == nil)
+    {
     if (self.isFavourite == FALSE)
         
     {
@@ -104,6 +107,16 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         segmentedControl.hidden = YES;
         
         self.titleLabel.text = @"Избранное";
+    }
+    
+    }
+    else
+    {
+        [cdLoader loadFromMap:self.objIds];
+        lastItemReached = TRUE;
+        segmentedControl.hidden = YES;
+        
+        self.titleLabel.text = @"";
     }
 
     itemCount = 0;

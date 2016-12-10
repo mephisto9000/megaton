@@ -9,6 +9,7 @@
 #import "MapVC.h"
 #import "ObjectCoordLoader.h"
 #import "ObjectDetailVC.h"
+#import "CategoryDetailVC.h"
 
 
 
@@ -37,6 +38,7 @@
     float map_coord_y;
     
     NSString *selectedObject;
+    NSArray *selectedObjects;
     
     GMUClusterManager *_clusterManager;
 }
@@ -48,6 +50,7 @@
 @synthesize mapView;
 
 const NSString *TO_OBJECT_DETAILS1 = @"toObjectDetails";
+const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
 
 
 
@@ -196,17 +199,58 @@ const NSString *TO_OBJECT_DETAILS1 = @"toObjectDetails";
     {
         ObjectDetailVC *od = (ObjectDetailVC *) segue.destinationViewController;
         
-        [od setObjectId:selectedObject];
+        
+        //if (selectedObjects == nil)
+            [od setObjectId:selectedObject];
+        //else
+          //  od setOb
+    }
+    
+    if ([segue.identifier isEqualToString:TO_CATEGORY_DETAILS1])
+    {
+        CategoryDetailVC *catVC = (CategoryDetailVC *) segue.destinationViewController;
+        
+        [catVC setObjIds:selectedObjects];
     }
     
 }
 
 
 - (void)clusterManager:(GMUClusterManager *)clusterManager didTapCluster:(id<GMUCluster>)cluster {
+   
+    /*
     GMSCameraPosition *newCamera =
     [GMSCameraPosition cameraWithTarget:cluster.position zoom:self.mapView.camera.zoom + 1];
     GMSCameraUpdate *update = [GMSCameraUpdate setCamera:newCamera];
-    [self.mapView moveCamera:update];
+    [self.mapView moveCamera:update]; */
+    
+    //cluster it
+    NSArray<id<GMUClusterItem>> *items = [cluster items];
+    
+    
+    NSMutableArray *objIds = [NSMutableArray new];
+    
+    
+    for (int i = 0; i < [items count]; i++)
+    {
+        //GMSMarker *marker = items[i];
+        
+        POIItem *poiItem = (POIItem *) items[i];//marker.userData;
+        
+        if (poiItem != nil) {
+            
+                [objIds addObject:coords[poiItem.objId].objId ];
+            
+        }
+        
+        
+        
+    }
+    
+    selectedObjects = [objIds copy];
+    
+    
+    [self performSegueWithIdentifier:TO_CATEGORY_DETAILS1 sender:self];
 }
 
 #pragma mark GMSMapViewDelegate

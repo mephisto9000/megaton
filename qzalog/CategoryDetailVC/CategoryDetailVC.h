@@ -23,6 +23,7 @@
 //если избранное - надо включить флаг
 @property(nonatomic, assign) BOOL isFavourite;
 
+@property(nonatomic, retain) NSArray<NSString *>  *objIds;
 
 @property(nonatomic, retain) IBOutlet UILabel *titleLabel;;
 
@@ -32,6 +33,9 @@
 
 -(IBAction) jumpToSearchForm : (id) sender;
 -(IBAction) jumpBack: (id) sender;
+
+
+
 
 
 
