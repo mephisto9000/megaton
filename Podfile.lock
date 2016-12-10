@@ -20,6 +20,15 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Google-Maps-iOS-Utils (1.1.2):
+    - Google-Maps-iOS-Utils/Clustering (= 1.1.2)
+    - Google-Maps-iOS-Utils/QuadTree (= 1.1.2)
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/Clustering (1.1.2):
+    - Google-Maps-iOS-Utils/QuadTree
+    - GoogleMaps
+  - Google-Maps-iOS-Utils/QuadTree (1.1.2):
+    - GoogleMaps
   - GoogleMaps (2.1.0):
     - GoogleMaps/Maps (= 2.1.0)
   - GoogleMaps/Base (2.1.0)
@@ -28,12 +37,14 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.4)
+  - Google-Maps-iOS-Utils
   - GoogleMaps
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Google-Maps-iOS-Utils: 4f308c9bf3b0da228aff1435a92f9fc2e13a28ff
   GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
 
-PODFILE CHECKSUM: 041ab79900f0b3c4741268d7f8a90dfc29222498
+PODFILE CHECKSUM: 31478e251d21f8b4c35d1f739227cbcf59f6c3af
 
 COCOAPODS: 1.0.1

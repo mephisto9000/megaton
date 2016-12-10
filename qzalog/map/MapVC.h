@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <Google-Maps-iOS-Utils/GMUMarkerClustering.h>
 #import "MapCoordListener.h"
 
-@interface MapVC : UIViewController<MapCoordListener, GMSMapViewDelegate>
+
+@interface POIItem : NSObject<GMUClusterItem>
+
+@property(nonatomic, assign) CLLocationCoordinate2D position;
+@property(nonatomic, retain) NSString *name;
+@property(nonatomic, assign) NSInteger  objId;
+
+- (instancetype)initWithPosition:(CLLocationCoordinate2D)position name:(NSString *)name;
+
+@end
+
+
+@interface MapVC : UIViewController<MapCoordListener, GMSMapViewDelegate, GMUClusterManagerDelegate>
 
 @property (nonatomic, retain) IBOutlet GMSMapView *mapView;
 
