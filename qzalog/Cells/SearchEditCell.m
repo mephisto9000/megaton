@@ -41,6 +41,12 @@
     self.titleLabel.text = self->searchObject.title;
     self.unitLabel.text = self->searchObject.units;
     
+    if ( self->searchObject.selectedValue1 != nil)
+        [self.textFrom setText:self->searchObject.selectedValue1];
+    
+    if ( self->searchObject.selectedValue2 != nil)
+        [self.textTo setText:self->searchObject.selectedValue2 ];
+    
     
      UIBarButtonItem *doneButton  = [[UIBarButtonItem alloc] initWithTitle:@"Закрыть" style:UIBarButtonItemStylePlain target:self action:@selector(dismissKeyboard)];
     
@@ -89,6 +95,11 @@
     
     NSLog(@"ans == %@", ans);
     
+    
+    searchObject.selectedValue1 = textFrom.text;
+    searchObject.selectedValue2 = textTo.text;
+    
+    
     return ans;
 }
 
@@ -96,6 +107,9 @@
 
 -(void) clearCell
 {
+    
+        NSLog(@"clearing searchEditCell");
+    
         [self.textTo setText:@""];
         [self.textFrom setText:@""];
     

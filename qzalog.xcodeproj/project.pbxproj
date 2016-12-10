@@ -23,6 +23,7 @@
 		1B22AC3A1DF48E1D008B4B15 /* ic_menu_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B22AC391DF48E1D008B4B15 /* ic_menu_way.png */; };
 		1B22AC4C1DF72BFB008B4B15 /* RegionTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */; };
 		1B22AC4F1DF72E53008B4B15 /* RegionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B22AC4E1DF72E53008B4B15 /* RegionCell.m */; };
+		1B49DC751DFBB58F00603806 /* SearchCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B49DC741DFBB58F00603806 /* SearchCache.m */; };
 		1B5473B01DE034EE00903E21 /* CategoryCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473AD1DE033EB00903E21 /* CategoryCell.h */; };
 		1B5473B11DE034EE00903E21 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473AE1DE033EB00903E21 /* CategoryCell.m */; };
 		1B5473B51DE0507D00903E21 /* CategoryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473B41DE0507D00903E21 /* CategoryDetailVC.m */; };
@@ -120,6 +121,8 @@
 		1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionTableVC.m; path = SearchForm/RegionTableVC.m; sourceTree = "<group>"; };
 		1B22AC4D1DF72E53008B4B15 /* RegionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegionCell.h; path = SearchForm/RegionCell.h; sourceTree = "<group>"; };
 		1B22AC4E1DF72E53008B4B15 /* RegionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionCell.m; path = SearchForm/RegionCell.m; sourceTree = "<group>"; };
+		1B49DC731DFBB58F00603806 /* SearchCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchCache.h; path = SearchForm/SearchCache/SearchCache.h; sourceTree = "<group>"; };
+		1B49DC741DFBB58F00603806 /* SearchCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchCache.m; path = SearchForm/SearchCache/SearchCache.m; sourceTree = "<group>"; };
 		1B5473A71DE020AF00903E21 /* MeetupCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetupCommunicatorDelegate.h; path = CategoryDataLoader/MeetupCommunicatorDelegate.h; sourceTree = "<group>"; };
 		1B5473A91DE02B3F00903E21 /* CategoryListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryListener.h; path = CategoryDataLoader/CategoryListener.h; sourceTree = "<group>"; };
 		1B5473AD1DE033EB00903E21 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryCell.h; path = CategoryVC/CategoryCell.h; sourceTree = "<group>"; };
@@ -264,6 +267,15 @@
 			name = model;
 			sourceTree = "<group>";
 		};
+		1B49DC721DFBB55A00603806 /* SearchCache */ = {
+			isa = PBXGroup;
+			children = (
+				1B49DC731DFBB58F00603806 /* SearchCache.h */,
+				1B49DC741DFBB58F00603806 /* SearchCache.m */,
+			);
+			name = SearchCache;
+			sourceTree = "<group>";
+		};
 		1B5473B21DE0504700903E21 /* CategoryDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +295,7 @@
 		1B5473C01DE2DAC100903E21 /* SearchForm */ = {
 			isa = PBXGroup;
 			children = (
+				1B49DC721DFBB55A00603806 /* SearchCache */,
 				1BCD65EB1DE522CF00E9BEED /* Cells */,
 				1B5473C51DE3234A00903E21 /* Model */,
 				1B5473C11DE2DAFF00903E21 /* SearchFormVC.h */,
@@ -762,6 +775,7 @@
 				1BCD660B1DEAB1A200E9BEED /* DetailInfo.m in Sources */,
 				1B1829CA1DED593500C9154A /* ObjectCoord.m in Sources */,
 				1B662ACD1DD8977C00BAB071 /* main.m in Sources */,
+				1B49DC751DFBB58F00603806 /* SearchCache.m in Sources */,
 				1B662B0C1DD8B5F100BAB071 /* CategoryVC.m in Sources */,
 				1B5473C31DE2DAFF00903E21 /* SearchFormVC.m in Sources */,
 				1B662B2E1DD8C37500BAB071 /* CategoryDataLoader.m in Sources */,

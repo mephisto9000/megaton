@@ -88,7 +88,11 @@
     
     
     self.titleLabel.text = self->searchObject.title;
-    [self.button setTitle:self->searchObject.placeholder forState:UIControlStateNormal];
+    
+    if ( self->searchObject.selectedValue1 != nil)
+        [self.button setTitle:self->searchObject.selectedValue1 forState:UIControlStateNormal];
+    else
+        [self.button setTitle:self->searchObject.placeholder forState:UIControlStateNormal];
     
     
 }
@@ -106,6 +110,9 @@
     searchObject.placeholder = searchObject.savedPlaceholder;
     
    // button.titleLabel.text =
+    
+    NSLog(@"clearing searchSelectCell");
+    
     [self.button setTitle:searchObject.placeholder forState:UIControlStateNormal|UIControlStateHighlighted|UIControlStateHighlighted]; //self->searchObject.placeholder
     //[self.button setTitle:@"не важно" forState:UIControlStateHighlighted]; //self->searchObject.placeholder
 }
@@ -116,6 +123,8 @@
     NSMutableString *ans =   [NSMutableString stringWithFormat:@""];
 
     NSLog(@"in searchSelectCell");
+    NSString *valId = nil;
+    NSString *valName = nil;
     
     if (searchObject.name != nil && [searchObject.name length] > 0 && searchObject.placeholder != nil && [searchObject.placeholder length] > 0)
     {
@@ -123,9 +132,16 @@
         for (int i = 0; i < [searchObject.values count]; i++)
         {
             if ([searchObject.values[i].name isEqualToString: searchObject.placeholder])
+            {
                 [ans appendString:[NSString stringWithFormat:@"&%@=%@", searchObject.name, searchObject.values[i].valId]]; //.placeholder
+                valId = searchObject.values[i].valId;
+                valName = searchObject.values[i].name;
+            }
         }
     }
+    
+    searchObject.selectedValue1 = valName;
+    searchObject.selectedValue2 =  valId;
     
     NSLog(@"ans == %@", ans);
     return ans;

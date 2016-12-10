@@ -17,6 +17,7 @@
 #import "CategoryDetailVC.h"
 #import "UserData.h"
 #import "RegionCell.h"
+#import "SearchCache.h"
 
 @interface SearchFormVC ()
 {
@@ -114,13 +115,20 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     
     
+    SearchCache *cache = [SearchCache searchCache];
     
+    if (![[cache categoryId] isEqualToString:_categoryId])
+    {
+        SearchObjectReader *sor = [SearchObjectReader new];
     
-    SearchObjectReader *sor = [SearchObjectReader new];
+        [sor setDelegate:self];
     
-    [sor setDelegate:self];
-    
-    [sor loadData:[self.categoryId intValue]];
+        [sor loadData:[self.categoryId intValue]];
+    }
+    else
+    {
+        [self loadComplete: [cache searchObjects]];
+    }
 }
 
 
@@ -133,7 +141,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     categoriesInfoBackup = [NSMutableArray arrayWithArray:_categoriesInfo];
     
     
-    
+    //[self clearClicked:self];
     [self.tableView reloadData];
 }
 
@@ -157,6 +165,8 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         [sor setDelegate:self];
         
         [sor loadData:[_categoryId intValue]];
+        
+        [self clearClicked:self];
 
         
         //[self.view setNeedsDisplay];
@@ -413,6 +423,13 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
             }
         }
         
+        
+        SearchCache *cache = [SearchCache searchCache];
+        
+        [cache setCategoryId:_categoryId];
+        [cache setSearchObjects:[_categoriesInfo copy]];
+
+        
         NSLog(@"search request str == %@", requestStr);
         
         [catVC setUrl:requestStr];
@@ -432,6 +449,34 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
 
 -(IBAction) backClicked: (id) sender
 {
+    
+    for (int i = 0; i < [_categoriesInfo count]; i++)
+    {
+        
+        NSIndexPath *nowPath = [NSIndexPath indexPathForRow:i+1 inSection:0];
+        
+        id<SearchCell> cell = (id<SearchCell> )[self.tableView cellForRowAtIndexPath:nowPath];
+        
+        if (cell != nil)
+        {
+            
+            //нам нужно обновить данные в searchObjects, чтобы записать их в кэш
+            NSString *cellStr = [cell generateSearchString];
+            
+            NSLog(@"cell str == %@", cellStr);
+            
+        }
+    }
+    
+    
+    SearchCache *cache = [SearchCache searchCache];
+    
+    [cache setCategoryId:_categoryId];
+    [cache setSearchObjects:[_categoriesInfo copy]];
+
+    
+    
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(IBAction) clearClicked: (id) sender
@@ -444,12 +489,23 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     
     
-    for (int i = 0; i < [self.categoriesInfo count]; i++)
+    
+    for (int i = 0; i < [_categoriesInfo count]; i++)
     {
+        SearchObject  *so = (SearchObject *)_categoriesInfo[i];
+        
+        
+        //so.savedPlaceholder = so.placeholder;
+        so.selectedValue1 = nil;
+        so.selectedValue2 = nil;
+        
+        
         //Ca
         //SearchObject *so = (SearchObject *) self.categoriesInfo[i];
         //if (so.type == 2)
          //   so.placeholder = @"Не важно";
+        
+        NSLog(@"clearing cell %i", i);
         
         NSIndexPath *nowPath = [NSIndexPath indexPathForRow:i+1 inSection:0];
         
