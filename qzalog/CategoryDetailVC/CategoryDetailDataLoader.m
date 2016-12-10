@@ -159,7 +159,7 @@
     
 }
 
--(void) loadCategoryDetailData
+-(NSString *) loadCategoryDetailData
 {
     
     lastPage ++;
@@ -173,7 +173,7 @@
     NSMutableString *urlString = nil;
     
     if (self.searchUrl == nil)
-        urlString = [NSMutableString stringWithFormat:@"http://qzalog.kz/_mobile_objects?category=%@&ObjectsSearch[region_id]=X&ObjectsSearch[cost][0]=XXX&ObjectsSearch[cost][1]=XXX&map=0&ObjectsProperties[XX][valueSearch]=XXX&page=%i", categoryId, lastPage];
+        urlString = [NSMutableString stringWithFormat:@"http://qzalog.kz/_mobile_objects?category=%@&ObjectsSearch[region_id]=&page=%i", categoryId, lastPage];
     else
         urlString = [NSMutableString stringWithFormat:@"%@&page=%i", self.searchUrl, lastPage];
     
@@ -200,7 +200,7 @@
         }
     }];
     
-    
+    return urlString;
    
     
 }

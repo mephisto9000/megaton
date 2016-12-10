@@ -19,7 +19,7 @@
 @property(nonatomic, retain) NSString *categoryId;
 @property(nonatomic, retain) NSString *searchUrl;
 
--(void) loadCategoryDetailData;
+-(NSString *) loadCategoryDetailData;
 -(void) loadFavorite;
 -(void) loadFromMap: (NSArray<NSString *>  *) objIds;
 

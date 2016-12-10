@@ -48,6 +48,8 @@
 @implementation MapVC
 
 @synthesize mapView;
+//@synthesize objIds;
+@synthesize mapUrl;
 
 const NSString *TO_OBJECT_DETAILS1 = @"toObjectDetails";
 const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
@@ -62,7 +64,11 @@ const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
     
     [ocLoader setDelegate:self];
     
-    [ocLoader loadData ];//:@"31"
+    
+    if (self.mapUrl != nil)
+        [ocLoader loadDataFromUrl: self.mapUrl];
+    else
+        [ocLoader loadData ];//:@"31"
 }
 
 - (void)didReceiveMemoryWarning {

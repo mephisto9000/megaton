@@ -253,7 +253,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fK-9j-aD9" id="SlR-sF-Lbv">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSl-QD-Egh">
@@ -360,11 +360,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="246"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zDD-ar-uos" id="jD5-oL-FZ0">
-                                            <frame key="frameInset" width="375" height="246"/>
+                                            <frame key="frameInset" width="375" height="245"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FDR-zd-vBf">
-                                                    <frame key="frameInset" minX="-4" minY="-5" height="65.74%" maxX="3"/>
+                                                    <frame key="frameInset" minX="-4" minY="-4" height="65.86%" maxX="3"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjN-Kb-xXD">
@@ -428,7 +428,7 @@
                                         <rect key="frame" x="0.0" y="274" width="375" height="262"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6HU-2O-yRv" id="q67-gI-LNg">
-                                            <frame key="frameInset" width="375" height="262"/>
+                                            <frame key="frameInset" width="375" height="261"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -458,15 +458,28 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="XJL-ON-vIH"/>
                                     <barButtonItem style="plain" id="i6W-aU-Y9j">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Fe-eQ-xuZ">
-                                            <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                            <rect key="frame" x="289" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" backgroundImage="search.png"/>
+                                            <state key="normal" backgroundImage="ic_pin.png"/>
                                             <connections>
-                                                <action selector="jumpToSearchForm:" destination="rlV-Pi-hPc" eventType="touchUpInside" id="gyp-A3-o00"/>
+                                                <action selector="jumpToMap:" destination="rlV-Pi-hPc" eventType="touchUpInside" id="eqy-yX-yqM"/>
                                             </connections>
                                         </button>
                                         <connections>
                                             <action selector="jumpToSearchForm:" destination="rlV-Pi-hPc" id="Ghe-4g-7Qb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="5Hz-Kz-m3t">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OTn-8x-jiN">
+                                            <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" backgroundImage="search.png"/>
+                                            <connections>
+                                                <action selector="jumpToSearchForm:" destination="rlV-Pi-hPc" eventType="touchUpInside" id="k2C-TW-Iad"/>
+                                            </connections>
+                                        </button>
+                                        <connections>
+                                            <action selector="jumpToSearchForm:" destination="rlV-Pi-hPc" id="gQT-7O-fza"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -488,7 +501,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Категории" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLW-7W-LsR">
-                                <frame key="frameInset" minX="58" minY="32" height="21" maxX="58"/>
+                                <frame key="frameInset" minX="102" minY="32" height="21" maxX="104"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -504,6 +517,7 @@
                         <outlet property="titleLabel" destination="rLW-7W-LsR" id="dtH-mk-Rvk"/>
                         <segue destination="IOt-bf-hT9" kind="show" identifier="toSearchForm" id="cw5-ri-YAf"/>
                         <segue destination="P04-ya-sVg" kind="show" identifier="toObjectDetail" id="3OL-So-uj9"/>
+                        <segue destination="sxC-3y-vO4" kind="show" identifier="toMap" id="IgN-5g-yyx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3JC-qs-gI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -608,7 +622,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="objectDetailCollectionCell" id="a9Z-x9-fYO">
-                                                        <rect key="frame" x="0.0" y="-1.5" width="373" height="170"/>
+                                                        <rect key="frame" x="0.0" y="-2" width="373" height="170"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="373" height="170"/>
@@ -646,7 +660,7 @@
                                 <items>
                                     <barButtonItem style="plain" id="zQE-zG-a3N">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2Oc-RP-K1A">
-                                            <rect key="frame" x="16" y="485" width="30" height="30"/>
+                                            <rect key="frame" x="16" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" backgroundImage="back_icon.png"/>
                                             <connections>
@@ -753,7 +767,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EGd-bf-oWL" id="yZz-BI-jmc">
-                                            <frame key="frameInset" width="375" height="116.5"/>
+                                            <frame key="frameInset" width="375" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d2a-wX-5HM">
@@ -792,7 +806,7 @@
                                         <rect key="frame" x="0.0" y="145" width="375" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NYF-tZ-36E" id="qf2-n9-iuJ">
-                                            <frame key="frameInset" width="375" height="116.5"/>
+                                            <frame key="frameInset" width="375" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hoV-Pf-UEI">
@@ -859,7 +873,7 @@
                                         <rect key="frame" x="0.0" y="262" width="375" height="117"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aK6-7J-Bc0" id="2wC-R2-1Lw">
-                                            <frame key="frameInset" width="375" height="116.5"/>
+                                            <frame key="frameInset" width="375" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Orb-vA-R7M">
@@ -1030,7 +1044,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ptl-pR-zZv" id="Znl-Vm-9b8">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1198,7 +1212,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kvb-fP-op0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ALu-87-LGg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ALu-87-LGg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1216,6 +1230,7 @@
         <image name="KAZKOM.png" width="154" height="155"/>
         <image name="arrow_right.png" width="50" height="80"/>
         <image name="back_icon.png" width="72" height="72"/>
+        <image name="ic_pin.png" width="96" height="96"/>
         <image name="logo_icon.png" width="72" height="72"/>
         <image name="menu_icon.png" width="72" height="72"/>
         <image name="search.png" width="48" height="48"/>
@@ -1224,8 +1239,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Tdc-5E-G7Z"/>
-        <segue reference="uzr-ls-AU5"/>
-        <segue reference="XaB-z7-dRJ"/>
+        <segue reference="IgN-5g-yyx"/>
+        <segue reference="3OL-So-uj9"/>
         <segue reference="cw5-ri-YAf"/>
+        <segue reference="uzr-ls-AU5"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -33,6 +33,7 @@
 
 -(IBAction) jumpToSearchForm : (id) sender;
 -(IBAction) jumpBack: (id) sender;
+-(IBAction) jumpToMap:(id) sender;
 
 
 

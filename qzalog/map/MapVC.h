@@ -18,6 +18,7 @@
 @property(nonatomic, retain) NSString *name;
 @property(nonatomic, assign) NSInteger  objId;
 
+
 - (instancetype)initWithPosition:(CLLocationCoordinate2D)position name:(NSString *)name;
 
 @end
@@ -26,6 +27,8 @@
 @interface MapVC : UIViewController<MapCoordListener, GMSMapViewDelegate, GMUClusterManagerDelegate>
 
 @property (nonatomic, retain) IBOutlet GMSMapView *mapView;
+//@property(nonatomic, retain) NSArray<NSString *> *objIds;
+@property(nonatomic, retain) NSString *mapUrl;
 
 -(IBAction) goBack:(id)sender;
 

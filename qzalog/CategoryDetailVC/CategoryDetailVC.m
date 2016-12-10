@@ -19,6 +19,7 @@
 #import "ObjectDetailVC.h"
 #import "DBManager.h"
 #import "UserData.h"
+#import "MapVC.h"
 
 @interface CategoryDetailVC () <CategoryDetailListener>
 {
@@ -28,6 +29,8 @@
     
     //данные в итоге приезжают в массив
     NSArray<CategoryDetail *> *catDetailArr;
+    
+    NSMutableString *mapUrl;
     
     
     DBManager *dbManager;
@@ -52,6 +55,7 @@
 @implementation CategoryDetailVC
 
 const NSString *TO_SEARCH_FORM = @"toSearchForm";
+const NSString *TO_MAP = @"toMap";
 const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 
 @synthesize segmentedControl;
@@ -90,7 +94,9 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     
     
     // включаем загрузчик
-    [cdLoader loadCategoryDetailData];
+    mapUrl = [cdLoader loadCategoryDetailData];
+        
+    [mapUrl appendString:@"&map=1"];
     
     lastItemReached = FALSE;
     
@@ -108,6 +114,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         
         self.titleLabel.text = @"Избранное";
     }
+    
     
     }
     else
@@ -359,6 +366,26 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         
         
     }
+    
+    if ([segue.identifier isEqualToString:TO_MAP])
+    {
+        
+        //NSLog(@" jumping TO_MAP");
+        MapVC *mvc = (MapVC *) segue.destinationViewController;
+        
+        
+        /*
+        NSMutableArray<NSString *> *objArr = [NSMutableArray<NSString *> new];
+        for (int i = 0; i < [catDetailArr count]; i++)
+        {
+            //NSLog(@"objId == %@", catDetailArr[i].catDetId);
+            
+            [objArr addObject: catDetailArr[i].catDetId];
+        } */
+        
+        //[mvc setObjIds:[objArr copy]];
+        [mvc setMapUrl:mapUrl];
+    }
 }
 
 
@@ -403,6 +430,11 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 {
     
     [self performSegueWithIdentifier:TO_SEARCH_FORM sender:self];
+}
+
+-(IBAction) jumpToMap:(id) sender;
+{
+    [self performSegueWithIdentifier:TO_MAP sender:self];
 }
 
 

@@ -43,6 +43,31 @@
 }
 
 
+//-(void) loadDataForArray : (NSArray<NSString *> *) objIds
+-(void) loadDataFromUrl : (NSString *) mapUrl;
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    
+    NSLog(@"url == %@", mapUrl);
+    
+    
+    NSURL *url = [NSURL URLWithString: mapUrl];
+    
+    
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        
+        if (error) {
+            [self fetchingGroupsFailedWithError:error];
+        } else {
+            [self receivedGroupsJSON:data];
+        }
+        
+    }];
+
+}
+
+
 
 -(void) fetchingGroupsFailedWithError:(NSError *)error
 {
@@ -87,7 +112,7 @@
     }
     
     
-    [self.delegate mapLoadComplete:objArray map_zoom:zoom map_coord_x:map_coord_x map_coord_y:map_coord_y];
+    [self.delegate mapLoadComplete:[objArray copy] map_zoom:zoom map_coord_x:map_coord_x map_coord_y:map_coord_y];
     
     
     
