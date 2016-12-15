@@ -82,17 +82,17 @@
 }
 
  
--(void) initWithSearchObject: (SearchObject *) searchObject
+-(void) initWithSearchObject: (SearchObject *) searchObject2
 {
-    self->searchObject = searchObject;
+     searchObject = searchObject2;
     
     
     self.titleLabel.text = self->searchObject.title;
     
-    if ( self->searchObject.selectedValue1 != nil)
-        [self.button setTitle:self->searchObject.selectedValue1 forState:UIControlStateNormal];
+    if ( searchObject.selectedValue1 != nil)
+        [self.button setTitle:searchObject.selectedValue1 forState:UIControlStateNormal];
     else
-        [self.button setTitle:self->searchObject.placeholder forState:UIControlStateNormal];
+        [self.button setTitle:searchObject.placeholder forState:UIControlStateNormal];
     
     
 }

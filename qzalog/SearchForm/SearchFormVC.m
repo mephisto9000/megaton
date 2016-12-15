@@ -46,7 +46,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
 
 //const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 
-
+@synthesize categoriesInfo = _categoriesInfo;
 @synthesize categoryId = _categoryId;
 @synthesize tableView;
 
@@ -203,18 +203,6 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     [UserData setRegionName:_regionName];
     
     
-    /*
-    if (![regionId isEqualToString:_regionId])
-    {
-        //_regionId = regionId;
-        
-        //re
-        
-    } 
-    */
-    
-    
-    
     
 }
 
@@ -232,7 +220,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     
     // +regionCell
-    return [self.categoriesInfo count] +1 ;
+    return [_categoriesInfo count] +1 ;
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -268,13 +256,14 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         return cell;
     }
     
+    //NSLog(@"in cell for row %i", indexPath.row);
     
-    
-    SearchObject *so = (SearchObject *) self.categoriesInfo[indexPath.row - 1];
+    SearchObject *so = (SearchObject *) _categoriesInfo[indexPath.row - 1];
     
     
     
     UITableViewCell<SearchCell> *cell ;
+    
     
     
     if (so.type == 1)
@@ -287,7 +276,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         [((SearchSelectCell *)cell ) setSearchFormVC: self];
     }
     
-    if (cell== nil)
+    if (!cell)
     {
         if (so.type == 1)
             cell = (UITableViewCell<SearchCell> *)[[SearchEditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchEditCell" ];
@@ -308,39 +297,12 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     [cell initWithSearchObject:so];
     
-    NSLog(@"loading cell # %i", (int) indexPath.row);
+    NSLog(@"loading cell # %i %@ %@ %@", (int) indexPath.row, so.selectedValue1, so.selectedValue2, so.name); //, so.name
+    
+    
     
     
    
-    
-    //cell.textLabel.text =   so.title;
-    
-    /*
-    CategoryDetail *cd = catDetailArr[indexPath.row];
-    
-    
-    cell.adTextLabel.text = cd.title;
-    cell.addrLabel.text = cd.region;
-    cell.infoLabel.text = cd.info;
-    cell.priceLabel.text = cd.price;
-    
-    cell.adImage.contentMode = UIViewContentModeScaleAspectFill;
-    cell.adImage.image = NULL;
-    
-    [self.operationManager GET:cd.image
-                    parameters:nil
-                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           cell.adImage.image = responseObject;
-                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                           NSLog(@"Failed with error %@.", error);
-                       }];
-    
-    if (!lastItemReached && indexPath.row == [catDetailArr count] - 1)
-    {
-        //[self launchReload];
-        itemCount = [catDetailArr count];
-        [cdLoader loadCategoryDetailData];
-    }  */
     
     return cell;
 }
@@ -414,17 +376,32 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
             id<SearchCell> cell = (id<SearchCell> )[self.tableView cellForRowAtIndexPath:nowPath];
             
             //tableView cellForRowAtIndexPath:<#(nonnull NSIndexPath *)#>
-            if (cell != nil)
+            
+            
+            
+            //if (cell != nil)
             {
             NSString *cellStr = [cell generateSearchString];
             
+                
+            if (cellStr != nil)
+            {
             NSLog(@"cell str == %@", cellStr);
             [requestStr appendString: cellStr];
+            }
             }
         }
         
         
         SearchCache *cache = [SearchCache searchCache];
+        
+        
+        for (int i = 0; i < [_categoriesInfo count]; i++)
+        {
+            SearchObject *so = _categoriesInfo[i];
+            
+            NSLog(@"so%i == %@ %@ %@", i, so.title, so.selectedValue1, so.selectedValue2);
+        }
         
         [cache setCategoryId:_categoryId];
         [cache setSearchObjects:[_categoriesInfo copy]];

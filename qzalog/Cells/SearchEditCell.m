@@ -22,6 +22,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    
+    [textFrom setDelegate:self];
+    [textTo setDelegate:self];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -30,22 +34,32 @@
     // Configure the view for the selected state
 }
 
- 
 
-
--(void) initWithSearchObject:(SearchObject *)searchObject
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    self->searchObject = searchObject;
+    [searchObject setSelectedValue1: textFrom.text];
+    [searchObject setSelectedValue2: textTo.text];
+}
+
+
+-(void) initWithSearchObject:(SearchObject *)searchObject2
+{
+     searchObject = searchObject2;
     
     
-    self.titleLabel.text = self->searchObject.title;
-    self.unitLabel.text = self->searchObject.units;
+    self.titleLabel.text = searchObject.title;
+    self.unitLabel.text = searchObject.units;
     
-    if ( self->searchObject.selectedValue1 != nil)
-        [self.textFrom setText:self->searchObject.selectedValue1];
+    if ( searchObject.selectedValue1 != nil)
+        [self.textFrom setText:searchObject.selectedValue1];
+    else
+        [self.textFrom setText:nil];
+        
     
-    if ( self->searchObject.selectedValue2 != nil)
-        [self.textTo setText:self->searchObject.selectedValue2 ];
+    if ( searchObject.selectedValue2 != nil)
+        [self.textTo setText:searchObject.selectedValue2 ];
+    else
+        [self.textTo setText: nil];
     
     
      UIBarButtonItem *doneButton  = [[UIBarButtonItem alloc] initWithTitle:@"Закрыть" style:UIBarButtonItemStylePlain target:self action:@selector(dismissKeyboard)];

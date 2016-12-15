@@ -46,32 +46,21 @@ const NSString *DB_NAME = @"qzalog.db";
 -(void) loadData: (int) category_id
 {
     
-    
-    
-    
     dbManager = [[DBManager alloc] initWithDatabaseFilename:DB_NAME];
     
     
-    //NSString *query = [NSString stringWithFormat:@"select * from categories", category_id]; // where category_id = %i
     NSString *query = [NSString stringWithFormat:@"select form from categories where category_id = %i", category_id];
     
     // Get the results.
-
     if(tmpObjects != nil)
         tmpObjects = nil;
-    //NSMutableArray<SearchObject *> *tmpObjects;
+
     
     NSLog(@"sql == %@", query);
-    
-    
-    //self.categoriesInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
     
     tmpObjects = [[NSArray alloc] initWithObjects:[dbManager loadDataFromDB:query], nil];
     
     self.searchObjects = [NSMutableArray new];
-
-    
-    
     
     for (int i = 0; i < [dbManager.arrColumnNames count]; i++)
     {
@@ -79,30 +68,18 @@ const NSString *DB_NAME = @"qzalog.db";
     }
     
     // Reload the table view.
-    
     indexOfId           = [dbManager.arrColumnNames indexOfObject:@"id"];
     indexOfName         = [dbManager.arrColumnNames indexOfObject:@"name"];
     indexOfCategoryId   = [dbManager.arrColumnNames indexOfObject:@"category_id"];
     indexOfForm         = [dbManager.arrColumnNames indexOfObject:@"form"];
     
-    //indexOfForm = 3;
     
     NSLog(@"id == %i", (int) indexOfId );
     NSLog(@"name == %i", (int) indexOfName );
     NSLog(@"category_id == %i", (int) indexOfCategoryId );
     NSLog(@"form == %i", (int) indexOfForm );
     
-    NSLog(@"before data fetch");
-    
-    //for (int i = 0; i < [tmpObjects count]; i++)
-     //   NSLog(@"%@", tmpObjects[i] );
-    
-    //NSLog(@"%@", [[[tmpObjects objectAtIndex:0] objectAtIndex:indexOfForm] dataUsingEncoding:NSUTF8StringEncoding]);
     NSArray *form = [tmpObjects objectAtIndex:0];
-    
-    
-    //NSLog(@"%@", form);
-    
     
     NSString *convertedString = [[form[0] objectAtIndex:0]  mutableCopy];
     
@@ -119,28 +96,19 @@ const NSString *DB_NAME = @"qzalog.db";
 
 -(void) parseObjectJSON:(NSData *)objectNotation
 {
-    NSLog(@"here somewhere?");
-    
-    //NSJSONSerialization JS
-    
+
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error: nil];
     
-    for (id key in json) {
-        NSLog(@"key: %@, value: %@ \n", key, [json objectForKey:key]);
-    }
-
+ 
     NSDictionary* arr = (NSDictionary* ) [json objectForKey:@"fields"];
 
     int pos = 0;
-    //for (NSDictionary *obj in arr)
 
-
-    //[arr class].
     if (![arr isKindOfClass:[NSArray class]])
 
     for (id key in arr)
     {
-        NSLog(@"first case");
+//        NSLog(@"first case");
         
         
         NSDictionary *obj = (NSDictionary* ) [arr objectForKey:key];
@@ -149,7 +117,6 @@ const NSString *DB_NAME = @"qzalog.db";
 
         SearchObject *sObject = [SearchObject new];
 
-        NSLog(@"here somewhere?");
         NSString *title = (NSString*)[obj objectForKey:@"title"];
         NSString *units =(NSString * )[obj objectForKey:@"unit_of_measure"];
         NSString *placeholder = (NSString*) [obj objectForKey:@"placeholder"];
@@ -205,7 +172,7 @@ const NSString *DB_NAME = @"qzalog.db";
             
             return (NSComparisonResult) NSOrderedSame;
         }
-                    ] mutableCopy];
+        ] mutableCopy];
         
         
         
@@ -222,12 +189,7 @@ const NSString *DB_NAME = @"qzalog.db";
         [sObject setValues:values];
             
             
-        
-        
-        
-        
-        
-        //int amount = [[cat objectForKey:@"amount"] integerValue];
+      
         
         NSLog(@"title == %@", title);
         NSLog(@"units == %@", units);
@@ -245,15 +207,11 @@ const NSString *DB_NAME = @"qzalog.db";
         
         NSLog(@"second case");
         
-       
-        
-        NSDictionary *obj = [((NSArray *) arr) objectAtIndex:0]; //(NSDictionary* ) [arr objectForKey:key];
+        NSDictionary *obj = [((NSArray *) arr) objectAtIndex:0];
         
         for (id key in obj) {
             NSLog(@"key: %@, value: %@ \n", key, [obj objectForKey:key]);
         }
-
-        
         
         pos ++;
         
@@ -284,8 +242,6 @@ const NSString *DB_NAME = @"qzalog.db";
                 ObjectValue *ov = [ObjectValue new];
                 
                 NSDictionary *objValue = [jsonValues objectForKey:key];
-                
-                
                 
                 NSLog(@"value id == %d", [(NSString *) key intValue]);
                 

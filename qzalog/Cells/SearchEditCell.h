@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SearchCell.h"
 
-@interface SearchEditCell : UITableViewCell<SearchCell>
+@interface SearchEditCell : UITableViewCell<SearchCell, UITextFieldDelegate>
 
 @property(nonatomic, retain) IBOutlet UILabel *titleLabel;
 

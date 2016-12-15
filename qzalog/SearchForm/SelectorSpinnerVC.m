@@ -65,7 +65,8 @@
     
     int row = (int) [picker selectedRowInComponent:0];
     [self.searchObject setPlaceholder: spinnerData[row]] ; //]  self.searchObject.values[row].name];
-
+//selectedValue1
+    [self.searchObject setSelectedValue1:spinnerData[row]];
 
 
     [sfvc updateSearchForms];
