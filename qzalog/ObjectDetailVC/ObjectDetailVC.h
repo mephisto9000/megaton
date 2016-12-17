@@ -30,6 +30,11 @@
 
 @property(nonatomic, retain) IBOutlet UIButton *starButton;
 
+
+@property(nonatomic, retain) IBOutlet UIView  *counterBgView;
+@property(nonatomic, retain) IBOutlet UILabel *counterLabel;
+
+
 //@property(nonatomic, retain) IBOutlet UIBarButtonItem *callButton;
 
 -(IBAction) callButtonClicked :(id) sender;

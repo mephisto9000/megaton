@@ -26,6 +26,7 @@
 @property(nonatomic, retain) AFHTTPRequestOperationManager  *operationManager;
 @property(nonatomic, retain) IBOutlet GMSMapView *mapView;
 
+
 @end
 
 @implementation ObjectDetailVC
@@ -44,7 +45,8 @@
 @synthesize paramNameLabel;
 @synthesize paramValueLabel;
 @synthesize contentView;
-
+@synthesize counterLabel;
+@synthesize counterBgView;
 
 - (AFHTTPRequestOperationManager *)operationManager
 {
@@ -100,19 +102,9 @@
     }
     
     
-    //[odl performSelector:@selector(loadData:) withObject:self.objectId afterDelay:3 ];
     
     
-    
-    
-    //GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-    //                                                        longitude:151.20
-    //                                                             zoom:6];
-    //mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    //self.mapView.myLocationEnabled = YES;
-    //self.view = mapView_;
-    
-    // Creates a marker in the center of the map.
+    counterBgView.hidden = YES;
     
     
 }
@@ -128,6 +120,30 @@
     return numRows;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0);
+{
+    //NSLog(@"%i", indexPath.row);
+    
+    
+}
+
+/*
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+    return  YES;
+}*/
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    CGRect visibleRect = (CGRect){.origin = self.collectionView.contentOffset, .size = self.collectionView.bounds.size};
+    CGPoint visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
+    NSIndexPath *visibleIndexPath = [self.collectionView indexPathForItemAtPoint:visiblePoint];
+    NSLog(@"%i",visibleIndexPath.row);
+    
+    counterLabel.text = [NSString stringWithFormat:@"%i/%i", visibleIndexPath.row +1, numRows];
+}
+
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                            cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -135,26 +151,16 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"objectDetailCollectionCell" forIndexPath:indexPath];
     
+     //NSLog(@"%i", indexPath.row);
     
-    /*
-    News *newsTmp = [newsArr objectAtIndex:indexPath.row];
     
-    if (newsTmp!=nil && [newsTmp localThumbnailFileName] != NULL)
-        cell.imageView.image = [UIImage imageNamed:[newsTmp localThumbnailFileName]];
-    else
-        cell.backgroundColor = [UIColor blackColor];
-    // Configure the cell
-    
-    cell.imageView.layer.cornerRadius = 5.0;
-    cell.imageView.layer.masksToBounds = YES;
-    */
     
     [self.operationManager GET:  objectDetail.images[indexPath.row].big
                     parameters:nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            //cell..adImage.image = responseObject;
                            cell.backgroundView = [[UIImageView alloc] initWithImage:responseObject];
-                           NSLog(@"image gownload complete");
+                           NSLog(@"image download complete");
                            
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -181,9 +187,7 @@
     
     NSLog(@"title == %@",self->objectDetail.title);
     
-    
     [self performSelectorOnMainThread:@selector(loadOnMainThread) withObject:nil waitUntilDone:YES];
-    
     
 }
 
@@ -297,6 +301,11 @@
     //[self.scrollView setNeedsDisplay];
     //[self performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:self.scrollView waitUntilDone:TRUE];
     
+    counterBgView.hidden = NO;
+    
+    NSLog(@"numrows == %i", numRows);
+    counterLabel.text = [NSString stringWithFormat:@"1/%i",  numRows];
+    
 }
 
 -(void) setMap{
@@ -342,11 +351,6 @@
 -(IBAction) callButtonClicked :(id) sender
 {
     
-    //NSMutableArray *phoneArray = [NSMutableArray new];
-    
-    //for (int i = 0; i < objectDetail.phones)
-    
-    //[[UIAlertView alloc] initWithTitle:@"Позвонить" message:nil delegate:self cancelButtonTitle:@"Отмена" otherButtonTitle:objectDetail.phones];
     
     
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Позвонить"
@@ -355,7 +359,7 @@
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:nil];
     
-    // ObjC Fast Enumeration
+    
     for (NSString *title in objectDetail.phones) {
         [actionSheet addButtonWithTitle:title];
     }
@@ -368,17 +372,12 @@
 }
 
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    /*if(actionSheet.tag == 1){
-     
-     }*/
-    //NSLog(@"El usuario seleciono el boton %ld", (long)buttonIndex);
-    //self.lbViewController1.text =  [actionSheet buttonTitleAtIndex:buttonIndex];
-    NSLog(@"here ??? %i",   buttonIndex);
+   
     
     if (buttonIndex >= [objectDetail.phones count])
         return;
     
-    NSLog(@"strill here %@",  objectDetail.phones[ buttonIndex]);
+   
     
     NSString *a1 =   [objectDetail.phones[buttonIndex]
                                                     stringByReplacingOccurrencesOfString:@" " withString:@""];
