@@ -78,6 +78,7 @@
 		1BCD660B1DEAB1A200E9BEED /* DetailInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCD660A1DEAB1A200E9BEED /* DetailInfo.m */; };
 		1BCD660E1DEAB84E00E9BEED /* ObjectDetailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCD660D1DEAB84E00E9BEED /* ObjectDetailLoader.m */; };
 		1BCD66121DEACB3300E9BEED /* ObjectDetailListener.h in Resources */ = {isa = PBXBuildFile; fileRef = 1BCD66111DEACADE00E9BEED /* ObjectDetailListener.h */; };
+		1BD60F0A1E0516E5002EC008 /* ObjectPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60F091E0516E5002EC008 /* ObjectPhotoVC.m */; };
 		F2A2A171A40B088EB1EADDBD /* libPods-qzalog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */; };
 /* End PBXBuildFile section */
 
@@ -215,6 +216,8 @@
 		1BCD660C1DEAB84E00E9BEED /* ObjectDetailLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectDetailLoader.h; path = ObjectDetailVC/ObjectDetailLoader.h; sourceTree = "<group>"; };
 		1BCD660D1DEAB84E00E9BEED /* ObjectDetailLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectDetailLoader.m; path = ObjectDetailVC/ObjectDetailLoader.m; sourceTree = "<group>"; };
 		1BCD66111DEACADE00E9BEED /* ObjectDetailListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectDetailListener.h; path = ObjectDetailVC/ObjectDetailListener.h; sourceTree = "<group>"; };
+		1BD60F081E0516E5002EC008 /* ObjectPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectPhotoVC.h; path = ObjectPhoto/ObjectPhotoVC.h; sourceTree = "<group>"; };
+		1BD60F091E0516E5002EC008 /* ObjectPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectPhotoVC.m; path = ObjectPhoto/ObjectPhotoVC.m; sourceTree = "<group>"; };
 		47AB958328DC59D8977CC0FE /* Pods-qzalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.release.xcconfig"; sourceTree = "<group>"; };
 		B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qzalog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3749EB5CB1F2AA3033AF928 /* Pods-qzalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -363,6 +366,7 @@
 		1B662ACA1DD8977C00BAB071 /* qzalog */ = {
 			isa = PBXGroup;
 			children = (
+				1BD60F071E051663002EC008 /* ObjectPhoto */,
 				1B3E7CB41DFD550800BF09F8 /* GradientView */,
 				1B1829C31DED545A00C9154A /* map */,
 				1BCD65FE1DEAAE1200E9BEED /* ObjectDetail */,
@@ -538,6 +542,15 @@
 				1B1829CD1DEF410300C9154A /* UserData.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		1BD60F071E051663002EC008 /* ObjectPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				1BD60F081E0516E5002EC008 /* ObjectPhotoVC.h */,
+				1BD60F091E0516E5002EC008 /* ObjectPhotoVC.m */,
+			);
+			name = ObjectPhoto;
 			sourceTree = "<group>";
 		};
 		C242C0635E4806A47DA8FC75 /* Pods */ = {
@@ -798,6 +811,7 @@
 				1BCD66011DEAAE4000E9BEED /* ObjectDetailVC.m in Sources */,
 				1B5473CB1DE325D000903E21 /* ObjectValue.m in Sources */,
 				1B5473B51DE0507D00903E21 /* CategoryDetailVC.m in Sources */,
+				1BD60F0A1E0516E5002EC008 /* ObjectPhotoVC.m in Sources */,
 				1BCD65FA1DE83CEF00E9BEED /* CategorySpinnerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

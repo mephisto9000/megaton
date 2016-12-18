@@ -11,6 +11,7 @@
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "DBManager.h"
+#import "ObjectPhotoVC.h"
 
 @interface ObjectDetailVC ()
 {
@@ -19,6 +20,8 @@
     int numRows;
     
     int starMode ;
+    
+    int currentItemNum;
     
     
 }
@@ -48,6 +51,8 @@
 @synthesize counterLabel;
 @synthesize counterBgView;
 
+NSString const *TO_PHOTO = @"toPhoto";
+
 - (AFHTTPRequestOperationManager *)operationManager
 {
     if (!_operationManager)
@@ -72,6 +77,7 @@
     [odl setDelegate:self];
     
     numRows = 0;
+    currentItemNum = 1;
     
     /*
     UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
@@ -120,28 +126,26 @@
     return numRows;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0);
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"%i", indexPath.row);
     
+    //[self presentViewController:playerVC animated:YES completion:nil];
+    [self performSegueWithIdentifier:TO_PHOTO sender:self];
     
 }
 
-/*
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath;
-{
-    
-    return  YES;
-}*/
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     CGRect visibleRect = (CGRect){.origin = self.collectionView.contentOffset, .size = self.collectionView.bounds.size};
     CGPoint visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
     NSIndexPath *visibleIndexPath = [self.collectionView indexPathForItemAtPoint:visiblePoint];
-    NSLog(@"%i",visibleIndexPath.row);
+    
     
     counterLabel.text = [NSString stringWithFormat:@"%i/%i", visibleIndexPath.row +1, numRows];
+    
+    currentItemNum = visibleIndexPath.row +1;
 }
 
 
@@ -425,14 +429,30 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:TO_PHOTO])
+    {
+        ObjectPhotoVC *opvc = (ObjectPhotoVC *) segue.destinationViewController;
+        
+        //objectDetail.images[indexPath.row].big
+        NSMutableArray<NSString *> *images = [NSMutableArray<NSString *> new];
+        
+        for (int i = 0; i < [objectDetail.images count]; i++)
+        {
+            [images addObject:objectDetail.images[i].big];
+        }
+        
+        [opvc setImageArr:images];
+        [opvc setCurrentItemNum: currentItemNum];
+    }
 }
-*/
+
 
 @end
