@@ -14,5 +14,6 @@
 @protocol CategoryListener <NSObject>
 
 -(void) categoryLoadComplete;
+-(void) categoryLoadError;
 
 @end

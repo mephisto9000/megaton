@@ -12,5 +12,6 @@
 @protocol ObjectDetailListener <NSObject>
 
 -(void) loadObjectDetailComplete : (ObjectDetail *) objectDetail;
+-(void) loadObjectDetailFailed;
 
 @end

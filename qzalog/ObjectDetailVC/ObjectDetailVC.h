@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ObjectDetailListener.h"
+#import "BaseController.h"
 
-@interface ObjectDetailVC : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, ObjectDetailListener, UIActionSheetDelegate>
+@interface ObjectDetailVC : BaseController<UICollectionViewDataSource, UICollectionViewDelegate, ObjectDetailListener, UIActionSheetDelegate>
 
 @property(nonatomic, retain) IBOutlet UICollectionView *collectionView;
 @property(nonatomic, retain) IBOutlet UIScrollView *scrollView;

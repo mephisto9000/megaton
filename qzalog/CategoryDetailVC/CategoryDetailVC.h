@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CategoryDetail.h"
+#import "BaseController.h"
 
 
 //класс с ДеталямиКатегорий - список объявлений
-@interface CategoryDetailVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface CategoryDetailVC : BaseController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 

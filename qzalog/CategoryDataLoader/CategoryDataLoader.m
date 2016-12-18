@@ -55,18 +55,24 @@
     
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error: nil];
     
+    
+    if (![json.allKeys containsObject:@"categories"])
+    {
+        [self.delegate categoryLoadError];
+        return;
+    }
+        //self fetchingGroupsFailedWithError:[NSError errorW]]
+        
+    
     NSArray* arr = (NSArray* ) [json objectForKey:@"categories"];
     
     for (NSDictionary *cat in arr)
     {
-        NSLog(@"here somewhere?");
+        
         int catId = [[cat objectForKey:@"id"] integerValue];
         NSString *title =(NSString * )[cat objectForKey:@"title"];
         int amount = [[cat objectForKey:@"amount"] integerValue];
         
-        NSLog(@"catId == %i", catId);
-        NSLog(@"title == %@", title);
-        NSLog(@"amount == %i", amount);
         
         Category *category = [Category new];
         

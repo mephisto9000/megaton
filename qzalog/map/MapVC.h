@@ -10,6 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <Google-Maps-iOS-Utils/GMUMarkerClustering.h>
 #import "MapCoordListener.h"
+#import "BaseController.h"
 
 
 @interface POIItem : NSObject<GMUClusterItem>
@@ -24,7 +25,7 @@
 @end
 
 
-@interface MapVC : UIViewController<MapCoordListener, GMSMapViewDelegate, GMUClusterManagerDelegate>
+@interface MapVC : BaseController<MapCoordListener, GMSMapViewDelegate, GMUClusterManagerDelegate>
 
 @property (nonatomic, retain) IBOutlet GMSMapView *mapView;
 //@property(nonatomic, retain) NSArray<NSString *> *objIds;

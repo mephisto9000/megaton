@@ -11,5 +11,6 @@
 @protocol CategoryDetailListener <NSObject>
 
 -(void) categoryDetailLoadComplete;
+-(void) categoryDetailLoadFailed;
 
 @end

@@ -79,6 +79,9 @@
 		1BCD660E1DEAB84E00E9BEED /* ObjectDetailLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCD660D1DEAB84E00E9BEED /* ObjectDetailLoader.m */; };
 		1BCD66121DEACB3300E9BEED /* ObjectDetailListener.h in Resources */ = {isa = PBXBuildFile; fileRef = 1BCD66111DEACADE00E9BEED /* ObjectDetailListener.h */; };
 		1BD60F0A1E0516E5002EC008 /* ObjectPhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60F091E0516E5002EC008 /* ObjectPhotoVC.m */; };
+		1BD60F0E1E069462002EC008 /* NetTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60F0D1E069462002EC008 /* NetTools.m */; };
+		1BD60F101E06953F002EC008 /* ic_not_found.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60F0F1E06953F002EC008 /* ic_not_found.png */; };
+		1BD60F141E069D0D002EC008 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60F131E069D0D002EC008 /* BaseController.m */; };
 		F2A2A171A40B088EB1EADDBD /* libPods-qzalog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */; };
 /* End PBXBuildFile section */
 
@@ -218,6 +221,11 @@
 		1BCD66111DEACADE00E9BEED /* ObjectDetailListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectDetailListener.h; path = ObjectDetailVC/ObjectDetailListener.h; sourceTree = "<group>"; };
 		1BD60F081E0516E5002EC008 /* ObjectPhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectPhotoVC.h; path = ObjectPhoto/ObjectPhotoVC.h; sourceTree = "<group>"; };
 		1BD60F091E0516E5002EC008 /* ObjectPhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectPhotoVC.m; path = ObjectPhoto/ObjectPhotoVC.m; sourceTree = "<group>"; };
+		1BD60F0C1E069462002EC008 /* NetTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetTools.h; path = tools/NetTools.h; sourceTree = "<group>"; };
+		1BD60F0D1E069462002EC008 /* NetTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetTools.m; path = tools/NetTools.m; sourceTree = "<group>"; };
+		1BD60F0F1E06953F002EC008 /* ic_not_found.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_not_found.png; sourceTree = "<group>"; };
+		1BD60F121E069D0D002EC008 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseController.h; path = baseController/BaseController.h; sourceTree = "<group>"; };
+		1BD60F131E069D0D002EC008 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseController.m; path = baseController/BaseController.m; sourceTree = "<group>"; };
 		47AB958328DC59D8977CC0FE /* Pods-qzalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.release.xcconfig"; sourceTree = "<group>"; };
 		B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qzalog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3749EB5CB1F2AA3033AF928 /* Pods-qzalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -366,6 +374,8 @@
 		1B662ACA1DD8977C00BAB071 /* qzalog */ = {
 			isa = PBXGroup;
 			children = (
+				1BD60F111E069CED002EC008 /* baseController */,
+				1BD60F0B1E069434002EC008 /* tools */,
 				1BD60F071E051663002EC008 /* ObjectPhoto */,
 				1B3E7CB41DFD550800BF09F8 /* GradientView */,
 				1B1829C31DED545A00C9154A /* map */,
@@ -460,6 +470,7 @@
 		1B662B141DD8C1C500BAB071 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				1BD60F0F1E06953F002EC008 /* ic_not_found.png */,
 				1B22AC391DF48E1D008B4B15 /* ic_menu_way.png */,
 				1B22AC371DF48DFB008B4B15 /* ic_pin.png */,
 				1B22AC351DF48DAF008B4B15 /* ic_menu_search.png */,
@@ -551,6 +562,24 @@
 				1BD60F091E0516E5002EC008 /* ObjectPhotoVC.m */,
 			);
 			name = ObjectPhoto;
+			sourceTree = "<group>";
+		};
+		1BD60F0B1E069434002EC008 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				1BD60F0C1E069462002EC008 /* NetTools.h */,
+				1BD60F0D1E069462002EC008 /* NetTools.m */,
+			);
+			name = tools;
+			sourceTree = "<group>";
+		};
+		1BD60F111E069CED002EC008 /* baseController */ = {
+			isa = PBXGroup;
+			children = (
+				1BD60F121E069D0D002EC008 /* BaseController.h */,
+				1BD60F131E069D0D002EC008 /* BaseController.m */,
+			);
+			name = baseController;
 			sourceTree = "<group>";
 		};
 		C242C0635E4806A47DA8FC75 /* Pods */ = {
@@ -698,6 +727,7 @@
 				1B662B261DD8C1E800BAB071 /* category45.png in Resources */,
 				1B662B231DD8C1E800BAB071 /* category25.png in Resources */,
 				1B22AC341DF48CA1008B4B15 /* ic_menu_about.png in Resources */,
+				1BD60F101E06953F002EC008 /* ic_not_found.png in Resources */,
 				1B662B211DD8C1E800BAB071 /* category38.png in Resources */,
 				1B662AD61DD8977C00BAB071 /* Main.storyboard in Resources */,
 				1B662B201DD8C1E800BAB071 /* category47.png in Resources */,
@@ -783,6 +813,7 @@
 				1BCD65EF1DE5234500E9BEED /* SearchSelectCell.m in Sources */,
 				1B662B131DD8B65E00BAB071 /* DBManager.m in Sources */,
 				1BCD66041DEAAE6C00E9BEED /* ObjectDetail.m in Sources */,
+				1BD60F0E1E069462002EC008 /* NetTools.m in Sources */,
 				1B22AC4F1DF72E53008B4B15 /* RegionCell.m in Sources */,
 				1B662B321DD8C62F00BAB071 /* Category.m in Sources */,
 				1B662AD31DD8977C00BAB071 /* InitVC.m in Sources */,
@@ -800,6 +831,7 @@
 				1BCD66081DEAB12A00E9BEED /* DetailImage.m in Sources */,
 				1BCD660B1DEAB1A200E9BEED /* DetailInfo.m in Sources */,
 				1B1829CA1DED593500C9154A /* ObjectCoord.m in Sources */,
+				1BD60F141E069D0D002EC008 /* BaseController.m in Sources */,
 				1B662ACD1DD8977C00BAB071 /* main.m in Sources */,
 				1B49DC751DFBB58F00603806 /* SearchCache.m in Sources */,
 				1B3E7CB71DFD557200BF09F8 /* GradientVC.m in Sources */,

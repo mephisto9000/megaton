@@ -83,11 +83,13 @@
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error: nil];
     
     
-    //json
-    for (id key in json) {
-        NSLog(@"key: %@, value: %@ \n", key, [json objectForKey:key]);
-    }
     
+    if (![json.allKeys containsObject:@"mapProperty"])
+    {
+        [self.delegate mapLoadFailed];
+        return;
+    }
+        
     NSDictionary* mapProperty = (NSDictionary* ) [json objectForKey:@"mapProperty"];
     
     float map_coord_x = [[mapProperty objectForKey:@"coord_x"] floatValue];

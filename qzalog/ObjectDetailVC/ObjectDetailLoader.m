@@ -43,7 +43,7 @@
 
 -(void) receivedGroupsJSON:(NSData *)objectNotation
 {
-    NSLog(@"here somewhere?");
+    
     
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error: nil];
     
@@ -51,6 +51,13 @@
     //json
     for (id key in json) {
         NSLog(@"key: %@, value: %@ \n", key, [json objectForKey:key]);
+    }
+    
+    
+    if (![json.allKeys containsObject:@"object"])
+    {
+        [delegate loadObjectDetailFailed];
+        return;
     }
     
     NSDictionary* obj = (NSDictionary* ) [json objectForKey:@"object"];

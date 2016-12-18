@@ -12,6 +12,7 @@
 #import "CategoryDetailVC.h"
 #import "Category.h"
 #import "UserData.h"
+#import "NetTools.h"
 
 
 @interface CategoryVC ()
@@ -140,11 +141,27 @@ const NSString *TO_SEARCH = @"toSearch";
     
     
     //загрузка данных по количеству объявлений категорий
-    cdl = [CategoryDataLoader new];
-    [cdl setDelegate:self];
-    [cdl loadCategoryData];
     
     
+    if ([NetTools hasConnectivity])
+    {
+        cdl = [CategoryDataLoader new];
+        [cdl setDelegate:self];
+        [cdl loadCategoryData];
+    }
+    else
+    {
+        [self noData:tableView];
+        
+    }
+    
+    
+}
+
+
+-(void) categoryLoadError
+{
+     [self noData:tableView];
 }
 
 //загрузка категорий закончена

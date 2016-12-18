@@ -214,6 +214,12 @@
     
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error: nil];
     
+    if (![json.allKeys containsObject:@"objects"])
+    {
+        [delegate categoryDetailLoadFailed];
+        return;
+    }
+    
     NSArray* arr = (NSArray* ) [json objectForKey:@"objects"];
     
     int pos = 0;

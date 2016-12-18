@@ -12,6 +12,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "DBManager.h"
 #import "ObjectPhotoVC.h"
+#import "NetTools.h"
 
 @interface ObjectDetailVC ()
 {
@@ -87,6 +88,12 @@ NSString const *TO_PHOTO = @"toPhoto";
     flow.minimumLineSpacing = 0;
     
     self.scrollView.flo */
+    
+    if (![NetTools hasConnectivity])
+    {
+        [self noData:_scrollView];
+        return;
+    }
 
     [odl loadData: self.objectId];
     
@@ -113,6 +120,11 @@ NSString const *TO_PHOTO = @"toPhoto";
     counterBgView.hidden = YES;
     
     
+}
+
+-(void) loadObjectDetailFailed
+{
+    [self noData:_scrollView];
 }
 
 - (void)didReceiveMemoryWarning {

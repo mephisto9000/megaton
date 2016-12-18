@@ -13,4 +13,6 @@
 
 -(void) mapLoadComplete: (NSArray<ObjectCoord *> *) coord map_zoom:(int) map_zoom map_coord_x: (float) map_coord_x map_coord_y: (float) map_coord_y;
 
+-(void) mapLoadFailed;
+
 @end

@@ -21,6 +21,8 @@
 #import "UserData.h"
 #import "MapVC.h"
 
+#import "NetTools.h"
+
 @interface CategoryDetailVC () <CategoryDetailListener>
 {
     
@@ -73,6 +75,12 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    if (![NetTools hasConnectivity])
+    {
+        [self noData: _tableView];
+        return;
+    }
     
     cdLoader = [CategoryDetailDataLoader new];
     
@@ -138,6 +146,8 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
 
 }
+
+
 
 //метод для асинхронной загрузки изображений
 - (AFHTTPRequestOperationManager *)operationManager
@@ -386,6 +396,11 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         //[mvc setObjIds:[objArr copy]];
         [mvc setMapUrl:mapUrl];
     }
+}
+
+-(void) categoryDetailLoadFailed
+{
+    [self noData:_tableView];
 }
 
 

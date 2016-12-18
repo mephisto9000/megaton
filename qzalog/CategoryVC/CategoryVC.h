@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CategoryListener.h"
 #import "CategoryCell.h"
+#import "BaseController.h"
 
 
 //контроллер категорий
-@interface CategoryVC : UIViewController<UITableViewDataSource, UITableViewDelegate, CategoryListener>
+@interface CategoryVC : BaseController<UITableViewDataSource, UITableViewDelegate, CategoryListener>
 
 @property(nonatomic, retain) IBOutlet UITableView *tableView;
 

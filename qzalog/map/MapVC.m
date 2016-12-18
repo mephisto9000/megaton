@@ -10,6 +10,7 @@
 #import "ObjectCoordLoader.h"
 #import "ObjectDetailVC.h"
 #import "CategoryDetailVC.h"
+#import "NetTools.h"
 
 
 
@@ -64,11 +65,22 @@ const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
     
     [ocLoader setDelegate:self];
     
+    if (![NetTools hasConnectivity])
+    {
+        [self noData:self.view];
+        return;
+    }
     
     if (self.mapUrl != nil)
         [ocLoader loadDataFromUrl: self.mapUrl];
     else
         [ocLoader loadData ];//:@"31"
+}
+
+
+-(void) mapLoadFailed
+{
+    [self noData:self.view];
 }
 
 - (void)didReceiveMemoryWarning {
