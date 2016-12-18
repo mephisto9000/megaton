@@ -67,7 +67,7 @@ const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
     
     if (![NetTools hasConnectivity])
     {
-        [self noData:self.view];
+        [self noData:self.mapView];
         return;
     }
     
@@ -80,7 +80,7 @@ const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
 
 -(void) mapLoadFailed
 {
-    [self noData:self.view];
+    [self noData:self.mapView];
 }
 
 - (void)didReceiveMemoryWarning {

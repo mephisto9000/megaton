@@ -512,6 +512,7 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="mapButton" destination="5Fe-eQ-xuZ" id="3PO-u0-FIg"/>
                         <outlet property="segmentedControl" destination="wxg-cL-2Yi" id="tBI-bP-XbC"/>
                         <outlet property="tableView" destination="Ele-mm-1OX" id="GEi-AG-pUk"/>
                         <outlet property="titleLabel" destination="rLW-7W-LsR" id="dtH-mk-Rvk"/>
@@ -683,6 +684,13 @@
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="iWE-Fj-rui"/>
+                                    <barButtonItem style="plain" id="ly3-z6-vOI">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="q8K-fF-MA8">
+                                            <rect key="frame" x="289" y="7" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="ic_pin.png"/>
+                                        </button>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" id="II4-mb-yD6">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="P5V-w9-rue">
                                             <rect key="frame" x="329" y="7" width="30" height="30"/>
@@ -1313,7 +1321,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kvb-fP-op0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ALu-87-LGg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ALu-87-LGg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

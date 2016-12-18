@@ -30,6 +30,7 @@
 @property(nonatomic, retain) IBOutlet UILabel *paramValueLabel;
 
 @property(nonatomic, retain) IBOutlet UIButton *starButton;
+@property(nonatomic, retain) IBOutlet UIButton *mapButton;
 
 
 @property(nonatomic, retain) IBOutlet UIView  *counterBgView;

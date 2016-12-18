@@ -21,6 +21,7 @@
 #import "UserData.h"
 #import "MapVC.h"
 
+
 #import "NetTools.h"
 
 @interface CategoryDetailVC () <CategoryDetailListener>
@@ -64,6 +65,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 @synthesize url;
 @synthesize titleLabel;
 @synthesize objIds;
+@synthesize mapButton;
 
 
 -(void) setCategory:(NSString *)categoryId1
@@ -121,6 +123,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         segmentedControl.hidden = YES;
         
         self.titleLabel.text = @"Избранное";
+        mapButton.hidden = YES;
     }
     
     

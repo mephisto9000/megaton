@@ -26,7 +26,8 @@
 
 @property(nonatomic, retain) NSArray<NSString *>  *objIds;
 
-@property(nonatomic, retain) IBOutlet UILabel *titleLabel;;
+@property(nonatomic, retain) IBOutlet UILabel *titleLabel;
+@property(nonatomic, retain) IBOutlet UIButton *mapButton;
 
 - (void)segmentSwitch:(UISegmentedControl *)sender ;
 

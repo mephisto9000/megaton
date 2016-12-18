@@ -96,7 +96,21 @@
     float map_coord_y = [[mapProperty objectForKey:@"coord_y"] floatValue];
     int zoom = [[mapProperty objectForKey:@"zoom"] intValue];
     
+    
+    if (![json.allKeys containsObject:@"objects"])
+    {
+        [self.delegate mapLoadFailed];
+        return;
+    }
+    
+    
     NSArray *objects = [json objectForKey:@"objects"];
+    
+    if ([objects count] == 0)
+    {
+        [self.delegate mapLoadFailed];
+        return;
+    }
     
     NSMutableArray<ObjectCoord *> *objArray = [NSMutableArray<ObjectCoord *> new];
     

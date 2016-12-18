@@ -222,6 +222,12 @@
     
     NSArray* arr = (NSArray* ) [json objectForKey:@"objects"];
     
+    if  ([arr count] == 0)
+    {
+        [delegate categoryDetailLoadFailed];
+        return;
+    }
+    
     int pos = 0;
     for (NSDictionary *obj in arr)
     {

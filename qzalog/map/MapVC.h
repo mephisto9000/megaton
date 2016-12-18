@@ -20,6 +20,9 @@
 @property(nonatomic, assign) NSInteger  objId;
 
 
+
+
+
 - (instancetype)initWithPosition:(CLLocationCoordinate2D)position name:(NSString *)name;
 
 @end

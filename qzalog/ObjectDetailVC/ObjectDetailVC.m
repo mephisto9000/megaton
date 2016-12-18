@@ -13,6 +13,7 @@
 #import "DBManager.h"
 #import "ObjectPhotoVC.h"
 #import "NetTools.h"
+#import "MapVC.h"
 
 @interface ObjectDetailVC ()
 {
@@ -53,6 +54,7 @@
 @synthesize counterBgView;
 
 NSString const *TO_PHOTO = @"toPhoto";
+NSString const *TO_MAP1 = @"toMap";
 
 - (AFHTTPRequestOperationManager *)operationManager
 {
@@ -463,6 +465,12 @@ NSString const *TO_PHOTO = @"toPhoto";
         
         [opvc setImageArr:images];
         [opvc setCurrentItemNum: currentItemNum];
+    }
+    
+    if ([segue.identifier isEqualToString:TO_MAP1])
+    {
+       // MapVC *mapVC = (MapVC *) segue.destinationViewController;
+        //mapVC setMapUrl:<#(NSString *)#>
     }
 }
 
