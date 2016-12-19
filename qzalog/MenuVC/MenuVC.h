@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuCell.h"
 
 //класс где мы храним меню
 @interface MenuVC : UIViewController<UITableViewDelegate, UITableViewDataSource>

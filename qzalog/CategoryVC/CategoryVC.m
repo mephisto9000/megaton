@@ -29,9 +29,11 @@
     NSInteger indexOfCategoryId;
 }
 
+
+
 @property (nonatomic, strong) DBManager *dbManager;
 @property (nonatomic, strong) NSArray *categoriesInfo;
-
+@property (weak, nonatomic) IBOutlet UIView *salesWay;
 
 -(void)loadData;
 
@@ -39,12 +41,11 @@
 
 @implementation CategoryVC
 
+const NSString *SALES_PAGE = @"toSaleWays";
 const NSString *CATEGORY_DETAIL = @"toCategoryDetail";
 const NSString *TO_SEARCH = @"toSearch";
 
 @synthesize tableView;
-
-
 
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -83,6 +84,8 @@ const NSString *TO_SEARCH = @"toSearch";
     
     cell.countLabel.text =  [NSString stringWithFormat:@"%ld", (long)[cat amount]];
     
+    
+    
     NSString *fname = [NSString stringWithFormat:@"category%d.png", catId];
     
     NSLog(@"fname == %@", fname);
@@ -117,14 +120,10 @@ const NSString *TO_SEARCH = @"toSearch";
     }
     self.categoriesInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
     
-    
-    
     //запоминаем на каких индексах нужные поля
     indexOfId = [self.dbManager.arrColumnNames indexOfObject:@"id"];
     indexOfName = [self.dbManager.arrColumnNames indexOfObject:@"name"];
     indexOfCategoryId = [self.dbManager.arrColumnNames indexOfObject:@"category_id"];
-    
-    
     
 }
 
@@ -141,8 +140,6 @@ const NSString *TO_SEARCH = @"toSearch";
     
     
     //загрузка данных по количеству объявлений категорий
-    
-    
     if ([NetTools hasConnectivity])
     {
         cdl = [CategoryDataLoader new];
@@ -155,9 +152,17 @@ const NSString *TO_SEARCH = @"toSearch";
         
     }
     
+    //Click event on link (UIView) of sales info
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [_salesWay addGestureRecognizer:singleFingerTap];
+    
     
 }
 
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    [self performSegueWithIdentifier:SALES_PAGE sender:self];
+}
 
 -(void) categoryLoadError
 {
@@ -168,10 +173,11 @@ const NSString *TO_SEARCH = @"toSearch";
 -(void) categoryLoadComplete
 {
     
-    NSLog(@"category load complete");
     
     //обновляем вид в главном потоке (без этого тупит)
     [self performSelectorOnMainThread:@selector(categoryLoadCompleteMainThread) withObject:nil waitUntilDone:YES];
+    
+     NSLog(@"category load complete");
     
 }
 
@@ -211,13 +217,10 @@ const NSString *TO_SEARCH = @"toSearch";
     //если щелкнули по категории и переходим на детали категорий - добавляем в контроллер categoryId и categoryName
     if ([segue.identifier isEqualToString :CATEGORY_DETAIL])
     {
-        
         CategoryDetailVC *catDetailVC = segue.destinationViewController;
-
 
         NSInteger catId = [[[self.categoriesInfo objectAtIndex:selectedRow] objectAtIndex:indexOfCategoryId] integerValue];
         NSString *catName =[[self.categoriesInfo objectAtIndex:selectedRow] objectAtIndex:indexOfName];
-        
         
         [UserData setCategoryId:[NSString stringWithFormat:@"%i", catId  ]];
         [UserData setCategoryName:catName ];

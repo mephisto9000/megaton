@@ -23,7 +23,6 @@
 		1B22AC3A1DF48E1D008B4B15 /* ic_menu_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B22AC391DF48E1D008B4B15 /* ic_menu_way.png */; };
 		1B22AC4C1DF72BFB008B4B15 /* RegionTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */; };
 		1B22AC4F1DF72E53008B4B15 /* RegionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B22AC4E1DF72E53008B4B15 /* RegionCell.m */; };
-		1B3E7CB71DFD557200BF09F8 /* GradientVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E7CB61DFD557200BF09F8 /* GradientVC.m */; };
 		1B49DC751DFBB58F00603806 /* SearchCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B49DC741DFBB58F00603806 /* SearchCache.m */; };
 		1B5473B01DE034EE00903E21 /* CategoryCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473AD1DE033EB00903E21 /* CategoryCell.h */; };
 		1B5473B11DE034EE00903E21 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473AE1DE033EB00903E21 /* CategoryCell.m */; };
@@ -82,6 +81,10 @@
 		1BD60F0E1E069462002EC008 /* NetTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60F0D1E069462002EC008 /* NetTools.m */; };
 		1BD60F101E06953F002EC008 /* ic_not_found.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60F0F1E06953F002EC008 /* ic_not_found.png */; };
 		1BD60F141E069D0D002EC008 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD60F131E069D0D002EC008 /* BaseController.m */; };
+		973326721E0833EC00B711D0 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 973326711E0833EC00B711D0 /* MenuCell.m */; };
+		973326751E0838EA00B711D0 /* ic_category_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 973326731E0838EA00B711D0 /* ic_category_arrow.png */; };
+		973326761E0838EA00B711D0 /* ic_category_link.png in Resources */ = {isa = PBXBuildFile; fileRef = 973326741E0838EA00B711D0 /* ic_category_link.png */; };
+		9733267D1E0839D000B711D0 /* SaleWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733267C1E0839D000B711D0 /* SaleWaysViewController.swift */; };
 		F2A2A171A40B088EB1EADDBD /* libPods-qzalog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */; };
 /* End PBXBuildFile section */
 
@@ -126,8 +129,6 @@
 		1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionTableVC.m; path = SearchForm/RegionTableVC.m; sourceTree = "<group>"; };
 		1B22AC4D1DF72E53008B4B15 /* RegionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegionCell.h; path = SearchForm/RegionCell.h; sourceTree = "<group>"; };
 		1B22AC4E1DF72E53008B4B15 /* RegionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionCell.m; path = SearchForm/RegionCell.m; sourceTree = "<group>"; };
-		1B3E7CB51DFD557200BF09F8 /* GradientVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientVC.h; path = ../../../authograph/Authograph/Gradient/GradientVC.h; sourceTree = "<group>"; };
-		1B3E7CB61DFD557200BF09F8 /* GradientVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradientVC.m; path = ../../../authograph/Authograph/Gradient/GradientVC.m; sourceTree = "<group>"; };
 		1B49DC731DFBB58F00603806 /* SearchCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchCache.h; path = SearchForm/SearchCache/SearchCache.h; sourceTree = "<group>"; };
 		1B49DC741DFBB58F00603806 /* SearchCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchCache.m; path = SearchForm/SearchCache/SearchCache.m; sourceTree = "<group>"; };
 		1B5473A71DE020AF00903E21 /* MeetupCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetupCommunicatorDelegate.h; path = CategoryDataLoader/MeetupCommunicatorDelegate.h; sourceTree = "<group>"; };
@@ -227,6 +228,12 @@
 		1BD60F121E069D0D002EC008 /* BaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseController.h; path = baseController/BaseController.h; sourceTree = "<group>"; };
 		1BD60F131E069D0D002EC008 /* BaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseController.m; path = baseController/BaseController.m; sourceTree = "<group>"; };
 		47AB958328DC59D8977CC0FE /* Pods-qzalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.release.xcconfig"; sourceTree = "<group>"; };
+		973326701E0833EC00B711D0 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
+		973326711E0833EC00B711D0 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		973326731E0838EA00B711D0 /* ic_category_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_category_arrow.png; path = ../../../../Downloads/ic_category_arrow.png; sourceTree = "<group>"; };
+		973326741E0838EA00B711D0 /* ic_category_link.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_category_link.png; path = ../../../../Downloads/ic_category_link.png; sourceTree = "<group>"; };
+		9733267B1E0839D000B711D0 /* qzalog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "qzalog-Bridging-Header.h"; sourceTree = "<group>"; };
+		9733267C1E0839D000B711D0 /* SaleWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleWaysViewController.swift; sourceTree = "<group>"; };
 		B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qzalog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3749EB5CB1F2AA3033AF928 /* Pods-qzalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -279,15 +286,6 @@
 				1B1829C91DED593500C9154A /* ObjectCoord.m */,
 			);
 			name = model;
-			sourceTree = "<group>";
-		};
-		1B3E7CB41DFD550800BF09F8 /* GradientView */ = {
-			isa = PBXGroup;
-			children = (
-				1B3E7CB51DFD557200BF09F8 /* GradientVC.h */,
-				1B3E7CB61DFD557200BF09F8 /* GradientVC.m */,
-			);
-			name = GradientView;
 			sourceTree = "<group>";
 		};
 		1B49DC721DFBB55A00603806 /* SearchCache */ = {
@@ -374,10 +372,10 @@
 		1B662ACA1DD8977C00BAB071 /* qzalog */ = {
 			isa = PBXGroup;
 			children = (
+				973326771E08397C00B711D0 /* saleWays */,
 				1BD60F111E069CED002EC008 /* baseController */,
 				1BD60F0B1E069434002EC008 /* tools */,
 				1BD60F071E051663002EC008 /* ObjectPhoto */,
-				1B3E7CB41DFD550800BF09F8 /* GradientView */,
 				1B1829C31DED545A00C9154A /* map */,
 				1BCD65FE1DEAAE1200E9BEED /* ObjectDetail */,
 				1B5473C01DE2DAC100903E21 /* SearchForm */,
@@ -434,6 +432,8 @@
 			children = (
 				1B662B061DD8ABA900BAB071 /* MenuVC.h */,
 				1B662B071DD8ABA900BAB071 /* MenuVC.m */,
+				973326701E0833EC00B711D0 /* MenuCell.h */,
+				973326711E0833EC00B711D0 /* MenuCell.m */,
 			);
 			name = MenuVC;
 			sourceTree = "<group>";
@@ -470,6 +470,8 @@
 		1B662B141DD8C1C500BAB071 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				973326731E0838EA00B711D0 /* ic_category_arrow.png */,
+				973326741E0838EA00B711D0 /* ic_category_link.png */,
 				1BD60F0F1E06953F002EC008 /* ic_not_found.png */,
 				1B22AC391DF48E1D008B4B15 /* ic_menu_way.png */,
 				1B22AC371DF48DFB008B4B15 /* ic_pin.png */,
@@ -582,6 +584,15 @@
 			name = baseController;
 			sourceTree = "<group>";
 		};
+		973326771E08397C00B711D0 /* saleWays */ = {
+			isa = PBXGroup;
+			children = (
+				9733267C1E0839D000B711D0 /* SaleWaysViewController.swift */,
+				9733267B1E0839D000B711D0 /* qzalog-Bridging-Header.h */,
+			);
+			name = saleWays;
+			sourceTree = "<group>";
+		};
 		C242C0635E4806A47DA8FC75 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,6 +673,7 @@
 					1B662AC71DD8977C00BAB071 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 8L7YR2SNYK;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					1B662AE31DD8977C00BAB071 = {
@@ -718,6 +730,7 @@
 				1BA9F8CC1DF1C8590079899F /* back_icon.png in Resources */,
 				1B662B221DD8C1E800BAB071 /* category9.png in Resources */,
 				1BA9F8CA1DF194180079899F /* menu_icon.png in Resources */,
+				973326751E0838EA00B711D0 /* ic_category_arrow.png in Resources */,
 				1B22AC321DF48AB9008B4B15 /* logo_icon.png in Resources */,
 				1B1829D51DF08B6F00C9154A /* star_circle_empty.png in Resources */,
 				1B662B291DD8C1E800BAB071 /* category46.png in Resources */,
@@ -727,6 +740,7 @@
 				1B662B261DD8C1E800BAB071 /* category45.png in Resources */,
 				1B662B231DD8C1E800BAB071 /* category25.png in Resources */,
 				1B22AC341DF48CA1008B4B15 /* ic_menu_about.png in Resources */,
+				973326761E0838EA00B711D0 /* ic_category_link.png in Resources */,
 				1BD60F101E06953F002EC008 /* ic_not_found.png in Resources */,
 				1B662B211DD8C1E800BAB071 /* category38.png in Resources */,
 				1B662AD61DD8977C00BAB071 /* Main.storyboard in Resources */,
@@ -834,12 +848,13 @@
 				1BD60F141E069D0D002EC008 /* BaseController.m in Sources */,
 				1B662ACD1DD8977C00BAB071 /* main.m in Sources */,
 				1B49DC751DFBB58F00603806 /* SearchCache.m in Sources */,
-				1B3E7CB71DFD557200BF09F8 /* GradientVC.m in Sources */,
 				1B662B0C1DD8B5F100BAB071 /* CategoryVC.m in Sources */,
+				9733267D1E0839D000B711D0 /* SaleWaysViewController.swift in Sources */,
 				1B5473C31DE2DAFF00903E21 /* SearchFormVC.m in Sources */,
 				1B662B2E1DD8C37500BAB071 /* CategoryDataLoader.m in Sources */,
 				1B662B081DD8ABA900BAB071 /* MenuVC.m in Sources */,
 				1B22AC4C1DF72BFB008B4B15 /* RegionTableVC.m in Sources */,
+				973326721E0833EC00B711D0 /* MenuCell.m in Sources */,
 				1BCD66011DEAAE4000E9BEED /* ObjectDetailVC.m in Sources */,
 				1B5473CB1DE325D000903E21 /* ObjectValue.m in Sources */,
 				1B5473B51DE0507D00903E21 /* CategoryDetailVC.m in Sources */,
@@ -995,6 +1010,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8L7YR2SNYK;
 				INFOPLIST_FILE = qzalog/Info.plist;
@@ -1002,6 +1018,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kz.qzalog.qzalog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "qzalog/qzalog-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1012,6 +1031,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 8L7YR2SNYK;
 				INFOPLIST_FILE = qzalog/Info.plist;
@@ -1019,6 +1039,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kz.qzalog.qzalog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "qzalog/qzalog-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1026,6 +1048,7 @@
 		1B662AFC1DD8977C00BAB071 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = qzalogTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1038,6 +1061,7 @@
 		1B662AFD1DD8977C00BAB071 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = qzalogTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1050,6 +1074,7 @@
 		1B662AFF1DD8977C00BAB071 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = qzalogUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.musbai.qzalogUITests;
@@ -1061,6 +1086,7 @@
 		1B662B001DD8977C00BAB071 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = qzalogUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.musbai.qzalogUITests;

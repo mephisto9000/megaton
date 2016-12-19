@@ -12,4 +12,11 @@
 
 @synthesize countLabel;
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.imageView.frame = CGRectMake(8, 6, 32, 32);
+    // self.imageView.contentMode = UIViewContentModeCenter;
+}
+
 @end

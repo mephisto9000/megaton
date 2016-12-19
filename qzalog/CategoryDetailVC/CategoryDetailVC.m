@@ -49,6 +49,10 @@
     
     //сколько объявлений загрузили
     int itemCount;
+    
+   // float cellHeight;
+    
+    //float imageHeight;
 }
 
 @property(nonatomic, retain) AFHTTPRequestOperationManager  *operationManager;
@@ -76,6 +80,17 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //reduce space between tableview and sort block
+    _tableView.contentInset = UIEdgeInsetsMake(-12, 0, 0, 0);
+    //dynamic row height
+     _tableView.estimatedRowHeight = 270.0;
+    _tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    //Высота изображения - высота паддингов в блоке (по идее 32 но с 40 лучше смотрится)
+    /*CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    imageHeight = screenWidth * 0.625 - 32;*/
     
     
     if (![NetTools hasConnectivity])
@@ -147,6 +162,10 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     
     //инициируем базу (коннект отрубается после каждого обращения
     dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    
+    segmentedControl.layer.cornerRadius = 5;
+    segmentedControl.clipsToBounds = YES;
+
 
 }
 
@@ -193,23 +212,27 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     cell.infoLabel.text = cd.info;
     cell.priceLabel.text = cd.price;
     
+    cell.viewOut.layer.cornerRadius = 5;
     
-    if (cd.discount > 0)
+    
+    if ([cd.discount length] != 0)
     {
         NSMutableAttributedString *discountString = [[NSMutableAttributedString alloc] initWithString:cd.discount];
     
-    // making text property to strike text- NSStrikethroughStyleAttributeName
-    [discountString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [discountString length])];
+        // making text property to strike text- NSStrikethroughStyleAttributeName
+        [discountString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [discountString length])];
     
-    // using text on label
-    [cell.oldPriceLabel  setAttributedText:discountString];
+        // using text on label
+        [cell.oldPriceLabel  setAttributedText:discountString];
         [cell.oldPriceLabel sizeToFit];
-        cell.oldPriceLabel.hidden = NO;
+        cell.oldPriceBlock.hidden = NO;
+        
     }
     else
     {
-        cell.oldPriceLabel.hidden = YES;
+        cell.oldPriceBlock.hidden = YES;
     }
+   
     
     
     [cell.priceLabel sizeToFit];
@@ -238,7 +261,29 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     return cell;
 }
 
+//ПРОВЕРить ОПТИМАЛОСТЬ ПОДСТЧЕТА ВЫСОТЫ
+/*- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    
+    CategoryDetailCell *cell = [tableView dequeueReusableCellWithIdentifier: @"categoryDetailCell"];
+    
+    
+    CGSize labelSize = [cell.adTextLabel.text sizeWithFont:cell.adTextLabel.font
+                                         constrainedToSize:cell.adTextLabel.frame.size
+                                             lineBreakMode:NSLineBreakByWordWrapping];
+    CGFloat labelHeight = labelSize.height;
 
+    
+    [cell layoutIfNeeded];
+ 
+    
+    cellHeight = [cell.contentView systemLayoutSizeFittingSize: UILayoutFittingCompressedSize].height + imageHeight + labelHeight;
+    NSLog(@"i'm here + %f", cell.contentView.intrinsicContentSize.height);
+    
+    return cellHeight;
+}*/
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -256,7 +301,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     
     NSInteger selectedSegment = sender.selectedSegmentIndex;
     
-    NSLog(@"i'm here");
+    //NSLog(@"i'm here");
     
     
     

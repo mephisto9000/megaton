@@ -21,11 +21,13 @@
 @property(nonatomic, retain) IBOutlet UILabel *priceLabel;
 @property(nonatomic, retain) NSString *objectId;
 
+@property (weak, nonatomic) IBOutlet UIView *oldPriceBlock;
 
 @property(nonatomic, retain) DBManager *dbManager;
 
 
 @property(nonatomic, retain) IBOutlet UIButton *starButton;
+@property (weak, nonatomic) IBOutlet UIView *viewOut;
 
 
 -(IBAction) starButtonClicked:(id) sender;

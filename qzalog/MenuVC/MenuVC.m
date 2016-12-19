@@ -24,9 +24,11 @@
 
 
 const NSString *CATEGORY_SEAGUE = @"goCategory";
-const NSString *MAP_SEGUE = @"toMaps";
-const NSString *TO_SEARCH_FORM1 = @"toSearchForm";
+//const NSString *MAP_SEGUE = @"toMaps";
+//const NSString *TO_SEARCH_FORM1 = @"toSearchForm";
 const NSString *TO_FAVORITE = @"toFavorite";
+const NSString *TO_ABOUT = @"aboutPage";
+const NSString *TO_SALE_DISCREPTION = @"salesPage";
 
 
 @synthesize tableView;
@@ -38,8 +40,12 @@ const NSString *TO_FAVORITE = @"toFavorite";
 {
     [super viewDidLoad];
     
-    menuItems = [NSArray arrayWithObjects:@"Категории", @"Поиск", @"Поиск на карте", @"Избранное", @"О приложении", nil];
-    menuIcons = [NSArray arrayWithObjects:@"ic_menu_way.png", @"ic_menu_search.png", @"ic_pin.png", @"star_white.png", @"ic_menu_about.png", nil];
+    /*menuItems = [NSArray arrayWithObjects:@"Поиск", @"Поиск на карте", @"Избранное", @"Способы приоритения", @"О приложении"];
+     menuIcons = [NSArray arrayWithObjects:@"ic_menu_way.png", @"ic_menu_search.png", @"ic_pin.png", @"star_white.png", @"ic_menu_about.png", nil];*/
+    
+    menuItems = [NSArray arrayWithObjects:@"Поиск", @"Избранное", @"Способы приобритения", @"О приложении", nil];
+    menuIcons = [NSArray arrayWithObjects:@"ic_menu_search.png", @"star_white.png", @"ic_category_link.png", @"ic_menu_about.png", nil];
+    
     
     
     // сколько будет позиций в таблице
@@ -66,20 +72,19 @@ const NSString *TO_FAVORITE = @"toFavorite";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
     if ((indexPath.row) == 0)
         [self performSegueWithIdentifier:CATEGORY_SEAGUE sender:self];
     
+    
     if (indexPath.row == 1)
-        [self performSegueWithIdentifier:TO_SEARCH_FORM1 sender:self];
-    
-    if ((indexPath.row == 2))
-        [self performSegueWithIdentifier:MAP_SEGUE sender:self];
-    
-    if (indexPath.row == 3)
         [self performSegueWithIdentifier:TO_FAVORITE sender:self];
     
-    if (indexPath.row == 4)
-        [self.navigationController popViewControllerAnimated:YES];
+    if (indexPath.row == 2)
+        [self performSegueWithIdentifier:TO_SALE_DISCREPTION sender:self];
+    if (indexPath.row == 3)
+        [self performSegueWithIdentifier:TO_ABOUT sender:self];
+    
 }
 
 
@@ -93,24 +98,23 @@ const NSString *TO_FAVORITE = @"toFavorite";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    UITableViewCell *cell = nil;
+    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell" forIndexPath:indexPath];
     
-    //с дизайна забирается ячейка menuCell
-    cell = [tableView dequeueReusableCellWithIdentifier:@"menuCell"];
-    
-    if(!cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"menuCell"];
+    if (cell == nil) {
+        cell = [[MenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menuCell"];
     }
     
+  
+    cell.tImage.image = [UIImage imageNamed:menuIcons[indexPath.row]];
     
-    
-    
-    cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
-    
+    cell.tLabel.text = [menuItems objectAtIndex:indexPath.row];
+    cell.tLabel.textColor = [UIColor whiteColor];
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = [menuItems objectAtIndex:indexPath.row];
     
-    cell.textLabel.textColor = [UIColor whiteColor];
+    
+    UIView *myBackView = [[UIView alloc] initWithFrame:cell.frame];
+    myBackView.backgroundColor = [UIColor colorWithRed:0.00 green:0.40 blue:0.56 alpha:0.3];
+    cell.selectedBackgroundView = myBackView;
     
     return cell;
     
