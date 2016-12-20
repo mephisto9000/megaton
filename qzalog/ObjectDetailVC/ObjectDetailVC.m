@@ -29,7 +29,7 @@
 }
 
 @property(nonatomic, retain) AFHTTPRequestOperationManager  *operationManager;
-@property(nonatomic, retain) IBOutlet GMSMapView *mapView;
+
 
 
 @end
@@ -152,6 +152,7 @@ NSString const *TO_MAP1 = @"toMap";
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
     CGRect visibleRect = (CGRect){.origin = self.collectionView.contentOffset, .size = self.collectionView.bounds.size};
     CGPoint visiblePoint = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
     NSIndexPath *visibleIndexPath = [self.collectionView indexPathForItemAtPoint:visiblePoint];
@@ -190,8 +191,6 @@ NSString const *TO_MAP1 = @"toMap";
 
     return cell;
 
-    
-    //return nil;
 }
 
 
@@ -264,15 +263,21 @@ NSString const *TO_MAP1 = @"toMap";
                 
                 self.paramNameLabel = tmpParamNameLabel;
                 self.paramValueLabel = tmpParamValueLabel;
+                
+                
             }
+            
+            /*CGRect newFrame = CGRectMake( self.infoView.frame.origin.x, self.infoView.frame.origin.y, self.infoView.frame.size.width, 200);
+            
+            self.infoView.frame = newFrame;*/
+            
+            
             break;
     }
     
     
     NSLog(@"done");
     
-    
-    [self performSelectorOnMainThread:@selector(setMap) withObject:nil waitUntilDone:YES];
     
     
     
@@ -286,17 +291,15 @@ NSString const *TO_MAP1 = @"toMap";
     for (UIView *view in self.infoView.subviews) {
         contentRect = CGRectUnion(contentRect, view.frame);
     }
-    
     int width  = self.infoView.frame.size.width;
     
+   /* self.infoView.frame  = CGRectMake(0, self.infoView.frame.origin.y,  contentRect.size.width, contentRect.size.height );
     
-    self.infoView.frame  = CGRectMake(0, self.infoView.frame.origin.y,  contentRect.size.width, contentRect.size.height );
+    self.infoView.backgroundColor = [UIColor redColor];
+    */
     
-    [self.mapView setFrame:CGRectMake(0, self.infoView.frame.origin.y + self.infoView.frame.size.height, self.mapView.frame.size.width, self.mapView.frame.size.height)];
-    
-    //self.mapView.userInteractionEnabled = YES;
-    
-    //self.mapView setSc
+    [super viewDidLoad];
+
     
     //self.scrollView.contentSize = contentRect.size;
     //self.scrollView.scrollEnabled = YES;
@@ -326,34 +329,25 @@ NSString const *TO_MAP1 = @"toMap";
     
 }
 
--(void) setMap{
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(self->objectDetail.coordX, self->objectDetail.coordY);
-    marker.title = self->objectDetail.title;
-    marker.snippet = self->objectDetail.description;
-    marker.map = self.mapView;
-    
-    
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self->objectDetail.coordX
-                                                            longitude:self->objectDetail.coordY
-                                                                 zoom:14];
-    
-    [self.mapView setCamera:camera];
-    self.mapView.myLocationEnabled = YES;
-    
-    
-
-}
 
 
 #pragma mark collection view cell layout / size
-/*
+
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [self getCellSize:indexPath];  // will be w120xh100 or w190x100
+    
+    //UIImage *image = [imageArray objectAtIndex:indexPath.row];
+    //You may want to create a divider to scale the size by the way..
+    
+    CGSize size = collectionView.bounds.size;
+    NSInteger width = size.width;
+    NSInteger height = size.height;
+    
+    return CGSizeMake(width, height);
+    
+    //return [self getCellSize:indexPath];  // will be w120xh100 or w190x100
     // if the width is higher, only one image will be shown in a line
 }
-*/
+
 
 
 #pragma mark collection view cell paddings
