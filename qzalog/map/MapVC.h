@@ -34,6 +34,8 @@
 //@property(nonatomic, retain) NSArray<NSString *> *objIds;
 @property(nonatomic, retain) NSString *mapUrl;
 
+-(void) loadDataForSingleObject: (NSString *) objectId coord_x:(float) coord_x coord_y: (float) coord_y;
+
 -(IBAction) goBack:(id)sender;
 
 @end

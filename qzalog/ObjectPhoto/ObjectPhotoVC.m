@@ -26,6 +26,7 @@
 @synthesize imageArr;
 @synthesize currentItemNum;
 @synthesize counterLabel;
+@synthesize counterLabel2;
 @synthesize counterBgView;
 
 
@@ -62,8 +63,9 @@
         currentItemNum = 1;
     
     [self.counterLabel setText:[NSString stringWithFormat:@"%i/%i", currentItemNum, numItems]];
+    [self.counterLabel2 setText:[NSString stringWithFormat:@"%i/%i", currentItemNum, numItems]];
     
-    
+    [counterBgView setHidden:YES];
     
     //[photoCollection
      //selectItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0]
@@ -155,6 +157,37 @@
 }
 
 
+-(IBAction)leftPressed:(id)sender
+{
+    NSLog(@"left pressed");
+    
+    
+    if (currentItemNum <= 1)
+        return;
+    
+    [self.photoCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentItemNum-2 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    
+    currentItemNum --;
+    
+    counterLabel2.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numItems];
+}
+
+-(IBAction)rightPressed:(id)sender
+{
+    NSLog(@"right pressed");
+    
+    
+    if (currentItemNum >= numItems)
+        return;
+    [self.photoCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentItemNum inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
+    
+    currentItemNum++;
+    
+    counterLabel2.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numItems];
+
+}
+
+
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     CGRect visibleRect = (CGRect){.origin = self.photoCollection.contentOffset, .size = self.photoCollection.bounds.size};
@@ -162,7 +195,10 @@
     NSIndexPath *visibleIndexPath = [self.photoCollection indexPathForItemAtPoint:visiblePoint];
     
     
+    currentItemNum = visibleIndexPath.row +1;
+    
     counterLabel.text = [NSString stringWithFormat:@"%i/%i", visibleIndexPath.row +1, numItems];
+    counterLabel2.text = [NSString stringWithFormat:@"%i/%i", visibleIndexPath.row +1, numItems];
 }
 
 

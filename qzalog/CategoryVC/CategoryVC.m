@@ -82,6 +82,8 @@ const NSString *TO_SEARCH = @"toSearch";
     // поля смотрим на дизайне в ячейке categoryCell
     cell.titleLabel.text = [NSString stringWithFormat:@"%@", [[self.categoriesInfo objectAtIndex:indexPath.row] objectAtIndex:indexOfName]];
     
+    NSLog(@"cat amount == %li", (long)[cat amount]);
+    NSLog(@"cat name == %@", cat.title);
     cell.countLabel.text =  [NSString stringWithFormat:@"%ld", (long)[cat amount]];
     
     
@@ -172,12 +174,12 @@ const NSString *TO_SEARCH = @"toSearch";
 //загрузка категорий закончена
 -(void) categoryLoadComplete
 {
-    
+    NSLog(@"category load complete");
     
     //обновляем вид в главном потоке (без этого тупит)
     [self performSelectorOnMainThread:@selector(categoryLoadCompleteMainThread) withObject:nil waitUntilDone:YES];
     
-     NSLog(@"category load complete");
+    
     
 }
 
@@ -189,6 +191,8 @@ const NSString *TO_SEARCH = @"toSearch";
 
 -(void) categoryLoadCompleteMainThread
 {
+    
+    NSLog(@"in categoryLoadCompleteMainThread method");
     catData = cdl.catData;
     
     [self.tableView reloadData];

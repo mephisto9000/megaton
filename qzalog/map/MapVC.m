@@ -71,10 +71,17 @@ const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
         return;
     }
     
+    if (coords == nil)
+    {
+    
     if (self.mapUrl != nil)
         [ocLoader loadDataFromUrl: self.mapUrl];
     else
         [ocLoader loadData ];//:@"31"
+    }
+    else
+        //[self performSelectorOnMainThread:@selector(mapLoadMainThread) withObject:nil waitUntilDone:YES];
+        [self mapLoadMainThread];
 }
 
 
@@ -100,6 +107,26 @@ const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
     [self performSelectorOnMainThread:@selector(mapLoadMainThread) withObject:nil waitUntilDone:YES];
     
 }
+
+
+-(void) loadDataForSingleObject: (NSString *) objectId coord_x:(float) coord_x coord_y: (float) coord_y
+{
+    ObjectCoord *oc = [ObjectCoord new];
+    [oc setObjId:objectId];
+    [oc setCoord_x:coord_x];
+    [oc setCoord_y: coord_y];
+    
+    coords = [[NSArray<ObjectCoord *> alloc] initWithObjects:oc, nil];
+    
+    
+    self->map_coord_x = coord_x;
+    self->map_coord_y = coord_y;
+    
+    self->map_zoom = 10; //?
+    
+    //[self performSelectorOnMainThread:@selector(mapLoadMainThread) withObject:nil waitUntilDone:YES];
+}
+
 
 
 -(void) mapLoadMainThread
@@ -129,37 +156,13 @@ const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
                                  algorithm:algorithm
                                   renderer:renderer];
     
-    // Generate and add random items to the cluster manager.
-    //[self generateClusterItems];
     
-    
-    /*
-    for (int i = 0; i < [coords count]; i++)
-    {
-        ObjectCoord *oc = coords[i];
-        
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake(oc.coord_x, oc.coord_y);
-        
-        //marker.title = self->objectDetail.title;
-        //marker.snippet = self->objectDetail.description;
-        marker.userData = [NSNumber numberWithInt:i];
-        
-        marker.map = self.mapView;
-    }
-    */
     const double extent = 0.2;
     for (int i = 0; i < [coords count]; i++)
     {
         ObjectCoord *oc = coords[i];
         
-        /*
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake(oc.coord_x, oc.coord_y);
         
-        //marker.title = self->objectDetail.title;
-        //marker.snippet = self->objectDetail.description;
-        marker.userData = [NSNumber numberWithInt:i]; */
         NSString *name = @"name";
         
         id<GMUClusterItem> item =
@@ -171,7 +174,7 @@ const NSString *TO_CATEGORY_DETAILS1 = @"toCategoryDetails";
         
         
         [_clusterManager addItem:item];
-        //marker.map = self.mapView;
+        
     }
 
     

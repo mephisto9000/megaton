@@ -56,6 +56,7 @@
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectNotation options:0 error: nil];
     
     
+    
     if (![json.allKeys containsObject:@"categories"])
     {
         [self.delegate categoryLoadError];

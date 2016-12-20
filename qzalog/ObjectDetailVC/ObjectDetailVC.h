@@ -44,6 +44,13 @@
 -(IBAction) starClicked: (id)sender;
 
 
+-(IBAction)rightPressed:(id)sender;
+-(IBAction)leftPressed:(id)sender;
+
+
+-(IBAction) pinClicked:(id) sender;
+
+
 
 
 @end

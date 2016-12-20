@@ -18,7 +18,12 @@
 */
 -(void) loadData ; //: (NSString *) categoryId;
 //-(void) loadDataForArray : (NSArray<NSString *> *) objIds;
+
 -(void) loadDataFromUrl : (NSString *) mapUrl;
+
+
+
+
 @property(nonatomic, retain) id<MapCoordListener> delegate;
 
 @end

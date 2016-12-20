@@ -69,6 +69,7 @@
 
 
 
+
 -(void) fetchingGroupsFailedWithError:(NSError *)error
 {
     NSLog(@"error while fetching json: %@", [error.userInfo description]);

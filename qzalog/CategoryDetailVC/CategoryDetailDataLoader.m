@@ -119,11 +119,20 @@
     
     
     if ([likedInfo count] == 0)
+    {
+        [delegate categoryDetailLoadFailed];
         return;
+    }
     
     NSMutableString *request = [NSMutableString stringWithFormat:@"http://qzalog.kz/_mobile_selected_objects?"];
     
     //category=31&objects[0]=42442499&objects[1]=42.....
+    
+    
+    //if ([likedInfo count] == 0)
+         ///[self.delegate categoryDetailLoadComplete];
+        
+        //[self receivedGroupsJSON: nil];
     
     for (int i = 0; i < [likedInfo count] ;i++)
     {

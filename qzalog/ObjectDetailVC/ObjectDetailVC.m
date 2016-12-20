@@ -122,7 +122,11 @@ NSString const *TO_MAP1 = @"toMap";
     counterBgView.hidden = YES;
     
     
+    
 }
+
+
+
 
 -(void) loadObjectDetailFailed
 {
@@ -146,6 +150,39 @@ NSString const *TO_MAP1 = @"toMap";
     
     //[self presentViewController:playerVC animated:YES completion:nil];
     [self performSegueWithIdentifier:TO_PHOTO sender:self];
+    
+}
+
+
+
+
+-(IBAction)leftPressed:(id)sender
+{
+    NSLog(@"left pressed");
+    
+    
+    if (currentItemNum <= 1)
+        return;
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentItemNum-2 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    
+    currentItemNum --;
+    
+    counterLabel.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numRows];
+}
+
+-(IBAction)rightPressed:(id)sender
+{
+    NSLog(@"right pressed");
+    
+    
+    if (currentItemNum >= numRows)
+        return;
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentItemNum inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
+    
+    currentItemNum++;
+    
+    counterLabel.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numRows];
     
 }
 
@@ -275,6 +312,58 @@ NSString const *TO_MAP1 = @"toMap";
             break;
     }
     
+    // add description
+    CGRect r1 = self.paramNameLabel.frame;
+    
+     UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(r1.origin.x, r1.origin.y+50, r1.size.width, r1.size.height)];
+    
+    [descLabel setText:@"Описание:"];
+    [descLabel setFont:[UIFont systemFontOfSize: 17]];
+    
+    [descLabel sizeToFit];
+    [self.infoView addSubview:descLabel];
+    
+    
+    r1 = descLabel.frame;
+    CGRect r2 =self.paramValueLabel.frame;
+    
+    UITextView *descTextView = [[UITextView alloc ] initWithFrame:CGRectMake(r1.origin.x, r1.origin.y+25, r2.origin.x -  r1.origin.x + r2.size.width, 100)];
+    
+    [descTextView setText:self->objectDetail.description];
+    [descTextView setFont:[UIFont systemFontOfSize:12]];
+    [descTextView sizeToFit];
+    
+    [self.infoView addSubview:descTextView];
+    
+    
+    
+    
+    
+    
+    // add discount
+    if (self->objectDetail.discount != nil)
+    {
+        [self.priceLabel sizeToFit];
+        CGRect r = self.priceLabel.frame;
+        UILabel *discountLabel = [[UILabel alloc] initWithFrame:CGRectMake(r.origin.x + 15 + r.size.width, r.origin.y, r.size.width, r.size.height)];
+        
+        NSMutableAttributedString *discountString = [[NSMutableAttributedString alloc] initWithString:self->objectDetail.discount];
+        
+        
+        [discountString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [discountString length])];
+
+        
+        [discountLabel setFont:self.priceLabel.font];
+        [discountLabel setAttributedText:discountString];
+        [discountLabel sizeToFit];
+        
+        [self.priceLabel.superview addSubview:discountLabel];
+    }
+    
+    
+    
+    
+    
     
     NSLog(@"done");
     
@@ -309,7 +398,9 @@ NSString const *TO_MAP1 = @"toMap";
         contentRect1 = CGRectUnion(contentRect1, view.frame);
     }
     
-    //self.scrollView.contentSize = contentRect1.size*2;
+    //.contentSize = contentRect1.size*2;
+    
+    
     [self.contentView setFrame:CGRectMake(0, self.contentView.frame.origin.y,  width, contentRect1.size.height) ]; //  contentRect1.size];  //setContentSize
     
     CALayer *layer = self.view.layer;
@@ -327,6 +418,8 @@ NSString const *TO_MAP1 = @"toMap";
     NSLog(@"numrows == %i", numRows);
     counterLabel.text = [NSString stringWithFormat:@"1/%i",  numRows];
     
+    [self.contentView sizeToFit];
+    [self.scrollView sizeToFit];
 }
 
 
@@ -463,9 +556,18 @@ NSString const *TO_MAP1 = @"toMap";
     
     if ([segue.identifier isEqualToString:TO_MAP1])
     {
-       // MapVC *mapVC = (MapVC *) segue.destinationViewController;
+        MapVC *mapVC = (MapVC *) segue.destinationViewController;
         //mapVC setMapUrl:<#(NSString *)#>
+        
+        [mapVC loadDataForSingleObject: objectId  coord_x: objectDetail.coordX coord_y: objectDetail.coordY];
     }
+}
+
+
+-(IBAction)pinClicked:(id)sender
+{
+    [self performSegueWithIdentifier:TO_MAP1 sender:self];
+    
 }
 
 

@@ -18,9 +18,13 @@
 @property(nonatomic, assign) NSInteger currentItemNum;
 
 @property(nonatomic, retain) IBOutlet UILabel *counterLabel;
+@property(nonatomic, retain) IBOutlet UILabel *counterLabel2;
 @property(nonatomic, retain) IBOutlet UIView  *counterBgView;
 
 
 -(IBAction)backPressed:(id)sender;
+
+-(IBAction)leftPressed:(id)sender;
+-(IBAction)rightPressed:(id)sender;
 
 @end

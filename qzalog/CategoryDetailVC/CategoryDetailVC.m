@@ -448,6 +448,9 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 
 -(void) categoryDetailLoadFailed
 {
+    
+    NSLog(@"im here, failed"); //,  count == %i",[catDetailArr count]);
+    
     [self noData:_tableView];
 }
 
@@ -472,6 +475,14 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         //не достигли
         //просто обновляем таблицу
         [self.tableView reloadData];
+    }
+    
+    
+    NSLog(@"im here, ciunt == %i",[catDetailArr count]);
+    
+    if (catDetailArr == nil || catDetailArr.count == 0)
+    {
+        [self noData:_tableView];
     }
 }
 
