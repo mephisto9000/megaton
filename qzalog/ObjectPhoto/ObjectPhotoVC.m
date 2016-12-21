@@ -62,8 +62,7 @@
     if (currentItemNum == 0)
         currentItemNum = 1;
     
-    [self.counterLabel setText:[NSString stringWithFormat:@"%i/%i", currentItemNum, numItems]];
-    [self.counterLabel2 setText:[NSString stringWithFormat:@"%i/%i", currentItemNum, numItems]];
+       [self.counterLabel2 setText:[NSString stringWithFormat:@"Изображение %i/%i", currentItemNum, numItems]];
     
     [counterBgView setHidden:YES];
     
@@ -169,7 +168,7 @@
     
     currentItemNum --;
     
-    counterLabel2.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numItems];
+    counterLabel2.text = [NSString stringWithFormat:@"Изображение %i/%i", currentItemNum, numItems];
 }
 
 -(IBAction)rightPressed:(id)sender
@@ -183,7 +182,7 @@
     
     currentItemNum++;
     
-    counterLabel2.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numItems];
+    counterLabel2.text = [NSString stringWithFormat:@"Изображение %i/%i", currentItemNum, numItems];
 
 }
 
@@ -197,7 +196,7 @@
     
     currentItemNum = visibleIndexPath.row +1;
     
-    counterLabel.text = [NSString stringWithFormat:@"%i/%i", visibleIndexPath.row +1, numItems];
+   
     counterLabel2.text = [NSString stringWithFormat:@"%i/%i", visibleIndexPath.row +1, numItems];
 }
 

@@ -222,16 +222,8 @@ NSString const *TO_MAP1 = @"toMap";
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                            NSLog(@"Failed with error %@.", error);
                        }];
-    
-
-    
-
     return cell;
-
 }
-
-
-
 
 -(void) loadObjectDetailComplete : (ObjectDetail *) objectDetail
 {
@@ -259,7 +251,6 @@ NSString const *TO_MAP1 = @"toMap";
     switch([self->objectDetail.infoArray count] )
     {
         case 0:
-            self.infoView.hidden = YES;
             break;
         case 1:
             self.paramNameLabel.text = self->objectDetail.infoArray[0].title;
@@ -277,12 +268,16 @@ NSString const *TO_MAP1 = @"toMap";
                 CGRect r2 = self.paramValueLabel.frame;
                 //+20
                 //+20
-                UILabel *tmpParamNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(r1.origin.x, r1.origin.y+25, r1.size.width, r1.size.height)];
-                UILabel *tmpParamValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(r2.origin.x, r2.origin.y+25, r2.size.width, r2.size.height)];
+                UILabel *tmpParamNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(r1.origin.x, r1.origin.y+22, r1.size.width, r1.size.height)];
+                UILabel *tmpParamValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(r2.origin.x, r2.origin.y+22, r2.size.width, r2.size.height)];
                 
                 [tmpParamValueLabel setTextAlignment:NSTextAlignmentRight];
                 
                 [tmpParamNameLabel setFont:[UIFont systemFontOfSize:12]];
+                
+                [tmpParamNameLabel setTextColor:[UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1.0]];
+                
+                
                 [tmpParamValueLabel setFont:[UIFont systemFontOfSize:12]];
                 //tmpParamNameLabel.frame.origin.x += 20;
                 
@@ -311,35 +306,64 @@ NSString const *TO_MAP1 = @"toMap";
             
             break;
     }
+    //self->objectDetail.description = @"";
     
-    // add description
-    CGRect r1 = self.paramNameLabel.frame;
-    
-     UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(r1.origin.x, r1.origin.y+50, r1.size.width, r1.size.height)];
-    
-    [descLabel setText:@"Описание:"];
-    [descLabel setFont:[UIFont systemFontOfSize: 17]];
-    
-    [descLabel sizeToFit];
-    [self.infoView addSubview:descLabel];
-    
-    
-    r1 = descLabel.frame;
-    CGRect r2 =self.paramValueLabel.frame;
-    
-    UITextView *descTextView = [[UITextView alloc ] initWithFrame:CGRectMake(r1.origin.x, r1.origin.y+25, r2.origin.x -  r1.origin.x + r2.size.width, 100)];
-    
-    [descTextView setText:self->objectDetail.description];
-    [descTextView setFont:[UIFont systemFontOfSize:12]];
-    [descTextView sizeToFit];
-    
-    [self.infoView addSubview:descTextView];
-    
-    
-    
-    
-    
-    
+    if ( [self->objectDetail.description length] != 0 ){
+        
+        // add description
+        CGRect r1 = self.paramNameLabel.frame;
+
+        //Костыль на случай елси нет в описании параметров
+        if (!self->objectDetail.infoArray || !self->objectDetail.infoArray.count){
+            r1.origin.y = r1.origin.y - 50;
+        }
+
+         UIView *discView=[[UIView alloc]initWithFrame:CGRectMake(0, r1.origin.y+22, self.infoView.bounds.size.width, 200)];
+
+
+        CALayer *TopBorder2 = [CALayer layer];
+        TopBorder2.frame = CGRectMake(0.0f, 0.0f, self.infoView.bounds.size.width, 1.0f);
+        TopBorder2.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+        [discView.layer addSublayer:TopBorder2];
+
+
+
+         UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, r1.size.width, r1.size.height)];
+
+        [descLabel setText:@"Описание:"];
+        [descLabel setFont:[UIFont systemFontOfSize: 14]];
+
+        [descLabel sizeToFit];
+        [discView addSubview:descLabel];
+        [self.infoView addSubview:discView];
+
+        r1 = descLabel.frame;
+        //CGRect r2 =self.paramValueLabel.frame;
+
+        UITextView *descTextView = [[UITextView alloc ] initWithFrame:CGRectMake(8, r1.origin.y+16, self.infoView.bounds.size.width - 16, 100)];
+
+        [descTextView setText:self->objectDetail.description];
+        [descTextView setFont:[UIFont systemFontOfSize:12]];
+        [descTextView sizeToFit];
+        descTextView.textContainerInset = UIEdgeInsetsMake(3, -5, 3, 0);
+
+
+        [discView sizeToFit];
+
+        //discView.backgroundColor = [UIColor redColor];
+        // descTextView.backgroundColor = [UIColor greenColor];
+
+        CGFloat fixedHeight = descTextView.frame.size.height;
+        CGRect newFrame = discView.frame;
+        newFrame.size.width = discView.frame.size.width;
+        newFrame.size.height = fixedHeight + 32;
+        [discView setFrame:newFrame];
+
+
+        [discView addSubview:descTextView];
+        [self.infoView addSubview:discView];
+    }
+
     // add discount
     if (self->objectDetail.discount != nil)
     {
@@ -354,54 +378,43 @@ NSString const *TO_MAP1 = @"toMap";
 
         
         [discountLabel setFont:self.priceLabel.font];
+        [discountLabel setTextColor :self.dateLabel.textColor];
+        
         [discountLabel setAttributedText:discountString];
         [discountLabel sizeToFit];
         
         [self.priceLabel.superview addSubview:discountLabel];
     }
     
+    if (!self->objectDetail.infoArray || !self->objectDetail.infoArray.count){
+         self.middltLabel.hidden = YES;
+         self.paramNameLabel.hidden = YES;
+         self.paramValueLabel.hidden = YES;
+    } else{
+        CALayer *TopBorder = [CALayer layer];
+        TopBorder.frame = CGRectMake(0.0f, 0.0f, _middleView.bounds.size.width, 1.0f);
+        TopBorder.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+        [_middleView.layer addSublayer:TopBorder];
+    }
+  
     
-    
+   
     
     
     
     NSLog(@"done");
-    
-    
-    
-    
     
     //[self.infoView   setNeedsDisplay];
     
     //[self performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:self.view waitUntilDone:TRUE];
     
     
-    CGRect contentRect = CGRectZero;
-    for (UIView *view in self.infoView.subviews) {
-        contentRect = CGRectUnion(contentRect, view.frame);
-    }
-    int width  = self.infoView.frame.size.width;
     
-   /* self.infoView.frame  = CGRectMake(0, self.infoView.frame.origin.y,  contentRect.size.width, contentRect.size.height );
-    
-    self.infoView.backgroundColor = [UIColor redColor];
-    */
-    
+
     [super viewDidLoad];
 
     
-    //self.scrollView.contentSize = contentRect.size;
-    //self.scrollView.scrollEnabled = YES;
-    
-    CGRect contentRect1 = CGRectZero;
-    for (UIView *view in self.contentView.subviews) {
-        contentRect1 = CGRectUnion(contentRect1, view.frame);
-    }
-    
-    //.contentSize = contentRect1.size*2;
-    
-    
-    [self.contentView setFrame:CGRectMake(0, self.contentView.frame.origin.y,  width, contentRect1.size.height) ]; //  contentRect1.size];  //setContentSize
+
     
     CALayer *layer = self.view.layer;
     [layer setNeedsDisplay];
@@ -409,10 +422,6 @@ NSString const *TO_MAP1 = @"toMap";
     
     
     [self.collectionView reloadData];
-    
-    //[self.scrollView setNeedsDisplay];
-    //[self performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:self.scrollView waitUntilDone:TRUE];
-    
     counterBgView.hidden = NO;
     
     NSLog(@"numrows == %i", numRows);
@@ -422,7 +431,30 @@ NSString const *TO_MAP1 = @"toMap";
     [self.scrollView sizeToFit];
 }
 
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    CGRect contentRect = CGRectZero;
+    for (UIView *view in self.infoView.subviews) {
+        contentRect = CGRectUnion(contentRect, view.frame);
+    }
+    self.infoView.frame  = CGRectMake(0, self.infoView.frame.origin.y,  contentRect.size.width, contentRect.size.height);
+    
+    CGRect contentRect2 = CGRectZero;
+    for (UIView *view in self.topView.subviews) {
+        contentRect2 = CGRectUnion(contentRect, view.frame);
+    }
+    
+    CGFloat height = CGRectGetHeight(self.topView.bounds);
+    NSLog(@"topView %f", self.topView.frame.size.height);
+    
+    float bottomSpace = 44;
+    if ( [self->objectDetail.description length] == 0 ){
+        bottomSpace = 52;
+    }
+    float allHeight = height + contentRect.size.height + collectionView.bounds.size.height + bottomSpace;
+    self.scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width, allHeight );
+    self.contHeight.constant = allHeight;
+}
 
 #pragma mark collection view cell layout / size
 
@@ -434,6 +466,9 @@ NSString const *TO_MAP1 = @"toMap";
     CGSize size = collectionView.bounds.size;
     NSInteger width = size.width;
     NSInteger height = size.height;
+    
+    _rightArrow.center = CGPointMake(width - 28, height/2);
+    _leftArrow.center = CGPointMake(28, height/2);
     
     return CGSizeMake(width, height);
     
