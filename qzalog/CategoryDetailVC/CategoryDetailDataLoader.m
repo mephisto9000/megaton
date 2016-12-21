@@ -129,8 +129,7 @@
     //category=31&objects[0]=42442499&objects[1]=42.....
     
     
-    //if ([likedInfo count] == 0)
-         ///[self.delegate categoryDetailLoadComplete];
+             ///[self.delegate categoryDetailLoadComplete];
         
         //[self receivedGroupsJSON: nil];
     
@@ -233,7 +232,7 @@
     
     if  ([arr count] == 0)
     {
-        [delegate categoryDetailLoadFailed];
+        [delegate categoryDetailLoadComplete];
         return;
     }
     

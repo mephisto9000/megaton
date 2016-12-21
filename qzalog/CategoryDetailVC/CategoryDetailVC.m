@@ -188,6 +188,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     // Dequeue the cell.
     CategoryDetailCell *cell = [tableView dequeueReusableCellWithIdentifier: @"categoryDetailCell"  forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     CategoryDetail *cd = catDetailArr[indexPath.row];
     //catDetailArr[selectedRow].catDetId);
@@ -256,6 +257,8 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     {
         itemCount = [catDetailArr count];
         [cdLoader loadCategoryDetailData];
+        
+        
     }
     
     return cell;
