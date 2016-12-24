@@ -12,7 +12,9 @@
 
 @property(nonatomic, retain) IBOutlet UICollectionView *photoCollection;
 @property(nonatomic, retain) NSArray<NSString *> *imageArr;
+@property (weak, nonatomic) IBOutlet UIButton *leftArrow;
 
+@property (weak, nonatomic) IBOutlet UIButton *rightArrow;
 
 
 @property(nonatomic, assign) NSInteger currentItemNum;

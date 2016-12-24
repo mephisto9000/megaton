@@ -117,7 +117,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         // загружаем результаты по параметрам из формы поиска
         [cdLoader setSearchUrl:self.url];
     
-    
+   
     // включаем загрузчик
     mapUrl = [cdLoader loadCategoryDetailData];
         
@@ -139,6 +139,8 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         
         self.titleLabel.text = @"Избранное";
         mapButton.hidden = YES;
+        
+        _topConstSearch.constant = 69;
     }
     
     
@@ -149,7 +151,9 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         lastItemReached = TRUE;
         segmentedControl.hidden = YES;
         
-        self.titleLabel.text = @"";
+        self.titleLabel.text = @"Объекты";
+        
+        _topConstSearch.constant = 69;
     }
 
     itemCount = 0;

@@ -226,9 +226,9 @@
                                 <items>
                                     <barButtonItem style="plain" id="ANT-NK-944">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jbs-Hb-hrc">
-                                            <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                            <rect key="frame" x="16" y="10" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" backgroundImage="menu_icon.png"/>
+                                            <state key="normal" backgroundImage="back_icon.png"/>
                                             <connections>
                                                 <action selector="goBack:" destination="sxC-3y-vO4" eventType="touchUpInside" id="P5f-t4-Crf"/>
                                             </connections>
@@ -244,9 +244,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Карта" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBU-a8-HA1">
-                                <rect key="frame" x="110" y="40" width="151" height="21"/>
+                                <rect key="frame" x="110" y="42" width="151" height="15"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -578,7 +578,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dyx-6E-tw7">
                                             <rect key="frame" x="16" y="10" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="menu_icon.png"/>
+                                            <state key="normal" image="back_icon.png"/>
                                             <connections>
                                                 <action selector="jumpBack:" destination="rlV-Pi-hPc" eventType="touchUpInside" id="Dcs-My-WaW"/>
                                             </connections>
@@ -644,8 +644,8 @@
                             <constraint firstItem="Ele-mm-1OX" firstAttribute="leading" secondItem="n25-AU-hZt" secondAttribute="leading" id="IZ1-Sz-sDz"/>
                             <constraint firstAttribute="trailing" secondItem="wxg-cL-2Yi" secondAttribute="trailing" constant="8" id="NTi-cN-qBU"/>
                             <constraint firstItem="wxg-cL-2Yi" firstAttribute="top" secondItem="n25-AU-hZt" secondAttribute="top" constant="69" id="UtJ-eh-m3q"/>
-                            <constraint firstItem="Ele-mm-1OX" firstAttribute="top" secondItem="wxg-cL-2Yi" secondAttribute="bottom" id="bMd-2r-xx9"/>
                             <constraint firstAttribute="bottom" secondItem="Ele-mm-1OX" secondAttribute="bottom" id="bdf-kd-vt2"/>
+                            <constraint firstItem="Ele-mm-1OX" firstAttribute="top" secondItem="n25-AU-hZt" secondAttribute="top" constant="98" id="dDK-A6-ELf"/>
                             <constraint firstItem="wxg-cL-2Yi" firstAttribute="leading" secondItem="n25-AU-hZt" secondAttribute="leading" constant="8" id="qJQ-Kf-ph3"/>
                             <constraint firstItem="Ele-mm-1OX" firstAttribute="centerX" secondItem="n25-AU-hZt" secondAttribute="centerX" id="qof-Xe-nOo"/>
                             <constraint firstAttribute="trailing" secondItem="Ele-mm-1OX" secondAttribute="trailing" id="vCh-rF-P7U"/>
@@ -657,6 +657,8 @@
                         <outlet property="segmentedControl" destination="wxg-cL-2Yi" id="tBI-bP-XbC"/>
                         <outlet property="tableView" destination="Ele-mm-1OX" id="GEi-AG-pUk"/>
                         <outlet property="titleLabel" destination="rLW-7W-LsR" id="dtH-mk-Rvk"/>
+                        <outlet property="topConst" destination="dDK-A6-ELf" id="CDT-4z-LLj"/>
+                        <outlet property="topConstSearch" destination="dDK-A6-ELf" id="89n-xS-4SI"/>
                         <segue destination="IOt-bf-hT9" kind="show" identifier="toSearchForm" id="cw5-ri-YAf"/>
                         <segue destination="P04-ya-sVg" kind="show" identifier="toObjectDetail" id="3OL-So-uj9"/>
                         <segue destination="sxC-3y-vO4" kind="show" identifier="toMap" id="IgN-5g-yyx"/>
@@ -780,7 +782,7 @@
                                                     <constraint firstItem="JjG-QL-6Yp" firstAttribute="leading" secondItem="gA3-zr-rqy" secondAttribute="leading" id="37T-nH-WlX"/>
                                                     <constraint firstItem="tA3-PQ-P1C" firstAttribute="leading" secondItem="gA3-zr-rqy" secondAttribute="leading" id="44x-Bp-cC5"/>
                                                     <constraint firstItem="tA3-PQ-P1C" firstAttribute="top" secondItem="PaA-eg-bt8" secondAttribute="bottom" constant="5" id="8jo-2s-s7O"/>
-                                                    <constraint firstAttribute="bottom" secondItem="JjG-QL-6Yp" secondAttribute="bottom" constant="8" id="EAU-9y-33O"/>
+                                                    <constraint firstAttribute="bottom" secondItem="JjG-QL-6Yp" secondAttribute="bottom" constant="10" id="EAU-9y-33O"/>
                                                     <constraint firstItem="PaA-eg-bt8" firstAttribute="leading" secondItem="gA3-zr-rqy" secondAttribute="leading" id="EjK-tV-Mej"/>
                                                     <constraint firstAttribute="trailing" secondItem="tA3-PQ-P1C" secondAttribute="trailing" id="WSb-u2-O0t"/>
                                                     <constraint firstAttribute="trailing" secondItem="q3y-Qk-ecO" secondAttribute="trailing" id="cVP-4Z-OhE"/>
@@ -1016,7 +1018,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="номер фото" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iU3-XX-l5L">
-                                <rect key="frame" x="70" y="40" width="234" height="20"/>
+                                <rect key="frame" x="70" y="42" width="234" height="15"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1043,7 +1045,9 @@
                     </view>
                     <connections>
                         <outlet property="counterLabel2" destination="iU3-XX-l5L" id="y78-qB-Yft"/>
+                        <outlet property="leftArrow" destination="zvn-FY-foc" id="4Qt-GB-B51"/>
                         <outlet property="photoCollection" destination="wjM-33-4MQ" id="hoQ-Eq-tUi"/>
+                        <outlet property="rightArrow" destination="wL5-qR-hIv" id="h8q-aW-Kdd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grv-xp-QYG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1137,6 +1141,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="d2a-wX-5HM" secondAttribute="trailing" id="1w4-cH-qYK"/>
                                                 <constraint firstItem="B3O-Nl-y7G" firstAttribute="leading" secondItem="yZz-BI-jmc" secondAttribute="leadingMargin" constant="8" id="AGP-e6-yDv"/>
@@ -1225,7 +1230,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="hoV-Pf-UEI" firstAttribute="top" secondItem="qf2-n9-iuJ" secondAttribute="top" constant="30" id="5MI-Jf-rwQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="hoV-Pf-UEI" secondAttribute="trailing" id="9O7-rF-tb9"/>
@@ -1291,7 +1296,7 @@
                                                     <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="0.0" right="0.0"/>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Orb-vA-R7M" firstAttribute="top" secondItem="2wC-R2-1Lw" secondAttribute="top" constant="30" id="17i-Tx-2wb"/>
                                                 <constraint firstItem="aga-01-29R" firstAttribute="top" secondItem="2wC-R2-1Lw" secondAttribute="topMargin" constant="11" id="5R3-R2-SOm"/>
@@ -1332,7 +1337,7 @@
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Поиск" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZH-Q2-omp">
                                 <rect key="frame" x="112" y="32" width="151" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1374,7 +1379,7 @@
         <!--Region TableVC-->
         <scene sceneID="YtH-3M-oNO">
             <objects>
-                <viewController id="XJR-VF-lwm" customClass="RegionTableVC" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="XJR-VF-lwm" customClass="RegionTableVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B4n-8d-h53"/>
                         <viewControllerLayoutGuide type="bottom" id="wcl-c9-Jn8"/>
@@ -1387,6 +1392,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="regionTableCell" id="Ptl-pR-zZv">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -1408,7 +1414,7 @@
                                 <items>
                                     <barButtonItem style="plain" id="C9D-dY-Ehp">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OWK-zr-Mgu">
-                                            <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                            <rect key="frame" x="16" y="10" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" backgroundImage="back_icon.png"/>
                                             <connections>
@@ -1420,15 +1426,19 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" red="0.054901960780000002" green="0.36078431370000003" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выбор региона" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SC-GO-kqg">
-                                <rect key="frame" x="112" y="32" width="151" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Выбор региона" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SC-GO-kqg">
+                                <rect key="frame" x="0.0" y="32" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3SC-GO-kqg" firstAttribute="leading" secondItem="cj7-eJ-4T6" secondAttribute="leading" constant="24" id="SNu-uD-INq"/>
+                            <constraint firstItem="3SC-GO-kqg" firstAttribute="top" secondItem="B4n-8d-h53" secondAttribute="bottom" constant="12" id="aCX-gE-tXR"/>
+                            <constraint firstAttribute="trailing" secondItem="3SC-GO-kqg" secondAttribute="trailing" constant="24" id="xRJ-Jn-3kk"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Nak-uO-yql" id="iO0-Zj-y9o"/>
@@ -1450,17 +1460,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-gF-NQq">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EkC-gF-NQq">
                                 <rect key="frame" x="0.0" y="83" width="375" height="278"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="PlX-xc-BQu" id="6ox-sE-5ql"/>
                                     <outlet property="delegate" destination="PlX-xc-BQu" id="Onn-vX-dMc"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-CE-DFm">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfM-CE-DFm">
                                 <rect key="frame" x="125" y="381" width="125" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="OK"/>
                                 <connections>
                                     <action selector="okClicked:" destination="PlX-xc-BQu" eventType="touchUpInside" id="XJe-3V-u8x"/>
@@ -1468,6 +1476,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EkC-gF-NQq" firstAttribute="leading" secondItem="rir-aA-Tv6" secondAttribute="leading" id="LhP-K8-rGK"/>
+                            <constraint firstItem="bfM-CE-DFm" firstAttribute="top" secondItem="EkC-gF-NQq" secondAttribute="bottom" constant="20" id="dWu-Tl-ade"/>
+                            <constraint firstAttribute="trailing" secondItem="EkC-gF-NQq" secondAttribute="trailing" id="ggb-ue-2vt"/>
+                            <constraint firstItem="EkC-gF-NQq" firstAttribute="top" secondItem="9ES-xx-oEp" secondAttribute="bottom" constant="20" id="ym0-Nr-men"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="picker" destination="EkC-gF-NQq" id="PhG-4c-G0L"/>
@@ -2157,10 +2171,10 @@
         <image name="star_white_empty.png" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fsw-0n-eXo"/>
         <segue reference="NAD-HI-peH"/>
-        <segue reference="lee-TP-Yzt"/>
+        <segue reference="fsw-0n-eXo"/>
+        <segue reference="Tdc-5E-G7Z"/>
+        <segue reference="8we-2r-2yO"/>
         <segue reference="3OL-So-uj9"/>
-        <segue reference="IgN-5g-yyx"/>
     </inferredMetricsTieBreakers>
 </document>

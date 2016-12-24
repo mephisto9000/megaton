@@ -11,5 +11,7 @@
 @interface BaseController : UIViewController
 
 -(void) noData : (UIView *) baseView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConst;
+
 
 @end

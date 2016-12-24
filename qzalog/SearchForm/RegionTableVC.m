@@ -114,7 +114,7 @@
     }
     
     if (indexPath.row == 0)
-        cell.textLabel.text = @"все";
+        cell.textLabel.text = @"Все";
     else
         cell.textLabel.text = [regionNames objectAtIndex:indexPath.row-1];
     

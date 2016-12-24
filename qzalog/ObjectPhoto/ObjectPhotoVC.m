@@ -59,8 +59,17 @@
         numItems = [imageArr count];
     }
     
-    if (currentItemNum == 0)
+    
+    
+    if (currentItemNum == 0){
         currentItemNum = 1;
+    }
+    if (currentItemNum == 1){
+        _leftArrow.hidden = true;
+    }
+    if (currentItemNum == numItems){
+        _rightArrow.hidden = true;
+    }
     
        [self.counterLabel2 setText:[NSString stringWithFormat:@"Изображение %i/%i", currentItemNum, numItems]];
     
@@ -169,6 +178,10 @@
     currentItemNum --;
     
     counterLabel2.text = [NSString stringWithFormat:@"Изображение %i/%i", currentItemNum, numItems];
+    if (currentItemNum == 1){
+        _leftArrow.hidden = true;
+    }
+    _rightArrow.hidden = false;
 }
 
 -(IBAction)rightPressed:(id)sender
@@ -183,7 +196,11 @@
     currentItemNum++;
     
     counterLabel2.text = [NSString stringWithFormat:@"Изображение %i/%i", currentItemNum, numItems];
-
+    if (currentItemNum == numItems){
+        _rightArrow.hidden = true;
+    }
+    _leftArrow.hidden = false;
+   
 }
 
 
@@ -197,12 +214,22 @@
     currentItemNum = visibleIndexPath.row +1;
     
    
-    counterLabel2.text = [NSString stringWithFormat:@"%i/%i", visibleIndexPath.row +1, numItems];
+    counterLabel2.text = [NSString stringWithFormat:@"Изображение %i/%i", visibleIndexPath.row +1, numItems];
+    
+    if (visibleIndexPath.row < 1){
+        _leftArrow.hidden = true;
+        
+    }else{
+        _leftArrow.hidden = false;
+        if(visibleIndexPath.row == (numItems - 1)){
+            _rightArrow.hidden = true;
+        }else{
+            _rightArrow.hidden = false;
+        }
+    }
+
+
 }
-
-
-
-
 
 /*
 #pragma mark - Navigation

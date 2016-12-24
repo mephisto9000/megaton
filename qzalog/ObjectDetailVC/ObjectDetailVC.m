@@ -120,7 +120,7 @@ NSString const *TO_MAP1 = @"toMap";
     
     
     counterBgView.hidden = YES;
-    
+    _leftArrow.hidden = true;
     
     
 }
@@ -161,14 +161,22 @@ NSString const *TO_MAP1 = @"toMap";
     NSLog(@"left pressed");
     
     
-    if (currentItemNum <= 1)
+    if (currentItemNum <= 1){
         return;
+    }
+    
     
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentItemNum-2 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
     
     currentItemNum --;
     
     counterLabel.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numRows];
+    
+    if (currentItemNum == 1){
+        _leftArrow.hidden = true;
+    }
+    _rightArrow.hidden = false;
+    
 }
 
 -(IBAction)rightPressed:(id)sender
@@ -176,13 +184,20 @@ NSString const *TO_MAP1 = @"toMap";
     NSLog(@"right pressed");
     
     
-    if (currentItemNum >= numRows)
+    if (currentItemNum >= numRows){
         return;
+    }
+    
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentItemNum inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
     
     currentItemNum++;
     
     counterLabel.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numRows];
+    
+    if (currentItemNum == numRows){
+        _rightArrow.hidden = true;
+    }
+    _leftArrow.hidden = false;
     
 }
 
@@ -196,6 +211,21 @@ NSString const *TO_MAP1 = @"toMap";
     
     
     counterLabel.text = [NSString stringWithFormat:@"%i/%i", visibleIndexPath.row +1, numRows];
+    
+    if (visibleIndexPath.row < 1){
+        _leftArrow.hidden = true;
+       
+    }else{
+        _leftArrow.hidden = false;
+        if(visibleIndexPath.row == (numRows - 1)){
+            _rightArrow.hidden = true;
+        }else{
+            _rightArrow.hidden = false;
+        }
+    }
+    
+
+    
     
     currentItemNum = visibleIndexPath.row +1;
 }
@@ -318,7 +348,7 @@ NSString const *TO_MAP1 = @"toMap";
             r1.origin.y = r1.origin.y - 50;
         }
 
-         UIView *discView=[[UIView alloc]initWithFrame:CGRectMake(0, r1.origin.y+22, self.infoView.bounds.size.width, 200)];
+         UIView *discView=[[UIView alloc]initWithFrame:CGRectMake(0, r1.origin.y+25, self.infoView.bounds.size.width, 200)];
 
 
         CALayer *TopBorder2 = [CALayer layer];

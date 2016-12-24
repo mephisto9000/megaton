@@ -15,6 +15,7 @@
 @interface CategoryDetailVC : BaseController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstSearch;
 
 // переключатель (по дате / дороже / дешевле)
 @property(nonatomic, retain) IBOutlet UISegmentedControl *segmentedControl;
