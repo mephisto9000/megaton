@@ -32,10 +32,18 @@
     // Initialization code
 
     //Detail Disclosure button
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    
+    UIImageView *detailArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_form_array.png"]];
+    [detailArrow setFrame:CGRectMake(screenWidth - 32, 8, 16, 16)];
+     [button addSubview:detailArrow];
+    
+ 
     
     
     
-    //UIButton *detailButton = [UIButton buttonWithType: UIButtonTypeInfoLight]; //  UIButtonTypeDetailDisclosure
+    /*//UIButton *detailButton = [UIButton buttonWithType: UIButtonTypeInfoLight]; //  UIButtonTypeDetailDisclosure
     UIImageView *detailArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_right.png"]];
     
     //CGRectM
@@ -51,10 +59,10 @@
     
     [button setTitleColor:[UIColor blueColor] forState:  UIControlStateHighlighted];
     [button setBackgroundImage:[self setBackgroundImageByColor:[UIColor blueColor] withFrame:button.frame cornerRadius:0] forState: UIControlStateHighlighted];
-    //[button setBackgroundColor: [UIColor blueColor]];  // for setBackgroundImage:[self setBackgroundImageByColor:[UIColor blueColor] withFrame:cancelButton.frame cornerRadius:0] forState:UIControlStateHighlighted];
+    //[button setBackgroundColor: [UIColor blueColor]];  // for setBackgroundImage:[self setBackgroundImageByColor:[UIColor blueColor] withFrame:cancelButton.frame cornerRadius:0] forState:UIControlStateHighlighted];*/
 }
 
--(UIImage *)setBackgroundImageByColor:(UIColor *)backgroundColor withFrame:(CGRect )rect cornerRadius:(float)radius{
+/*-(UIImage *)setBackgroundImageByColor:(UIColor *)backgroundColor withFrame:(CGRect )rect cornerRadius:(float)radius{
     
     UIView *tcv = [[UIView alloc] initWithFrame:rect];
     [tcv setBackgroundColor:backgroundColor];
@@ -73,7 +81,7 @@
     UIGraphicsEndImageContext();
     
     return imageNew;
-}
+}*/
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -87,7 +95,7 @@
      searchObject = searchObject2;
     
     
-    self.titleLabel.text = self->searchObject.title;
+    self.titleLabel.text = self->searchObject.title.uppercaseString;;
     
     if ( searchObject.selectedValue1 != nil)
         [self.button setTitle:searchObject.selectedValue1 forState:UIControlStateNormal];

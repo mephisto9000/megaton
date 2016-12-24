@@ -14,6 +14,8 @@
 
 @property(nonatomic, retain) IBOutlet UIButton *button;
 @property(nonatomic, retain) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIView *selectorView;
+
 
 @property(nonatomic, retain) IBOutlet SearchFormVC *searchFormVC;
 

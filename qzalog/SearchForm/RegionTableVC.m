@@ -41,7 +41,7 @@
     
     // считаем сначала, что региона нет
     currentRegionId = -1;
-    regionName = @"Не важно";
+    regionName = @"не важно";
 }
 
 

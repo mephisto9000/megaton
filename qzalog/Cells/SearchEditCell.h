@@ -13,6 +13,7 @@
 
 @property(nonatomic, retain) IBOutlet UILabel *titleLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *fieldView;
 @property(nonatomic,retain) IBOutlet UITextField *textFrom;
 @property(nonatomic, retain) IBOutlet UITextField *textTo;
 

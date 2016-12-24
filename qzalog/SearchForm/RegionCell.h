@@ -11,6 +11,7 @@
 @interface RegionCell : UITableViewCell
 
 @property(nonatomic, retain) IBOutlet UILabel *regionLabel;
+@property (weak, nonatomic) IBOutlet UIView *regionCellView;
 
 -(void) updateRegionName: (NSString *) newName;
 

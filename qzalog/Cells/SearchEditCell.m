@@ -47,8 +47,10 @@
      searchObject = searchObject2;
     
     
-    self.titleLabel.text = searchObject.title;
+    self.titleLabel.text = searchObject.title.uppercaseString;
     self.unitLabel.text = searchObject.units;
+    
+   
     
     if ( searchObject.selectedValue1 != nil)
         [self.textFrom setText:searchObject.selectedValue1];

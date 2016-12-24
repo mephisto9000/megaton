@@ -89,6 +89,7 @@
 		9797AC491E09BE7600D5C7F8 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = 9797AC471E09BE7600D5C7F8 /* left.png */; };
 		9797AC4A1E09BE7600D5C7F8 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 9797AC481E09BE7600D5C7F8 /* right.png */; };
 		9797AC4C1E0A6B7400D5C7F8 /* info_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 9797AC4B1E0A6B7400D5C7F8 /* info_image.png */; };
+		9797AC4E1E0D57C300D5C7F8 /* ic_form_array.png in Resources */ = {isa = PBXBuildFile; fileRef = 9797AC4D1E0D57C300D5C7F8 /* ic_form_array.png */; };
 		F2A2A171A40B088EB1EADDBD /* libPods-qzalog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */; };
 /* End PBXBuildFile section */
 
@@ -242,6 +243,7 @@
 		9797AC471E09BE7600D5C7F8 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left.png; path = ../../../../Downloads/left.png; sourceTree = "<group>"; };
 		9797AC481E09BE7600D5C7F8 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right.png; path = ../../../../Downloads/right.png; sourceTree = "<group>"; };
 		9797AC4B1E0A6B7400D5C7F8 /* info_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info_image.png; path = ../../../../Downloads/info_image.png; sourceTree = "<group>"; };
+		9797AC4D1E0D57C300D5C7F8 /* ic_form_array.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_form_array.png; path = ../../../../Downloads/ic_form_array.png; sourceTree = "<group>"; };
 		B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qzalog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3749EB5CB1F2AA3033AF928 /* Pods-qzalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -479,6 +481,7 @@
 		1B662B141DD8C1C500BAB071 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				9797AC4D1E0D57C300D5C7F8 /* ic_form_array.png */,
 				9797AC4B1E0A6B7400D5C7F8 /* info_image.png */,
 				9797AC471E09BE7600D5C7F8 /* left.png */,
 				9797AC481E09BE7600D5C7F8 /* right.png */,
@@ -744,6 +747,7 @@
 				9797AC4A1E09BE7600D5C7F8 /* right.png in Resources */,
 				1BCD65F41DE5F23F00E9BEED /* arrow_right.png in Resources */,
 				1B1829D41DF08B6F00C9154A /* search.png in Resources */,
+				9797AC4E1E0D57C300D5C7F8 /* ic_form_array.png in Resources */,
 				1BA9F8CC1DF1C8590079899F /* back_icon.png in Resources */,
 				1B662B221DD8C1E800BAB071 /* category9.png in Resources */,
 				1BA9F8CA1DF194180079899F /* menu_icon.png in Resources */,

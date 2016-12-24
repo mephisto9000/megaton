@@ -56,7 +56,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
 @synthesize regionId = _regionId;
 @synthesize regionName = _regionName;
 
-@synthesize categoryButton = _categoryButton;
+
 @synthesize regionButton = _regionButton;
 
 
@@ -105,7 +105,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     
     if (_regionName == nil)
-        _regionName = @"Не важно"; //"@"Алматы";
+        _regionName = @"не важно"; //"@"Алматы";
     
     
     
@@ -150,10 +150,8 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     NSLog(@"setCategoryId .... ");
     
-    if (self.categoryName == nil)
-        [_categoryButton  setTitle: @"Категория" forState:UIControlStateNormal]; //| UIControlStateSelected | UIControlStateHighlighted
-    else
-        [_categoryButton  setTitle: self.categoryName forState:UIControlStateNormal]; //| UIControlStateSelected | UIControlStateHighlighted
+    //Title!!
+    /*    [_categoryButton  setTitle: self.categoryName forState:UIControlStateNormal]; //| UIControlStateSelected | UIControlStateHighlighted*/
     
     if (![categoryId isEqualToString:_categoryId])
     {
@@ -184,7 +182,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         
         
         _regionId = nil;;
-        [regionCell updateRegionName: @"Не важно"];
+        [regionCell updateRegionName: @"не важно"];
         
         
     }
@@ -238,7 +236,11 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+   return 70;
+    
+    
+}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     // Dequeue the cell.
@@ -248,8 +250,26 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     {
        RegionCell *cell = (RegionCell *)[tableView dequeueReusableCellWithIdentifier:@"regionCell" forIndexPath:indexPath];
         
-        if (cell == nil)
-            cell =  [ [RegionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"regionCell"];
+        /*if (cell == nil)
+            cell =  [ [RegionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"regionCell"];*/
+       
+        //[cell.regionCellView setBackgroundColor:[UIColor redColor]];
+        
+        
+       
+        CALayer *TopBorder = [CALayer layer];
+         TopBorder.frame = CGRectMake(0.0f, 0.0f, cell.regionCellView.bounds.size.width, 0.5f);
+        TopBorder.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+
+         [cell.regionCellView.layer addSublayer:TopBorder];
+      /*
+        CALayer *BottomBorder = [CALayer layer];
+        BottomBorder.frame = CGRectMake(0.0f, cell.regionCellView.bounds.size.height-1, cell.regionCellView.bounds.size.width, 1.0f);
+        BottomBorder.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+        [cell.regionCellView.layer addSublayer:BottomBorder];
+*/
+
+        
         
         regionCell = cell;
         
@@ -266,17 +286,35 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     
     
     
-    if (so.type == 1)
+    if (so.type == 1){
+        SearchEditCell *cell;
         cell = [tableView dequeueReusableCellWithIdentifier:@"searchEditCell" forIndexPath:indexPath];
+        
+        CALayer *TopBorder2 = [CALayer layer];
+        TopBorder2.frame = CGRectMake(0.0f, 0.0f, cell.fieldView.bounds.size.width, 0.5f);
+        TopBorder2.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+        [cell.fieldView.layer addSublayer:TopBorder2];
+         [cell initWithSearchObject:so];
+        return cell;
+        
+    }
     
     if (so.type == 2)
     {
+        SearchSelectCell *cell;
         cell = [tableView dequeueReusableCellWithIdentifier:@"searchSelectCell" forIndexPath:indexPath];
         
+        CALayer *TopBorder3 = [CALayer layer];
+        TopBorder3.frame = CGRectMake(0.0f, 0.0f, cell.selectorView.bounds.size.width, 0.5f);
+        TopBorder3.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+        [cell.selectorView.layer addSublayer:TopBorder3];
+        
         [((SearchSelectCell *)cell ) setSearchFormVC: self];
+         [cell initWithSearchObject:so];
+        return cell;
     }
     
-    if (!cell)
+    /*if (!cell)
     {
         if (so.type == 1)
             cell = (UITableViewCell<SearchCell> *)[[SearchEditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchEditCell" ];
@@ -300,11 +338,11 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     NSLog(@"loading cell # %i %@ %@ %@", (int) indexPath.row, so.selectedValue1, so.selectedValue2, so.name); //, so.name
     
     
-    
-    
+    */
+    return cell;
    
     
-    return cell;
+    
 }
 
 
