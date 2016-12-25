@@ -24,6 +24,10 @@
 @property(nonatomic, retain) IBOutlet UIView  *counterBgView;
 
 
+
+@property(nonatomic, retain) IBOutlet UIToolbar *toolbar;
+
+
 -(IBAction)backPressed:(id)sender;
 
 -(IBAction)leftPressed:(id)sender;

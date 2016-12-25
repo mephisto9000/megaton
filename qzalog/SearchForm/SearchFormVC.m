@@ -18,6 +18,7 @@
 #import "UserData.h"
 #import "RegionCell.h"
 #import "SearchCache.h"
+#import "SelectorTableVC.h"
 
 @interface SearchFormVC ()
 {
@@ -37,6 +38,8 @@
 
 
 const NSString *TO_SPINNER = @"toSpinner";
+const NSString *TO_SPINNER_TABLE = @"toSpinnerTable";
+
 const NSString *TO_CATEGORY_SPINNER = @"toCategorySpinner";
 const NSString *TO_REGION_SPINNER = @"toRegionSpinner";
 
@@ -355,7 +358,7 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
 {
     searchObjectForSpinner = searchObject;
     
-    [self performSegueWithIdentifier:TO_SPINNER sender:self];
+    [self performSegueWithIdentifier:TO_SPINNER_TABLE sender:self];
 }
 
 -(void) updateSearchForms
@@ -371,6 +374,8 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
+    
+    //obsolette
     if ([segue.identifier isEqualToString:TO_SPINNER])
     {
         SelectorSpinnerVC *spinner = (SelectorSpinnerVC *)segue.destinationViewController;
@@ -378,6 +383,15 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         //[spinner setSearchObject:searchObjectForSpinner.values];
         [spinner setSearchObject:searchObjectForSpinner];
        // [spinner setObjectValues: searchObjectForSpinner.values];
+    }
+    
+    if ([segue.identifier isEqualToString:TO_SPINNER_TABLE])
+    {
+        SelectorTableVC *stvc = (SelectorTableVC *)segue.destinationViewController;
+        
+        //[spinner setSearchObject:searchObjectForSpinner.values];
+        [stvc setSearchObject:searchObjectForSpinner];
+        // [spinner setObjectValues: searchObjectForSpinner.values];
     }
     
     if ([segue.identifier isEqualToString:TO_CATEGORY_SPINNER])

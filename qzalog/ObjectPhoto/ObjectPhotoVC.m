@@ -12,6 +12,11 @@
 @interface ObjectPhotoVC ()
 {
     int numItems;
+    
+    
+    CGRect screenRect;
+    CGFloat  screenWidth;
+    int screenDivide;
 }
 
 @property(nonatomic, retain) AFHTTPRequestOperationManager  *operationManager;
@@ -28,6 +33,8 @@
 @synthesize counterLabel;
 @synthesize counterLabel2;
 @synthesize counterBgView;
+
+@synthesize toolbar;
 
 
 
@@ -85,8 +92,29 @@
     //[photoCollection selectItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionCenteredVertically];
     
    
+    //self.photoCollection.
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    //float topMargin = self.navigationController.toolbar.frame.size.height;
+    
+    
+    //[self.photoCollection setContentInset:UIEdgeInsetsMake(0, 0, topMargin, 0)];
     
 }
+
+
+/*
+
+- (void) viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    CGFloat top = self.topLayoutGuide.length;
+    CGFloat bottom = self.bottomLayoutGuide.length;
+    UIEdgeInsets newInsets = UIEdgeInsetsMake(top, 0, bottom, 0);
+    self.photoCollection.contentInset = newInsets;
+    
+} */
+
+
 
 
 -(void) viewWillAppear:(BOOL)animated
@@ -152,11 +180,74 @@
 }
 
 
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     // cell to have the size of the collectionView
-    return photoCollection.frame.size;
+    
+    //[self.photoCollection sizeToFit];
+    //return photoCollection.frame.size;
+    
+    /*
+    screenRect = [[UIScreen mainScreen] bounds];
+    
+    screenWidth = screenRect.size.width;
+    float  screenHeight = screenRect.size.height;
+    
+    
+    //if (screenDivide == 0)
+        screenDivide = 1;
+    CGSize elementSize = CGSizeMake(screenWidth , screenHeight - self.navigationController.navigationBar.frame.size.height);
+    return elementSize; */
+    
+    
+   // - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+    {
+        return CGSizeMake(self.photoCollection.frame.size.width, self.photoCollection.frame.size.height - 70);
+    }
+
+    
+    
 }
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    //get new width of the screen
+    screenRect = [[UIScreen mainScreen] bounds];
+    screenWidth = screenRect.size.width;
+    
+    //if landscape mode
+    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation))
+    {
+        screenDivide = 5;
+    }
+    else
+    {
+        screenDivide = 3;
+    }
+    
+    //reload the collectionview layout after rotating
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.photoCollection.collectionViewLayout;
+    [layout invalidateLayout];
+}
+
+
+
+
+/*
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Adjust cell size for orientation
+    if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        return CGSizeMake(170.f, 170.f);
+    }
+    return CGSizeMake(192.f, 192.f);
+}
+*/
+
+
 
 
 -(IBAction)backPressed:(id)sender
@@ -230,6 +321,52 @@
 
 
 }
+
+/*
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Adjust cell size for orientation
+    if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        return CGSizeMake(170.f, 170.f);
+    }
+    return CGSizeMake(192.f, 192.f);
+}
+*/
+
+
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    CGRect navigationToolbarFrame = self.navigationController.navigationBar.frame;
+    
+    float extraHeight = 0.0f;
+    
+    if (toInterfaceOrientation == UIInterfaceOrientationPortrait) //!UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
+        extraHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    //if (toInterfaceOrientation  // == UIInterfaceOrientationIsLandscape(<#UIInterfaceOrientation orientation#>)
+    
+    //0.0,
+    CGRect customToolbarFrame = CGRectOffset(navigationToolbarFrame, 0.0f,  navigationToolbarFrame.size.height + extraHeight*2);
+    
+   
+    
+    
+    CGRect photoCollectionFrame = self.photoCollection.frame;
+    
+    
+    CGRect customCollectionFrame = CGRectOffset(photoCollectionFrame, 0.0f,  photoCollectionFrame.size.height - extraHeight*2);
+    
+    
+    
+    [UIView animateWithDuration:duration animations:^{
+        self.toolbar.frame = customToolbarFrame;
+        
+    //    self.photoCollection.frame = customCollectionFrame;
+    }];
+}
+
 
 /*
 #pragma mark - Navigation
