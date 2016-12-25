@@ -30,7 +30,7 @@
     
     rowNum = [spinnerData count];
     
-    self.titleLabel = self.searchObject.title;
+    self.titleLabel.text = self.searchObject.title;
     
     
 }
