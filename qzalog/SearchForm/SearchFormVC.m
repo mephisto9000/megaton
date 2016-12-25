@@ -200,8 +200,8 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     }
     
     
-    [UserData setRegionId:_regionId];
-    [UserData setRegionName:_regionName];
+    //[UserData setRegionId:_regionId];
+    //[UserData setRegionName:_regionName];
     
     
     
