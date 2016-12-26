@@ -1034,7 +1034,6 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wjM-33-4MQ">
                                         <rect key="frame" x="8" y="300.57817109156258" width="375.00000000000045" height="302"/>
-                                        <color key="backgroundColor" red="0.0" green="0.4039215686" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wjM-33-4MQ" secondAttribute="height" multiplier="358:224" id="QQb-DV-497"/>
                                         </constraints>
@@ -1060,7 +1059,6 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.16854551170000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="wjM-33-4MQ" firstAttribute="top" secondItem="Gmo-td-S2l" secondAttribute="top" id="VZx-vv-E5E"/>
                                     <constraint firstAttribute="trailing" secondItem="wjM-33-4MQ" secondAttribute="trailing" id="XaD-H8-Zzy"/>
