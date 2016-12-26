@@ -11,11 +11,15 @@ import UIKit
 class SaleWaysViewController: UIViewController {
 
     @IBOutlet weak var navButton: UIBarButtonItem!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet weak var nuvButtonIn: UIButton!
 
-        // Do any additional setup after loading the view.
+    override func viewDidLoad() {
+                super.viewDidLoad()
+
+           
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,5 +39,6 @@ class SaleWaysViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+   
 
 }

@@ -82,7 +82,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     // Do any additional setup after loading the view.
     
     //reduce space between tableview and sort block
-    _tableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
+    _tableView.contentInset = UIEdgeInsetsMake(8, 0, 0, 0);
     //dynamic row height
      _tableView.estimatedRowHeight = 275.0;
     _tableView.rowHeight = UITableViewAutomaticDimension;
@@ -139,8 +139,10 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         
         self.titleLabel.text = @"Избранное";
         mapButton.hidden = YES;
+        _searchButton.hidden = YES;
         
-        _tableViewTop.constant = 5;
+        
+        _tableViewTop.constant = 8;
     }
     
     
@@ -153,7 +155,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         
         self.titleLabel.text = @"Объекты";
         
-        _tableViewTop.constant = 5;
+        _tableViewTop.constant = 8;
     }
 
     itemCount = 0;

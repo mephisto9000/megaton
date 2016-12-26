@@ -29,6 +29,7 @@
 
 @property(nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property(nonatomic, retain) IBOutlet UIButton *mapButton;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTop;
 
 - (void)segmentSwitch:(UISegmentedControl *)sender ;

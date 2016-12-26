@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 
+
 @interface InitVC : UIViewController<MFMailComposeViewControllerDelegate>
 
 -(IBAction)jumpToMenu:(id)sender;
 
--(IBAction) callCC:(id)sender;
--(IBAction)sendEmail:(id)sender;
+
 
 @end
 
