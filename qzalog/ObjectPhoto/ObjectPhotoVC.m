@@ -12,8 +12,6 @@
 @interface ObjectPhotoVC ()
 {
     int numItems;
-    
-    
     CGRect screenRect;
     CGFloat  screenWidth;
     int screenDivide;
@@ -118,11 +116,10 @@
     flowLayout.itemSize = CGSizeMake(width, height);
     [flowLayout invalidateLayout];
     
-    //_toolbarHeight.constant = 60;
-
+    _toolbarHeight.constant = 44;
     [self viewWillAppear:YES];
     [self viewDidAppear:YES];
-    
+        
 }
 
 
@@ -138,7 +135,7 @@
 } */
 
 
-
+/*
 
 -(void) viewWillAppear:(BOOL)animated
 {
@@ -162,7 +159,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+*/
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
@@ -218,33 +215,11 @@
     
     return CGSizeMake(width, height);
     
-    // cell to have the size of the collectionView
     
-    //[self.photoCollection sizeToFit];
-    //return photoCollection.frame.size;
-    
-    /*
-    screenRect = [[UIScreen mainScreen] bounds];
-    
-    screenWidth = screenRect.size.width;
-    float  screenHeight = screenRect.size.height;
-    
-    
-    //if (screenDivide == 0)
-        screenDivide = 1;
-    CGSize elementSize = CGSizeMake(screenWidth , screenHeight - self.navigationController.navigationBar.frame.size.height);
-    return elementSize; */
-    
-    
-   // - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-    {
-        return CGSizeMake(self.photoCollection.frame.size.width, self.photoCollection.frame.size.height - 70);
-    }
-
     
     
 }
-
+/*
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     //get new width of the screen
@@ -265,7 +240,7 @@
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.photoCollection.collectionViewLayout;
     [layout invalidateLayout];
 }
-
+*/
 
 
 
@@ -370,7 +345,7 @@
 }
 */
 
-
+/*
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
@@ -400,7 +375,7 @@
         
     //    self.photoCollection.frame = customCollectionFrame;
     }];
-}
+}*/
 
 
 /*
