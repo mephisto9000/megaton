@@ -34,7 +34,7 @@
                                             <rect key="frame" x="20" y="0.0" width="64" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="30" maxY="10"/>
                                             <state key="normal" image="menu_icon.png"/>
                                             <connections>
                                                 <action selector="jumpToMenu:" destination="wdb-7j-wQY" eventType="touchUpInside" id="Uba-H7-j6Z"/>
@@ -253,7 +253,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="Jbs-Hb-hrc">
                                             <rect key="frame" x="20" y="-10" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="20" maxX="30" maxY="20"/>
                                             <state key="normal" image="back_icon.png"/>
                                             <connections>
                                                 <action selector="goBack:" destination="sxC-3y-vO4" eventType="touchUpInside" id="P5f-t4-Crf"/>
@@ -321,7 +321,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="H8h-9C-LBD">
                                             <rect key="frame" x="20" y="0.0" width="64" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="10" maxX="30" maxY="10"/>
                                             <state key="normal" image="menu_icon.png"/>
                                             <connections>
                                                 <action selector="backPressed:" destination="e15-Qn-7Zz" eventType="touchUpInside" id="LA2-MJ-x8j"/>
@@ -472,7 +472,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="dyx-6E-tw7">
                                             <rect key="frame" x="20" y="-10" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="20" maxX="30" maxY="20"/>
                                             <state key="normal" image="back_icon.png"/>
                                             <connections>
                                                 <action selector="jumpBack:" destination="rlV-Pi-hPc" eventType="touchUpInside" id="Dcs-My-WaW"/>
@@ -564,13 +564,14 @@
                                                             <color key="textColor" red="0.54117647058823526" green="0.54117647058823526" blue="0.54117647058823526" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Bh-px-L5j">
-                                                            <rect key="frame" x="321" y="185" width="24" height="24"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Bh-px-L5j">
+                                                            <rect key="frame" x="304" y="168" width="90" height="90"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="30" id="pGW-Rd-hvZ"/>
-                                                                <constraint firstAttribute="height" constant="30" id="rnL-jS-5Xh"/>
+                                                                <constraint firstAttribute="width" constant="90" id="pGW-Rd-hvZ"/>
+                                                                <constraint firstAttribute="height" constant="90" id="rnL-jS-5Xh"/>
                                                             </constraints>
-                                                            <state key="normal" backgroundImage="star_circle_empty.png"/>
+                                                            <inset key="contentEdgeInsets" minX="30" minY="30" maxX="30" maxY="30"/>
+                                                            <state key="normal" image="star_circle_empty.png"/>
                                                             <connections>
                                                                 <action selector="starButtonClicked:" destination="zDD-ar-uos" eventType="touchUpInside" id="MGk-H9-nU5"/>
                                                             </connections>
@@ -620,12 +621,12 @@
                                                         <constraint firstItem="zXJ-sI-FPZ" firstAttribute="width" secondItem="ruf-yF-TkE" secondAttribute="width" id="HPn-PY-1mo"/>
                                                         <constraint firstItem="FDR-zd-vBf" firstAttribute="top" secondItem="xOg-ER-JwT" secondAttribute="top" constant="8" id="JTi-3S-gRE"/>
                                                         <constraint firstItem="PwY-Gc-RVl" firstAttribute="leading" secondItem="xOg-ER-JwT" secondAttribute="leading" constant="8" id="MRC-YT-6v2"/>
-                                                        <constraint firstAttribute="trailing" secondItem="1Bh-px-L5j" secondAttribute="trailing" constant="16" id="QDn-Ai-vzE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1Bh-px-L5j" secondAttribute="trailing" constant="-16" id="QDn-Ai-vzE"/>
                                                         <constraint firstAttribute="trailing" secondItem="BYi-z8-AVX" secondAttribute="trailing" constant="8" id="SRP-tw-gzZ"/>
                                                         <constraint firstItem="ruf-yF-TkE" firstAttribute="leading" secondItem="xOg-ER-JwT" secondAttribute="leading" constant="8" id="YuU-c3-c8L"/>
                                                         <constraint firstItem="zXJ-sI-FPZ" firstAttribute="leading" secondItem="xOg-ER-JwT" secondAttribute="leading" constant="8" id="dT5-Ul-t9d"/>
                                                         <constraint firstItem="FDR-zd-vBf" firstAttribute="leading" secondItem="xOg-ER-JwT" secondAttribute="leading" constant="8" id="hWC-3r-tOi"/>
-                                                        <constraint firstItem="PwY-Gc-RVl" firstAttribute="top" secondItem="1Bh-px-L5j" secondAttribute="bottom" constant="16" id="jg6-YP-rXv"/>
+                                                        <constraint firstItem="PwY-Gc-RVl" firstAttribute="top" secondItem="1Bh-px-L5j" secondAttribute="bottom" constant="-16" id="jg6-YP-rXv"/>
                                                         <constraint firstAttribute="trailing" secondItem="PwY-Gc-RVl" secondAttribute="trailing" constant="8" id="nbZ-0K-ycR"/>
                                                         <constraint firstAttribute="trailing" secondItem="FDR-zd-vBf" secondAttribute="trailing" constant="8" id="nfC-Y9-gFm"/>
                                                         <constraint firstItem="TjN-Kb-xXD" firstAttribute="top" secondItem="PwY-Gc-RVl" secondAttribute="bottom" constant="3" id="nzV-IK-YB3"/>
@@ -704,13 +705,13 @@
                             <constraint firstItem="Ele-mm-1OX" firstAttribute="leading" secondItem="n25-AU-hZt" secondAttribute="leading" id="IZ1-Sz-sDz"/>
                             <constraint firstAttribute="trailing" secondItem="wxg-cL-2Yi" secondAttribute="trailing" constant="8" id="NTi-cN-qBU"/>
                             <constraint firstItem="ISY-9V-sFr" firstAttribute="top" secondItem="9Gr-ul-Vuq" secondAttribute="bottom" id="Quv-1n-e5v"/>
-                            <constraint firstItem="rLW-7W-LsR" firstAttribute="leading" secondItem="n25-AU-hZt" secondAttribute="leadingMargin" constant="60" id="Zaz-s0-LPc"/>
+                            <constraint firstItem="rLW-7W-LsR" firstAttribute="leading" secondItem="n25-AU-hZt" secondAttribute="leadingMargin" constant="80" id="Zaz-s0-LPc"/>
                             <constraint firstAttribute="bottom" secondItem="Ele-mm-1OX" secondAttribute="bottom" id="bdf-kd-vt2"/>
                             <constraint firstAttribute="trailing" secondItem="ISY-9V-sFr" secondAttribute="trailing" constant="-16" id="kdN-Bv-K78"/>
                             <constraint firstItem="ISY-9V-sFr" firstAttribute="leading" secondItem="n25-AU-hZt" secondAttribute="leading" constant="-16" id="kxe-UE-XhW"/>
                             <constraint firstItem="wxg-cL-2Yi" firstAttribute="leading" secondItem="n25-AU-hZt" secondAttribute="leading" constant="8" id="qJQ-Kf-ph3"/>
                             <constraint firstItem="Ele-mm-1OX" firstAttribute="centerX" secondItem="n25-AU-hZt" secondAttribute="centerX" id="qof-Xe-nOo"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rLW-7W-LsR" secondAttribute="trailing" constant="60" id="qyA-xW-MP6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rLW-7W-LsR" secondAttribute="trailing" constant="80" id="qyA-xW-MP6"/>
                             <constraint firstAttribute="trailing" secondItem="Ele-mm-1OX" secondAttribute="trailing" id="vCh-rF-P7U"/>
                             <constraint firstItem="Ele-mm-1OX" firstAttribute="top" secondItem="ISY-9V-sFr" secondAttribute="bottom" constant="37" id="yXs-2T-QOe"/>
                         </constraints>
@@ -924,7 +925,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="2Oc-RP-K1A">
                                             <rect key="frame" x="20" y="-10" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="20" maxX="30" maxY="20"/>
                                             <state key="normal" image="back_icon.png"/>
                                             <connections>
                                                 <action selector="backClicked:" destination="P04-ya-sVg" eventType="touchUpInside" id="xlM-C6-FXx"/>
@@ -1039,7 +1040,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Dzs-7B-3Fd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HLy-hH-4bz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="967"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="TyT-N0-Rm6">
@@ -1052,7 +1053,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="Qwq-2F-KA3">
                                             <rect key="frame" x="20" y="-10" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="20" maxX="30" maxY="20"/>
                                             <state key="normal" image="back_icon.png"/>
                                             <connections>
                                                 <action selector="backPressed:" destination="Gf0-vW-VFT" eventType="touchUpInside" id="8Vb-he-Tsf"/>
@@ -1068,7 +1069,7 @@
                                 </connections>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmo-td-S2l">
-                                <rect key="frame" x="0.0" y="64" width="375" height="903"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wjM-33-4MQ">
                                         <rect key="frame" x="8" y="300.57817109156258" width="375.00000000000045" height="302"/>
@@ -1188,7 +1189,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="mRZ-2X-Ehv">
                                             <rect key="frame" x="20" y="-10" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="20" maxX="30" maxY="20"/>
                                             <state key="normal" image="back_icon.png"/>
                                             <connections>
                                                 <action selector="backClicked:" destination="IOt-bf-hT9" eventType="touchUpInside" id="AsB-yv-c5Q"/>
@@ -1540,7 +1541,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="OWK-zr-Mgu">
                                             <rect key="frame" x="20" y="-10" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="20" maxX="30" maxY="20"/>
                                             <state key="normal" image="back_icon.png"/>
                                             <connections>
                                                 <action selector="backButtonPressed:" destination="XJR-VF-lwm" eventType="touchUpInside" id="Ol8-ZP-4e9"/>
@@ -1726,7 +1727,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                            <inset key="imageEdgeInsets" minX="10" minY="20" maxX="30" maxY="20"/>
                                             <state key="normal" image="menu_icon.png"/>
                                             <connections>
                                                 <action selector="navClick:" destination="1Eg-dt-Ssb" eventType="touchUpInside" id="oVX-1k-PZF"/>
@@ -2341,7 +2342,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" id="ywW-wL-otb">
                                             <rect key="frame" x="20" y="-10" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                            <inset key="contentEdgeInsets" minX="10" minY="20" maxX="30" maxY="20"/>
                                             <state key="normal" image="back_icon.png"/>
                                             <connections>
                                                 <action selector="backButtonPressed:" destination="Crv-s3-WyX" eventType="touchUpInside" id="pFc-AU-hj7"/>
@@ -2398,10 +2399,10 @@
         <image name="star_white_empty.png" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Tdc-5E-G7Z"/>
-        <segue reference="IgN-5g-yyx"/>
-        <segue reference="3OL-So-uj9"/>
+        <segue reference="lee-TP-Yzt"/>
         <segue reference="NAD-HI-peH"/>
         <segue reference="fsw-0n-eXo"/>
+        <segue reference="XaB-z7-dRJ"/>
+        <segue reference="8we-2r-2yO"/>
     </inferredMetricsTieBreakers>
 </document>

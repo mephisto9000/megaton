@@ -62,14 +62,14 @@
     if (starMode == 1)
     {
         starMode = 2;
-        [starButton setBackgroundImage:  [UIImage imageNamed:@"star_circle.png"] forState:UIControlStateNormal];
+        [starButton setImage:  [UIImage imageNamed:@"star_circle.png"] forState:UIControlStateNormal];
         
         query = [NSString stringWithFormat:@"insert into liked (object_id) values( %@ )", self.objectId ];
     }
     else
     {
         starMode = 1;
-        [starButton setBackgroundImage: [UIImage imageNamed:@"star_circle_empty.png"] forState:UIControlStateNormal];
+        [starButton setImage: [UIImage imageNamed:@"star_circle_empty.png"] forState:UIControlStateNormal];
         
         
         query = [NSString stringWithFormat:@"delete from liked where object_id =  %@ ", self.objectId ];
