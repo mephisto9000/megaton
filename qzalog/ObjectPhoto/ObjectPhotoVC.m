@@ -15,6 +15,7 @@
     CGRect screenRect;
     CGFloat  screenWidth;
     int screenDivide;
+    Boolean loaded;
 }
 
 @property(nonatomic, retain) AFHTTPRequestOperationManager  *operationManager;
@@ -55,6 +56,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    loaded = false;
     // Do any additional setup after loading the view.
     
     numItems = 0;
@@ -101,6 +103,7 @@
 
 - (void) orientationChanged:(NSNotification *)note
 {
+    loaded = false;
     UIDevice * device = note.object;
     
     UICollectionViewFlowLayout *flowLayout = (id)self.photoCollection.collectionViewLayout;
@@ -118,10 +121,20 @@
     
     _toolbarHeight.constant = 44;
     [self viewWillAppear:YES];
+    
+    
     [self viewDidAppear:YES];
+    [self.photoCollection  scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         
 }
-
+- (void)viewDidLayoutSubviews
+{
+    [self.photoCollection layoutIfNeeded];
+    if(loaded == false){
+        [self.photoCollection  scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+        loaded = true;
+    }
+}
 
 /*
 
@@ -135,10 +148,11 @@
 } */
 
 
-/*
 
+/*
 -(void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     
     [self.photoCollection  scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0]
                                 atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
@@ -150,11 +164,11 @@
     [photoCollection reloadData];
     
     
-    [super viewWillAppear:animated];
     
     
-}
-
+    
+}*/
+/*
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
