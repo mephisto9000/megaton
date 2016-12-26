@@ -140,7 +140,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         self.titleLabel.text = @"Избранное";
         mapButton.hidden = YES;
         
-        _topConstSearch.constant = 69;
+        _tableViewTop.constant = 5;
     }
     
     
@@ -153,7 +153,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
         
         self.titleLabel.text = @"Объекты";
         
-        _topConstSearch.constant = 69;
+        _tableViewTop.constant = 5;
     }
 
     itemCount = 0;

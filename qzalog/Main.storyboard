@@ -713,6 +713,7 @@
                         <outlet property="mapButton" destination="5Fe-eQ-xuZ" id="3PO-u0-FIg"/>
                         <outlet property="segmentedControl" destination="wxg-cL-2Yi" id="tBI-bP-XbC"/>
                         <outlet property="tableView" destination="Ele-mm-1OX" id="GEi-AG-pUk"/>
+                        <outlet property="tableViewTop" destination="yXs-2T-QOe" id="bTf-2c-GTk"/>
                         <outlet property="titleLabel" destination="rLW-7W-LsR" id="dtH-mk-Rvk"/>
                         <segue destination="IOt-bf-hT9" kind="show" identifier="toSearchForm" id="cw5-ri-YAf"/>
                         <segue destination="P04-ya-sVg" kind="show" identifier="toObjectDetail" id="3OL-So-uj9"/>
@@ -2376,9 +2377,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lee-TP-Yzt"/>
+        <segue reference="3OL-So-uj9"/>
+        <segue reference="IgN-5g-yyx"/>
         <segue reference="NAD-HI-peH"/>
         <segue reference="nks-cD-6EA"/>
-        <segue reference="XaB-z7-dRJ"/>
-        <segue reference="8we-2r-2yO"/>
     </inferredMetricsTieBreakers>
 </document>
