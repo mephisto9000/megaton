@@ -1450,9 +1450,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KjS-fk-UAY" secondAttribute="trailing" id="3W8-f3-YbU"/>
-                            <constraint firstItem="5EA-Cy-KxY" firstAttribute="top" secondItem="zQR-FL-oQT" secondAttribute="top" constant="64" id="4Gx-xz-U6E"/>
                             <constraint firstItem="KjS-fk-UAY" firstAttribute="leading" secondItem="zQR-FL-oQT" secondAttribute="leading" id="BGc-JL-Cn5"/>
-                            <constraint firstItem="KjS-fk-UAY" firstAttribute="top" secondItem="5EA-Cy-KxY" secondAttribute="bottom" id="PML-Nc-yOg"/>
                             <constraint firstAttribute="trailing" secondItem="KjS-fk-UAY" secondAttribute="trailing" id="QOE-AZ-5JA"/>
                             <constraint firstItem="reL-wb-80o" firstAttribute="top" secondItem="KjS-fk-UAY" secondAttribute="bottom" id="S1Y-d2-ZrG"/>
                             <constraint firstItem="KjS-fk-UAY" firstAttribute="leading" secondItem="zQR-FL-oQT" secondAttribute="leading" id="aro-NJ-fLN"/>
@@ -1461,6 +1459,7 @@
                             <constraint firstItem="KjS-fk-UAY" firstAttribute="top" secondItem="5EA-Cy-KxY" secondAttribute="bottom" id="im2-LN-di0"/>
                             <constraint firstItem="5EA-Cy-KxY" firstAttribute="leading" secondItem="zQR-FL-oQT" secondAttribute="leading" id="isc-l5-Ez5"/>
                             <constraint firstItem="5EA-Cy-KxY" firstAttribute="centerX" secondItem="zQR-FL-oQT" secondAttribute="centerX" id="jeE-eH-cdN"/>
+                            <constraint firstItem="5EA-Cy-KxY" firstAttribute="top" secondItem="HuE-lM-PYS" secondAttribute="bottom" id="nBv-PL-D9y"/>
                             <constraint firstItem="HuE-lM-PYS" firstAttribute="top" secondItem="Tvo-TT-KMg" secondAttribute="bottom" id="q0r-fJ-tbB"/>
                             <constraint firstAttribute="trailing" secondItem="5EA-Cy-KxY" secondAttribute="trailing" id="u4b-Ge-4Yd"/>
                             <constraint firstItem="HuE-lM-PYS" firstAttribute="leading" secondItem="zQR-FL-oQT" secondAttribute="leading" id="vj2-bn-nwm"/>
