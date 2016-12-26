@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftArrow;
 
 @property (weak, nonatomic) IBOutlet UIButton *rightArrow;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarHeight;
 
 
 @property(nonatomic, assign) NSInteger currentItemNum;

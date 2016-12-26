@@ -25,6 +25,15 @@
     
     int currentItemNum;
     
+    CALayer *TopBorder;
+    
+    CALayer *TopBorder2;
+    
+    UITextView *descTextView;
+    
+    UITextView *discView;
+    
+    NSLayoutConstraint *heightNC;
     
 }
 
@@ -67,30 +76,12 @@ NSString const *TO_MAP1 = @"toMap";
     return _operationManager;
 }
 
-
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
     ObjectDetailLoader *odl = [ObjectDetailLoader new];
-    
     [odl setDelegate:self];
-    
     numRows = 0;
     currentItemNum = 1;
-    
-    /*
-    UICollectionViewFlowLayout *flow = [[UICollectionViewFlowLayout alloc] init];
-    //flow.itemSize = CGSizeMake(cellWidth, cellHeight);
-    flow.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    flow.minimumInteritemSpacing = 0;
-    flow.minimumLineSpacing = 0;
-    
-    self.scrollView.flo */
-    
     if (![NetTools hasConnectivity])
     {
         [self noData:_scrollView];
@@ -98,7 +89,6 @@ NSString const *TO_MAP1 = @"toMap";
     }
 
     [odl loadData: self.objectId];
-    
     
     DBManager *dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
     
@@ -108,25 +98,23 @@ NSString const *TO_MAP1 = @"toMap";
     
     NSArray *likedInfo = [[NSArray alloc] initWithArray:[dbManager loadDataFromDB:query]];
     
-    
     starMode = 1;
     
     if (likedInfo!=nil && [likedInfo count] > 0)
     {
         [self starClicked:nil];
     }
-    
-    
-    
-    
+
     counterBgView.hidden = YES;
     _leftArrow.hidden = true;
     
-    
+    //for rotation
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(orientationChanged:)
+     name:UIDeviceOrientationDidChangeNotification
+     object:[UIDevice currentDevice]];
 }
-
-
-
 
 -(void) loadObjectDetailFailed
 {
@@ -147,53 +135,32 @@ NSString const *TO_MAP1 = @"toMap";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    //[self presentViewController:playerVC animated:YES completion:nil];
     [self performSegueWithIdentifier:TO_PHOTO sender:self];
     
 }
 
-
-
-
 -(IBAction)leftPressed:(id)sender
 {
-    NSLog(@"left pressed");
-    
-    
     if (currentItemNum <= 1){
         return;
     }
-    
-    
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentItemNum-2 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-    
     currentItemNum --;
-    
     counterLabel.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numRows];
-    
     if (currentItemNum == 1){
         _leftArrow.hidden = true;
     }
     _rightArrow.hidden = false;
-    
 }
 
 -(IBAction)rightPressed:(id)sender
 {
-    NSLog(@"right pressed");
-    
-    
     if (currentItemNum >= numRows){
         return;
     }
-    
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentItemNum inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
-    
     currentItemNum++;
-    
     counterLabel.text = [NSString stringWithFormat:@"%i/%i", currentItemNum, numRows];
-    
     if (currentItemNum == numRows){
         _rightArrow.hidden = true;
     }
@@ -223,10 +190,6 @@ NSString const *TO_MAP1 = @"toMap";
             _rightArrow.hidden = false;
         }
     }
-    
-
-    
-    
     currentItemNum = visibleIndexPath.row +1;
 }
 
@@ -236,10 +199,6 @@ NSString const *TO_MAP1 = @"toMap";
 {
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"objectDetailCollectionCell" forIndexPath:indexPath];
-    
-     //NSLog(@"%i", indexPath.row);
-    
-    
     
     [self.operationManager GET:  objectDetail.images[indexPath.row].big
                     parameters:nil
@@ -292,52 +251,40 @@ NSString const *TO_MAP1 = @"toMap";
             
             for (int i = 1; i < [self->objectDetail.infoArray count]; i++)
             {
-                //CGRectMake(..., expectedSize.height)];
-                
                 CGRect r1 = self.paramNameLabel.frame;
                 CGRect r2 = self.paramValueLabel.frame;
-                //+20
-                //+20
+
                 UILabel *tmpParamNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(r1.origin.x, r1.origin.y+22, r1.size.width, r1.size.height)];
                 UILabel *tmpParamValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(r2.origin.x, r2.origin.y+22, r2.size.width, r2.size.height)];
-                
                 [tmpParamValueLabel setTextAlignment:NSTextAlignmentRight];
-                
                 [tmpParamNameLabel setFont:[UIFont systemFontOfSize:12]];
-                
                 [tmpParamNameLabel setTextColor:[UIColor colorWithRed:125.0/255.0 green:125.0/255.0 blue:125.0/255.0 alpha:1.0]];
-                
-                
                 [tmpParamValueLabel setFont:[UIFont systemFontOfSize:12]];
-                //tmpParamNameLabel.frame.origin.x += 20;
-                
                 tmpParamNameLabel.text =self->objectDetail.infoArray[i].title;
                 tmpParamValueLabel.text =self->objectDetail.infoArray[i].value;
-                
-                //                [self.infoView addSubview:tmpParamNameLabel below
+
                 [self.infoView addSubview:tmpParamNameLabel];
-                //[self.infoView insertSubview:tmpParamNameLabel belowSubview:self.paramNameLabel];
-                //[self.infoView insertSubview:tmpParamValueLabel belowSubview:self.paramValueLabel];
-                
-                
-                
+
                 [self.infoView addSubview:tmpParamValueLabel];
                 
-                self.paramNameLabel = tmpParamNameLabel;
-                self.paramValueLabel = tmpParamValueLabel;
+                tmpParamNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+                NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:tmpParamNameLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:infoView attribute:NSLayoutAttributeTop multiplier:1 constant:r1.origin.y+22];
+                 NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:tmpParamNameLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:infoView attribute:NSLayoutAttributeLeft multiplier:1 constant:8];
+                [infoView addConstraints:@[top, left]];
                 
                 
+                tmpParamValueLabel.translatesAutoresizingMaskIntoConstraints = NO;
+                top = [NSLayoutConstraint constraintWithItem:tmpParamValueLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:infoView attribute:NSLayoutAttributeTop multiplier:1 constant:r1.origin.y+22];
+                NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:tmpParamValueLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:infoView attribute:NSLayoutAttributeRight multiplier:1 constant:-8];
+                [infoView addConstraints:@[top, right]];
+                
+               self.paramNameLabel = tmpParamNameLabel;
+               self.paramValueLabel = tmpParamValueLabel;
             }
-            
-            /*CGRect newFrame = CGRectMake( self.infoView.frame.origin.x, self.infoView.frame.origin.y, self.infoView.frame.size.width, 200);
-            
-            self.infoView.frame = newFrame;*/
-            
-            
             break;
     }
-    //self->objectDetail.description = @"";
     
+    //self->objectDetail.description = @"";
     if ( [self->objectDetail.description length] != 0 ){
         
         // add description
@@ -348,50 +295,49 @@ NSString const *TO_MAP1 = @"toMap";
             r1.origin.y = r1.origin.y - 50;
         }
 
-         UIView *discView=[[UIView alloc]initWithFrame:CGRectMake(0, r1.origin.y+25, self.infoView.bounds.size.width, 200)];
+        discView=[[UIView alloc]initWithFrame:CGRectMake(0, r1.origin.y+25, self.infoView.bounds.size.width, 200)];
 
-
-        CALayer *TopBorder2 = [CALayer layer];
-        TopBorder2.frame = CGRectMake(0.0f, 0.0f, self.infoView.bounds.size.width, 1.0f);
+        TopBorder2 = [CALayer layer];
+        TopBorder2.frame = CGRectMake(-8.0f, 0.0f, self.infoView.bounds.size.width+8, 1.0f);
         TopBorder2.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
         [discView.layer addSublayer:TopBorder2];
 
-
-
-         UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, r1.size.width, r1.size.height)];
+        UILabel *descLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 8, r1.size.width, r1.size.height)];
 
         [descLabel setText:@"Описание:"];
         [descLabel setFont:[UIFont systemFontOfSize: 14]];
-
         [descLabel sizeToFit];
         [discView addSubview:descLabel];
         [self.infoView addSubview:discView];
+    
+        discView.translatesAutoresizingMaskIntoConstraints = NO;
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:discView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:infoView attribute:NSLayoutAttributeTop multiplier:1 constant:r1.origin.y+25];
+        NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:discView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:infoView attribute:NSLayoutAttributeRight multiplier:1 constant:-8];
+        NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:discView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:infoView attribute:NSLayoutAttributeLeft multiplier:1 constant:8];
+        
+        [infoView addConstraints:@[top, right, left]];
 
         r1 = descLabel.frame;
-        //CGRect r2 =self.paramValueLabel.frame;
-
-        UITextView *descTextView = [[UITextView alloc ] initWithFrame:CGRectMake(8, r1.origin.y+16, self.infoView.bounds.size.width - 16, 100)];
-
+        descTextView = [[UITextView alloc ] initWithFrame:CGRectMake(8, r1.origin.y+16, self.infoView.bounds.size.width - 16, 100)];
         [descTextView setText:self->objectDetail.description];
         [descTextView setFont:[UIFont systemFontOfSize:12]];
         [descTextView sizeToFit];
         descTextView.textContainerInset = UIEdgeInsetsMake(3, -5, 3, 0);
-
-
+        [descTextView setScrollEnabled:NO];
         [discView sizeToFit];
-
-        //discView.backgroundColor = [UIColor redColor];
-        // descTextView.backgroundColor = [UIColor greenColor];
-
-        CGFloat fixedHeight = descTextView.frame.size.height;
-        CGRect newFrame = discView.frame;
-        newFrame.size.width = discView.frame.size.width;
-        newFrame.size.height = fixedHeight + 32;
-        [discView setFrame:newFrame];
-
 
         [discView addSubview:descTextView];
         [self.infoView addSubview:discView];
+        
+        CGSize sizeThatFitsTextView = [descTextView sizeThatFits:CGSizeMake(descTextView.frame.size.width, MAXFLOAT)];
+        heightNC = [NSLayoutConstraint constraintWithItem:discView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:sizeThatFitsTextView.height + 32];
+
+        descTextView.translatesAutoresizingMaskIntoConstraints = NO;
+        top = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeTop multiplier:1 constant:24];
+        right = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeRight multiplier:1 constant:0];
+        left = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+         NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeBottom multiplier:1 constant:200];
+        [discView addConstraints:@[top, right, left,  heightNC]];
     }
 
     // add discount
@@ -403,13 +349,9 @@ NSString const *TO_MAP1 = @"toMap";
         
         NSMutableAttributedString *discountString = [[NSMutableAttributedString alloc] initWithString:self->objectDetail.discount];
         
-        
         [discountString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [discountString length])];
-
-        
         [discountLabel setFont:self.priceLabel.font];
         [discountLabel setTextColor :self.dateLabel.textColor];
-        
         [discountLabel setAttributedText:discountString];
         [discountLabel sizeToFit];
         
@@ -421,40 +363,21 @@ NSString const *TO_MAP1 = @"toMap";
          self.paramNameLabel.hidden = YES;
          self.paramValueLabel.hidden = YES;
     } else{
-        CALayer *TopBorder = [CALayer layer];
-        TopBorder.frame = CGRectMake(0.0f, 0.0f, _middleView.bounds.size.width, 1.0f);
+        TopBorder = [CALayer layer];
+        TopBorder.frame = CGRectMake(-8.0f, 0.0f, _middleView.bounds.size.width+8, 1.0f);
         TopBorder.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
         [_middleView.layer addSublayer:TopBorder];
     }
-  
-    
-   
-    
-    
-    
-    NSLog(@"done");
-    
-    //[self.infoView   setNeedsDisplay];
-    
-    //[self performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:self.view waitUntilDone:TRUE];
-    
-    
-    
 
     [super viewDidLoad];
 
-    
-
-    
     CALayer *layer = self.view.layer;
     [layer setNeedsDisplay];
     [layer displayIfNeeded];
     
-    
     [self.collectionView reloadData];
     counterBgView.hidden = NO;
     
-    NSLog(@"numrows == %i", numRows);
     counterLabel.text = [NSString stringWithFormat:@"1/%i",  numRows];
     
     [self.contentView sizeToFit];
@@ -464,34 +387,46 @@ NSString const *TO_MAP1 = @"toMap";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     CGRect contentRect = CGRectZero;
+    float heightH = 0.0f;
     for (UIView *view in self.infoView.subviews) {
         contentRect = CGRectUnion(contentRect, view.frame);
+        heightH = heightH + view.frame.size.height;
+        
     }
-    self.infoView.frame  = CGRectMake(0, self.infoView.frame.origin.y,  contentRect.size.width, contentRect.size.height);
+    //Хак
+    contentRect.size.height= contentRect.size.height - heightNC.constant;
+    CGSize sizeThatFitsTextView = [descTextView sizeThatFits:CGSizeMake(descTextView.frame.size.width, MAXFLOAT)];
+    heightNC.constant=sizeThatFitsTextView.height + 32;
+    contentRect.size.height= contentRect.size.height + heightNC.constant;
     
+    self.infoView.frame  = CGRectMake(0, self.infoView.frame.origin.y,  self.infoView.frame.size.width, contentRect.size.height );
     CGRect contentRect2 = CGRectZero;
     for (UIView *view in self.topView.subviews) {
         contentRect2 = CGRectUnion(contentRect, view.frame);
     }
-    
     CGFloat height = CGRectGetHeight(self.topView.bounds);
-    NSLog(@"topView %f", self.topView.frame.size.height);
-    
     float bottomSpace = 44;
     if ( [self->objectDetail.description length] == 0 ){
         bottomSpace = 52;
     }
     float allHeight = height + contentRect.size.height + collectionView.bounds.size.height + bottomSpace;
     self.scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width, allHeight );
-    self.contHeight.constant = allHeight;
+    
+    //hak
+    UICollectionViewFlowLayout *flowLayout = (id)self.collectionView.collectionViewLayout;
+    CGSize size = collectionView.bounds.size;
+    NSInteger width2 = size.width;
+    NSInteger height2 = size.height;
+    _rightArrow.center = CGPointMake(width2 - 28, height2/2);
+    _leftArrow.center = CGPointMake(28, height2/2);
+    
+    flowLayout.itemSize = CGSizeMake(width2, height2);
+    [flowLayout invalidateLayout];
 }
 
 #pragma mark collection view cell layout / size
 
 - (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //UIImage *image = [imageArray objectAtIndex:indexPath.row];
-    //You may want to create a divider to scale the size by the way..
     
     CGSize size = collectionView.bounds.size;
     NSInteger width = size.width;
@@ -501,10 +436,40 @@ NSString const *TO_MAP1 = @"toMap";
     _leftArrow.center = CGPointMake(28, height/2);
     
     return CGSizeMake(width, height);
-    
-    //return [self getCellSize:indexPath];  // will be w120xh100 or w190x100
-    // if the width is higher, only one image will be shown in a line
 }
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
+    
+    UICollectionViewFlowLayout *flowLayout = (id)self.collectionView.collectionViewLayout;
+    CGSize size = collectionView.bounds.size;
+    NSInteger width = size.width;
+    NSInteger height = size.height;
+    _rightArrow.center = CGPointMake(width - 28, height/2);
+    _leftArrow.center = CGPointMake(28, height/2);
+    
+    flowLayout.itemSize = CGSizeMake(width, height);
+    [flowLayout invalidateLayout];
+    
+    //[self viewDidLoad];
+    [self viewWillAppear:YES];
+    [self viewDidAppear:YES];
+    
+    [TopBorder removeFromSuperlayer];
+    TopBorder = [CALayer layer];
+    TopBorder.frame = CGRectMake(-8.0f, 0.0f, _middleView.bounds.size.width + 8, 1.0f);
+    TopBorder.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+    [_middleView.layer addSublayer:TopBorder];
+    
+    [TopBorder2 removeFromSuperlayer];
+    TopBorder2 = [CALayer layer];
+    TopBorder2.frame = CGRectMake(-8.0f, 0.0f, self.infoView.bounds.size.width+8, 1.0f);
+    TopBorder2.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+    [discView.layer addSublayer:TopBorder2];
+    
+}
+
 
 
 

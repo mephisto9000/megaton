@@ -19,6 +19,7 @@
     
     NSArray<NSString *> *menuItems;
     NSArray<NSString *> *menuIcons;
+    CAGradientLayer *gradient;
     //NSArray *menuIcons;
 }
 
@@ -52,8 +53,19 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
     rowNum = [menuItems count];
     
     //градиентная заливка
+    [self setGradient];
+    
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(orientationChanged:)
+     name:UIDeviceOrientationDidChangeNotification
+     object:[UIDevice currentDevice]];
+    
+}
+
+- (void)setGradient {
     UIView *bgView = [[UIView alloc] initWithFrame: self.view.frame];  //  CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)
-    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient = [CAGradientLayer layer];
     gradient.frame = bgView.bounds;
     
     
@@ -62,8 +74,20 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
     
     gradient.colors = [NSArray arrayWithObjects:(id)[c1 CGColor], (id)[c2 CGColor], (id)[c1 CGColor], nil];
     [self.view.layer insertSublayer:gradient atIndex:0];
+}
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    
+    UIDevice * device = note.object;
+    
+   
+    [gradient removeFromSuperlayer];
+     [self setGradient];
     
 }
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;

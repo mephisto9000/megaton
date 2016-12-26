@@ -39,9 +39,16 @@
     [detailArrow setFrame:CGRectMake(screenWidth - 32, 8, 16, 16)];
      [button addSubview:detailArrow];
     
- 
+    detailArrow.translatesAutoresizingMaskIntoConstraints = NO;
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:detailArrow attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:button attribute:NSLayoutAttributeTop multiplier:1 constant:8];
+    NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:detailArrow attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:button attribute:NSLayoutAttributeRight multiplier:1 constant:0];
     
+    [button addConstraints:@[top, right]];
     
+    NSLayoutConstraint *heightNC = [NSLayoutConstraint constraintWithItem:detailArrow attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:16];
+    NSLayoutConstraint *widthNC = [NSLayoutConstraint constraintWithItem:detailArrow attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1 constant:16];
+    [detailArrow addConstraints:@[heightNC, widthNC]];
+
     
     /*//UIButton *detailButton = [UIButton buttonWithType: UIButtonTypeInfoLight]; //  UIButtonTypeDetailDisclosure
     UIImageView *detailArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_right.png"]];

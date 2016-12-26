@@ -78,7 +78,7 @@
         _rightArrow.hidden = true;
     }
     
-       [self.counterLabel2 setText:[NSString stringWithFormat:@"Изображение %i/%i", currentItemNum, numItems]];
+    [self.counterLabel2 setText:[NSString stringWithFormat:@"Изображение %i/%i", currentItemNum, numItems]];
     
     [counterBgView setHidden:YES];
     
@@ -89,16 +89,39 @@
      //photoCollection.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), animated: false, scrollPosition: .None)
     
     
-    //[photoCollection selectItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionCenteredVertically];
-    
    
-    //self.photoCollection.
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    //for rotation
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self selector:@selector(orientationChanged:)
+     name:UIDeviceOrientationDidChangeNotification
+     object:[UIDevice currentDevice]];
     
-    //float topMargin = self.navigationController.toolbar.frame.size.height;
+
+
+}
+
+- (void) orientationChanged:(NSNotification *)note
+{
+    UIDevice * device = note.object;
     
+    UICollectionViewFlowLayout *flowLayout = (id)self.photoCollection.collectionViewLayout;
+    CGSize size = photoCollection.bounds.size;
+    NSInteger width = size.width;
+    NSInteger height = size.height;
+
     
-    //[self.photoCollection setContentInset:UIEdgeInsetsMake(0, 0, topMargin, 0)];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    
+    flowLayout.itemSize = CGSizeMake(width, height);
+    [flowLayout invalidateLayout];
+    
+    //_toolbarHeight.constant = 60;
+
+    [self viewWillAppear:YES];
+    [self viewDidAppear:YES];
     
 }
 
@@ -120,10 +143,10 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     
-    NSLog(@"currentItemNum == %li", currentItemNum);
+    [self.photoCollection  scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0]
+                                atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     
-    [photoCollection scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0]  atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-    
+ 
     
     //photoCollection scrollToIte
     
@@ -183,6 +206,18 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGSize size = collectionView.bounds.size;
+    NSInteger width = size.width;
+    NSInteger height = size.height;
+    
+    
+    NSLog(@"left pressed %i", width);
+    NSLog(@"left pressed %i", height);
+
+
+    
+    return CGSizeMake(width, height);
+    
     // cell to have the size of the collectionView
     
     //[self.photoCollection sizeToFit];

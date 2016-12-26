@@ -82,9 +82,9 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     // Do any additional setup after loading the view.
     
     //reduce space between tableview and sort block
-    _tableView.contentInset = UIEdgeInsetsMake(-12, 0, 0, 0);
+    _tableView.contentInset = UIEdgeInsetsMake(5, 0, 0, 0);
     //dynamic row height
-     _tableView.estimatedRowHeight = 270.0;
+     _tableView.estimatedRowHeight = 275.0;
     _tableView.rowHeight = UITableViewAutomaticDimension;
     
     //Высота изображения - высота паддингов в блоке (по идее 32 но с 40 лучше смотрится)
