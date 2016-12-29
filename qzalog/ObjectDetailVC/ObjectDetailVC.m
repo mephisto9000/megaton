@@ -114,6 +114,9 @@ NSString const *TO_MAP1 = @"toMap";
      addObserver:self selector:@selector(orientationChanged:)
      name:UIDeviceOrientationDidChangeNotification
      object:[UIDevice currentDevice]];
+    
+    self.scrollView.scrollEnabled = NO;
+    self.scrollView.userInteractionEnabled = NO;
 }
 
 -(void) loadObjectDetailFailed
@@ -222,7 +225,7 @@ NSString const *TO_MAP1 = @"toMap";
     
     NSLog(@"title == %@",self->objectDetail.title);
     
-    [self performSelectorOnMainThread:@selector(loadOnMainThread) withObject:nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(loadOnMainThread) withObject:nil waitUntilDone:NO];
     
 }
 
@@ -236,6 +239,14 @@ NSString const *TO_MAP1 = @"toMap";
     self.addrLabel.text     = self->objectDetail.address;
     
     numRows = [self->objectDetail.images count];
+    
+    //[self.contentView sizeToFit];
+    //[self.scrollView sizeToFit];
+    
+    //self.scrollView.scrollEnabled = YES;
+    //self.scrollView.delegate = self;
+    
+    
     
     switch([self->objectDetail.infoArray count] )
     {
@@ -369,8 +380,9 @@ NSString const *TO_MAP1 = @"toMap";
         [_middleView.layer addSublayer:TopBorder];
     }
 
-    [super viewDidLoad];
+    //[super viewDidLoad];
 
+    
     CALayer *layer = self.view.layer;
     [layer setNeedsDisplay];
     [layer displayIfNeeded];
@@ -382,6 +394,9 @@ NSString const *TO_MAP1 = @"toMap";
     
     [self.contentView sizeToFit];
     [self.scrollView sizeToFit];
+    
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.userInteractionEnabled = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
