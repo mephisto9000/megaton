@@ -35,6 +35,8 @@
     
     NSLayoutConstraint *heightNC;
     
+    UIActivityIndicatorView *spinner;
+    
 }
 
 @property(nonatomic, retain) AFHTTPRequestOperationManager  *operationManager;
@@ -117,6 +119,17 @@ NSString const *TO_MAP1 = @"toMap";
     
     self.scrollView.scrollEnabled = NO;
     self.scrollView.userInteractionEnabled = NO;
+    _scrollView.hidden = YES;
+    
+
+    
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(self.view.frame.size.width / 2 - spinner.frame.size.width / 2, self.view.frame.size.height / 2 - spinner.frame.size.height / 2);
+    spinner.tag = 50;
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+   // [spinner release];
+    
 }
 
 -(void) loadObjectDetailFailed
@@ -329,7 +342,7 @@ NSString const *TO_MAP1 = @"toMap";
         [infoView addConstraints:@[top, right, left]];
 
         r1 = descLabel.frame;
-        descTextView = [[UITextView alloc ] initWithFrame:CGRectMake(8, r1.origin.y+16, self.infoView.bounds.size.width - 16, 100)];
+        descTextView = [[UITextView alloc ] initWithFrame:CGRectMake(8, r1.origin.y+24, self.infoView.bounds.size.width - 16, 100)];
         [descTextView setText:self->objectDetail.description];
         [descTextView setFont:[UIFont systemFontOfSize:12]];
         [descTextView sizeToFit];
@@ -344,7 +357,7 @@ NSString const *TO_MAP1 = @"toMap";
         heightNC = [NSLayoutConstraint constraintWithItem:discView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:sizeThatFitsTextView.height + 32];
 
         descTextView.translatesAutoresizingMaskIntoConstraints = NO;
-        top = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeTop multiplier:1 constant:24];
+        top = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeTop multiplier:1 constant:27];
         right = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeRight multiplier:1 constant:0];
         left = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
          NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:descTextView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:discView attribute:NSLayoutAttributeBottom multiplier:1 constant:200];
@@ -395,8 +408,12 @@ NSString const *TO_MAP1 = @"toMap";
     [self.contentView sizeToFit];
     [self.scrollView sizeToFit];
     
+
+    
     self.scrollView.scrollEnabled = YES;
     self.scrollView.userInteractionEnabled = YES;
+    self.scrollView.hidden = NO;
+    spinner.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

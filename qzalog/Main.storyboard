@@ -827,7 +827,7 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Квартира: 3 комн." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3y-Qk-ecO" userLabel="titleLabel">
                                                         <rect key="frame" x="0.0" y="61" width="375" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -852,7 +852,7 @@
                                                     <constraint firstItem="PaA-eg-bt8" firstAttribute="leading" secondItem="gA3-zr-rqy" secondAttribute="leading" id="EjK-tV-Mej"/>
                                                     <constraint firstAttribute="trailing" secondItem="tA3-PQ-P1C" secondAttribute="trailing" id="WSb-u2-O0t"/>
                                                     <constraint firstAttribute="trailing" secondItem="q3y-Qk-ecO" secondAttribute="trailing" id="cVP-4Z-OhE"/>
-                                                    <constraint firstItem="JjG-QL-6Yp" firstAttribute="top" secondItem="q3y-Qk-ecO" secondAttribute="bottom" constant="2" id="er4-qI-hcl"/>
+                                                    <constraint firstItem="JjG-QL-6Yp" firstAttribute="top" secondItem="q3y-Qk-ecO" secondAttribute="bottom" constant="3" id="er4-qI-hcl"/>
                                                     <constraint firstItem="q3y-Qk-ecO" firstAttribute="top" secondItem="tA3-PQ-P1C" secondAttribute="bottom" constant="5" id="f6D-XK-pJq"/>
                                                     <constraint firstAttribute="trailing" secondItem="JjG-QL-6Yp" secondAttribute="trailing" id="fe7-fk-XeN"/>
                                                     <constraint firstItem="q3y-Qk-ecO" firstAttribute="leading" secondItem="gA3-zr-rqy" secondAttribute="leading" id="g3i-TZ-1AY"/>
