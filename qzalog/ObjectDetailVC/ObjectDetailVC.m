@@ -472,6 +472,7 @@ NSString const *TO_MAP1 = @"toMap";
         flowLayout.itemSize = CGSizeMake(width2, height2);
         [flowLayout invalidateLayout];
     }
+     spinner.hidden = YES;
 }
 
 #pragma mark collection view cell layout / size
