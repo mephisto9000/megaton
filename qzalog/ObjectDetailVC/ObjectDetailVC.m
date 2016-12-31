@@ -403,6 +403,22 @@ NSString const *TO_MAP1 = @"toMap";
     [self.collectionView reloadData];
     counterBgView.hidden = NO;
     
+    if(numRows == 0){
+        //collectionView.hidden = YES;
+        _rightArrow.hidden = YES;
+        _leftArrow.hidden = YES;
+        counterBgView.hidden = YES;
+        UICollectionViewFlowLayout *flowLayout = (id)self.collectionView.collectionViewLayout;
+        CGSize size = collectionView.bounds.size;
+        NSInteger width2 = size.width;
+        NSInteger height2 = 0;
+    
+        flowLayout.itemSize = CGSizeMake(width2, height2);
+        [flowLayout invalidateLayout];
+        [collectionView removeConstraints:collectionView.constraints];
+        
+    }
+    
     counterLabel.text = [NSString stringWithFormat:@"1/%i",  numRows];
     
     [self.contentView sizeToFit];
@@ -445,15 +461,17 @@ NSString const *TO_MAP1 = @"toMap";
     self.scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width, allHeight );
     
     //hak
-    UICollectionViewFlowLayout *flowLayout = (id)self.collectionView.collectionViewLayout;
-    CGSize size = collectionView.bounds.size;
-    NSInteger width2 = size.width;
-    NSInteger height2 = size.height;
-    _rightArrow.center = CGPointMake(width2 - 28, height2/2);
-    _leftArrow.center = CGPointMake(28, height2/2);
-    
-    flowLayout.itemSize = CGSizeMake(width2, height2);
-    [flowLayout invalidateLayout];
+    if(numRows != 0){
+        UICollectionViewFlowLayout *flowLayout = (id)self.collectionView.collectionViewLayout;
+        CGSize size = collectionView.bounds.size;
+        NSInteger width2 = size.width;
+        NSInteger height2 = size.height;
+        _rightArrow.center = CGPointMake(width2 - 28, height2/2);
+        _leftArrow.center = CGPointMake(28, height2/2);
+        
+        flowLayout.itemSize = CGSizeMake(width2, height2);
+        [flowLayout invalidateLayout];
+    }
 }
 
 #pragma mark collection view cell layout / size
