@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TapGestureRecognizer.h"
 
-@interface ObjectPhotoVC : UIViewController<UICollectionViewDelegate>
+@interface ObjectPhotoVC : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, retain) IBOutlet UICollectionView *photoCollection;
 @property(nonatomic, retain) NSArray<NSString *> *imageArr;
@@ -27,6 +28,8 @@
 
 
 @property(nonatomic, retain) IBOutlet UIToolbar *toolbar;
+
+@property (nonatomic,assign) CGFloat scale;
 
 
 -(IBAction)backPressed:(id)sender;

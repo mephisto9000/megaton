@@ -1039,7 +1039,7 @@
                         <viewControllerLayoutGuide type="top" id="UjK-iM-4jf"/>
                         <viewControllerLayoutGuide type="bottom" id="Dzs-7B-3Fd"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HLy-hH-4bz">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="HLy-hH-4bz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1071,7 +1071,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmo-td-S2l">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wjM-33-4MQ">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" alwaysBounceVertical="YES" pagingEnabled="YES" minimumZoomScale="0.5" maximumZoomScale="4" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wjM-33-4MQ">
                                         <rect key="frame" x="8" y="300.57817109156258" width="375.00000000000045" height="302"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="wjM-33-4MQ" secondAttribute="height" multiplier="358:224" id="QQb-DV-497"/>
@@ -1098,7 +1098,7 @@
                                         </connections>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wL5-qR-hIv">
-                                        <rect key="frame" x="169" y="283" width="36" height="36"/>
+                                        <rect key="frame" x="330" y="283" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="2fL-OR-21U"/>
                                             <constraint firstAttribute="width" constant="36" id="7i5-md-tHY"/>
@@ -1110,7 +1110,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zvn-FY-foc">
-                                        <rect key="frame" x="169" y="283" width="36" height="36"/>
+                                        <rect key="frame" x="10" y="283" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="0pv-dD-E23"/>
                                             <constraint firstAttribute="width" constant="36" id="tMb-FL-PmJ"/>
@@ -1974,19 +1974,19 @@
                                                 <rect key="frame" x="0.0" y="39" width="359" height="192"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Подача заявления и выбор программы кредитования" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="te6-pa-s3G">
-                                                        <rect key="frame" x="10" y="10" width="371" height="33.5"/>
+                                                        <rect key="frame" x="10" y="10" width="371" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Обработка заявления" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yz-2s-e4b">
-                                                        <rect key="frame" x="10" y="46.5" width="371" height="17"/>
+                                                        <rect key="frame" x="10" y="47" width="371" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" text="3. Рассмотрение уполномоченными органами" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7y-Al-QuU">
-                                                        <rect key="frame" x="10" y="66.5" width="373" height="17"/>
+                                                        <rect key="frame" x="10" y="67" width="373" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2120,19 +2120,19 @@
                                                 <rect key="frame" x="0.0" y="40" width="359" height="187"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Подача заявления и выбор программы кредитования" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugh-M4-Yyj">
-                                                        <rect key="frame" x="10" y="10" width="371" height="33.5"/>
+                                                        <rect key="frame" x="10" y="10" width="371" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Обработка заявления" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJp-5W-lGB">
-                                                        <rect key="frame" x="10" y="46.5" width="371" height="17"/>
+                                                        <rect key="frame" x="10" y="47" width="371" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" text="3. Рассмотрение уполномоченными органами" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GP-zL-yvL">
-                                                        <rect key="frame" x="10" y="66.5" width="373" height="17"/>
+                                                        <rect key="frame" x="10" y="67" width="373" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2288,7 +2288,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="kvb-fP-op0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ALu-87-LGg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ALu-87-LGg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

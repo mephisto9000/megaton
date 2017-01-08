@@ -9,13 +9,14 @@
 #import "ObjectPhotoVC.h"
 #import <AFNetworking/AFHTTPRequestOperationManager.h>
 
-@interface ObjectPhotoVC ()
-{
+@interface ObjectPhotoVC (){
     int numItems;
     CGRect screenRect;
     CGFloat  screenWidth;
     int screenDivide;
     Boolean loaded;
+  
+    
 }
 
 @property(nonatomic, retain) AFHTTPRequestOperationManager  *operationManager;
@@ -97,10 +98,48 @@
      name:UIDeviceOrientationDidChangeNotification
      object:[UIDevice currentDevice]];
     
-
+    
+   /*self.scale = 1.0;
+    UIPinchGestureRecognizer *gesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(didReceivePinchGesture:)];
+    [self.photoCollection addGestureRecognizer:gesture];*/
 
 }
 
+/*
+- (void)didReceivePinchGesture:(UIPinchGestureRecognizer*)gesture
+{
+    static CGFloat scaleStart;
+    
+    NSLog(@"%f", self.scale);
+
+    
+    if (gesture.state == UIGestureRecognizerStateBegan)
+    {
+        scaleStart = self.scale;
+        _lastPoint = [gesture locationInView:gesture.view];
+    }
+    else if (gesture.state == UIGestureRecognizerStateChanged)
+    {
+        self.scale = scaleStart * gesture.scale;
+        if(self.scale > 3)
+            self.scale = 3;
+        if(self.scale < 1)
+            self.scale = 1;
+        
+        if(self.scale != 1)
+            self.photoCollection.scrollEnabled = NO;
+        else
+            self.photoCollection.scrollEnabled = YES;
+        
+        
+        [self.photoCollection.collectionViewLayout invalidateLayout];
+    }
+}
+*/
+
+
+
+/*
 - (void) orientationChanged:(NSNotification *)note
 {
     loaded = false;
@@ -126,7 +165,9 @@
     [self viewDidAppear:YES];
     [self.photoCollection  scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(currentItemNum - 1) inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         
-}
+}*/
+
+
 - (void)viewDidLayoutSubviews
 {
     [self.photoCollection layoutIfNeeded];
@@ -195,9 +236,75 @@
                     parameters:nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                            //cell..adImage.image = responseObject;
-                           cell.backgroundView = [[UIImageView alloc] initWithImage:responseObject];
-                           cell.backgroundView.contentMode = UIViewContentModeScaleAspectFit;
+                           //cell.backgroundView = [[UIImageView alloc] initWithImage:responseObject];
+                           //cell.backgroundView.contentMode = UIViewContentModeScaleAspectFit;
                            NSLog(@"image download complete");
+                           
+                           
+                           
+                           
+                           
+                           UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+                           scrollview.contentSize = CGSizeMake(cell.frame.size.width, cell.frame.size.height);
+                           
+                           
+                           UIView *scollSubView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
+                           [scrollview addSubview:scollSubView];
+                           scrollview.backgroundColor = [UIColor yellowColor];
+                           
+                           //scrollview.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+                           
+                           /*scrollview.minimumZoomScale = 1.0f;
+                           scrollview.maximumZoomScale = 3.0f;
+                           scrollview.zoomScale = 1.0f;*/
+                          /* scrollview.delegate = self;
+                           scrollview.bouncesZoom = YES;
+                           scrollview.clipsToBounds = YES;
+                           scrollview.backgroundColor = [UIColor yellowColor];
+                           [scrollview setContentMode:UIViewContentModeScaleAspectFit];*/
+                           
+                       
+                           
+                           UIImageView *imageView = [[UIImageView alloc] initWithImage:responseObject];
+                           [imageView setCenter:scrollview.center];
+                           [imageView setContentMode:UIViewContentModeScaleAspectFill];
+                           CGFloat aspect = imageView.frame.size.width / imageView.frame.size.height;
+                           
+                           imageView.frame = CGRectMake(0 , 0, cell.frame.size.width, cell.frame.size.width/aspect);
+                           [imageView setCenter:scrollview.center];
+                           [imageView setContentMode:UIViewContentModeScaleAspectFill];
+                           [scollSubView addSubview:imageView];
+
+                           //imageView.userInteractionEnabled = YES;
+                           
+
+                           
+                           UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureDetected:)];
+                           pinchGestureRecognizer.cancelsTouchesInView = NO;
+                                                     pinchGestureRecognizer.delaysTouchesEnded = NO;
+                           [scrollview addGestureRecognizer:pinchGestureRecognizer];
+                           
+                          
+                           
+                           TapGestureRecognizer *tapGestureRecognizer = [[TapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureDetected:)];
+                         
+                           [scrollview addGestureRecognizer:tapGestureRecognizer];
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureDetected:)];
+                          
+                           [scrollview addGestureRecognizer:panGestureRecognizer];
+                           
+                           
+                           [cell addSubview:scrollview];
+                           
+                           
+                           
                            
                            
                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -214,6 +321,80 @@
 }
 
 
+- (void)tapGestureDetected:(TapGestureRecognizer *)recognizer {
+    UIGestureRecognizerState state = [recognizer state];
+    NSLog(@"Begsdafan");
+}
+
+- (void)panGestureDetected:(UIPanGestureRecognizer *)recognizer
+{
+    UIGestureRecognizerState state = [recognizer state];
+    
+    if (state == UIGestureRecognizerStateEnded)
+    {
+       // NSLog(@"Begsdafan");
+
+    }
+}
+
+-(void) pinchGestureDetected: (UIPinchGestureRecognizer *) pinchRecogniser
+{
+    static CGFloat scaleStart;
+    static CGPoint lastPoint;
+    
+    
+    switch ([pinchRecogniser state])
+    {
+        case UIGestureRecognizerStateBegan:
+        {
+            NSLog(@"Began");
+            [photoCollection setScrollEnabled: NO];
+            scaleStart = 1.0f;
+            lastPoint = [pinchRecogniser locationInView:[pinchRecogniser view]];
+            break;
+        }
+            
+        case UIGestureRecognizerStateChanged:
+        {
+            CGFloat currentScale = [[[pinchRecogniser view].layer valueForKeyPath:@"transform.scale"] floatValue];
+            
+            // Constants to adjust the max/min values of zoom
+            const CGFloat kMaxScale = 2.0;
+            const CGFloat kMinScale = 0.5;
+            
+            CGFloat scale = 1.0f - (scaleStart - pinchRecogniser.scale);
+            scale = MIN(scale, kMaxScale / currentScale);
+            scale = MAX(scale, kMinScale / currentScale);
+           // CGFloat scale = [pinchRecogniser scale];
+            [pinchRecogniser.view setTransform:CGAffineTransformScale(pinchRecogniser.view.transform, scale,scale)];
+            [pinchRecogniser setScale:1.0];
+            
+            CGPoint point = [pinchRecogniser locationInView:[pinchRecogniser view]];
+            CGAffineTransform transformTranslate = CGAffineTransformTranslate([[pinchRecogniser view] transform], point.x-lastPoint.x, point.y-lastPoint.y);
+             [pinchRecogniser view].transform = transformTranslate;
+            
+            
+           
+            
+            scaleStart = pinchRecogniser.scale;
+            //lastPoint = [pinchRecogniser locationInView:self];
+            
+        }
+            
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+        {
+            
+            
+           // [photoCollection setScrollEnabled: YES];
+        }
+            
+        default:
+            break;
+    }
+}
+
+
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -221,17 +402,7 @@
     NSInteger width = size.width;
     NSInteger height = size.height;
     
-    
-    NSLog(@"left pressed %i", width);
-    NSLog(@"left pressed %i", height);
-
-
-    
     return CGSizeMake(width, height);
-    
-    
-    
-    
 }
 /*
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
