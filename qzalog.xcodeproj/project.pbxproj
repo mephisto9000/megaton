@@ -92,6 +92,7 @@
 		973326721E0833EC00B711D0 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 973326711E0833EC00B711D0 /* MenuCell.m */; };
 		9733267D1E0839D000B711D0 /* SaleWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733267C1E0839D000B711D0 /* SaleWaysViewController.swift */; };
 		97922B801E22C62600CCD740 /* TapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97922B7F1E22C62600CCD740 /* TapGestureRecognizer.m */; };
+		97922B871E23EF5E00CCD740 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97922B861E23EF5E00CCD740 /* PhotoCollectionViewCell.m */; };
 		F2A2A171A40B088EB1EADDBD /* libPods-qzalog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */; };
 /* End PBXBuildFile section */
 
@@ -250,6 +251,8 @@
 		9733267C1E0839D000B711D0 /* SaleWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleWaysViewController.swift; sourceTree = "<group>"; };
 		97922B7E1E22C62600CCD740 /* TapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapGestureRecognizer.h; sourceTree = "<group>"; };
 		97922B7F1E22C62600CCD740 /* TapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapGestureRecognizer.m; sourceTree = "<group>"; };
+		97922B851E23EF5E00CCD740 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		97922B861E23EF5E00CCD740 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qzalog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3749EB5CB1F2AA3033AF928 /* Pods-qzalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -587,6 +590,8 @@
 				1BD60F091E0516E5002EC008 /* ObjectPhotoVC.m */,
 				97922B7E1E22C62600CCD740 /* TapGestureRecognizer.h */,
 				97922B7F1E22C62600CCD740 /* TapGestureRecognizer.m */,
+				97922B851E23EF5E00CCD740 /* PhotoCollectionViewCell.h */,
+				97922B861E23EF5E00CCD740 /* PhotoCollectionViewCell.m */,
 			);
 			name = ObjectPhoto;
 			sourceTree = "<group>";
@@ -886,6 +891,7 @@
 				1B662B2E1DD8C37500BAB071 /* CategoryDataLoader.m in Sources */,
 				1B662B081DD8ABA900BAB071 /* MenuVC.m in Sources */,
 				1B22AC4C1DF72BFB008B4B15 /* RegionTableVC.m in Sources */,
+				97922B871E23EF5E00CCD740 /* PhotoCollectionViewCell.m in Sources */,
 				973326721E0833EC00B711D0 /* MenuCell.m in Sources */,
 				1BCD66011DEAAE4000E9BEED /* ObjectDetailVC.m in Sources */,
 				1B5473CB1DE325D000903E21 /* ObjectValue.m in Sources */,

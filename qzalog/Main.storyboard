@@ -1063,33 +1063,31 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="q6O-h8-daj"/>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.054901960780000002" green="0.36078431370000003" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="Gf0-vW-VFT" id="GVR-tH-n2s"/>
                                 </connections>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gmo-td-S2l">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" alwaysBounceVertical="YES" pagingEnabled="YES" minimumZoomScale="0.5" maximumZoomScale="4" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wjM-33-4MQ">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" minimumZoomScale="0.5" maximumZoomScale="2" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wjM-33-4MQ">
                                         <rect key="frame" x="8" y="300.57817109156258" width="375.00000000000045" height="302"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="wjM-33-4MQ" secondAttribute="height" multiplier="358:224" id="QQb-DV-497"/>
-                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="mJa-0f-vOM">
-                                            <size key="itemSize" width="376" height="595"/>
+                                            <size key="itemSize" width="376" height="302"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="photoCollectionCell" id="wvf-Y5-90Q">
-                                                <rect key="frame" x="0.0" y="-147" width="376" height="595"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="photoCollectionCell" id="wvf-Y5-90Q" customClass="PhotoCollectionViewCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="376" height="302"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="376" height="595"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="376" height="302"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </view>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
@@ -1097,40 +1095,12 @@
                                             <outlet property="delegate" destination="Gf0-vW-VFT" id="qm6-t8-xIQ"/>
                                         </connections>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wL5-qR-hIv">
-                                        <rect key="frame" x="330" y="283" width="36" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="2fL-OR-21U"/>
-                                            <constraint firstAttribute="width" constant="36" id="7i5-md-tHY"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                                        <state key="normal" image="right.png"/>
-                                        <connections>
-                                            <action selector="rightPressed:" destination="Gf0-vW-VFT" eventType="touchUpInside" id="1H0-M6-0eq"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zvn-FY-foc">
-                                        <rect key="frame" x="10" y="283" width="36" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="0pv-dD-E23"/>
-                                            <constraint firstAttribute="width" constant="36" id="tMb-FL-PmJ"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                                        <state key="normal" image="left.png"/>
-                                        <connections>
-                                            <action selector="leftPressed:" destination="Gf0-vW-VFT" eventType="touchUpInside" id="Vgr-T3-81S"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="wL5-qR-hIv" firstAttribute="centerY" secondItem="Gmo-td-S2l" secondAttribute="centerY" id="2LF-Qk-QLB"/>
-                                    <constraint firstItem="zvn-FY-foc" firstAttribute="leading" secondItem="Gmo-td-S2l" secondAttribute="leading" constant="8" id="Opw-aQ-5rp"/>
                                     <constraint firstItem="wjM-33-4MQ" firstAttribute="top" secondItem="Gmo-td-S2l" secondAttribute="top" id="VZx-vv-E5E"/>
                                     <constraint firstAttribute="trailing" secondItem="wjM-33-4MQ" secondAttribute="trailing" id="XaD-H8-Zzy"/>
-                                    <constraint firstAttribute="trailing" secondItem="wL5-qR-hIv" secondAttribute="trailing" constant="8" id="huu-c6-znl"/>
                                     <constraint firstItem="wjM-33-4MQ" firstAttribute="leading" secondItem="Gmo-td-S2l" secondAttribute="leading" id="xKd-ub-PRZ"/>
                                     <constraint firstAttribute="bottom" secondItem="wjM-33-4MQ" secondAttribute="bottom" id="ybR-hF-OX5"/>
-                                    <constraint firstItem="zvn-FY-foc" firstAttribute="centerY" secondItem="Gmo-td-S2l" secondAttribute="centerY" id="zRb-Cm-4pl"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="номер фото" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iU3-XX-l5L">
@@ -1148,7 +1118,7 @@
                             <constraint firstItem="Gmo-td-S2l" firstAttribute="leading" secondItem="HLy-hH-4bz" secondAttribute="leading" id="EWt-re-esZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iU3-XX-l5L" secondAttribute="trailing" constant="55" id="JKb-ag-bv6"/>
                             <constraint firstItem="iU3-XX-l5L" firstAttribute="leading" secondItem="HLy-hH-4bz" secondAttribute="leadingMargin" constant="55" id="NI1-wK-vnc"/>
-                            <constraint firstItem="Gmo-td-S2l" firstAttribute="top" secondItem="TyT-N0-Rm6" secondAttribute="bottom" id="P1N-i4-bqe"/>
+                            <constraint firstItem="Gmo-td-S2l" firstAttribute="top" secondItem="UjK-iM-4jf" secondAttribute="bottom" id="QVI-3G-nYS"/>
                             <constraint firstItem="iU3-XX-l5L" firstAttribute="centerX" secondItem="TyT-N0-Rm6" secondAttribute="centerX" id="RHL-Fk-JGk"/>
                             <constraint firstItem="iU3-XX-l5L" firstAttribute="centerY" secondItem="TyT-N0-Rm6" secondAttribute="centerY" id="WGR-LC-Ey8"/>
                             <constraint firstAttribute="trailing" secondItem="Gmo-td-S2l" secondAttribute="trailing" id="Wt1-Ak-hlp"/>
@@ -1160,9 +1130,7 @@
                     </view>
                     <connections>
                         <outlet property="counterLabel2" destination="iU3-XX-l5L" id="y78-qB-Yft"/>
-                        <outlet property="leftArrow" destination="zvn-FY-foc" id="4Qt-GB-B51"/>
                         <outlet property="photoCollection" destination="wjM-33-4MQ" id="hoQ-Eq-tUi"/>
-                        <outlet property="rightArrow" destination="wL5-qR-hIv" id="h8q-aW-Kdd"/>
                         <outlet property="toolbar" destination="TyT-N0-Rm6" id="kyz-Ik-yo0"/>
                     </connections>
                 </viewController>

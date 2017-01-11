@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "TapGestureRecognizer.h"
+#import "PhotoCollectionViewCell.h"
 
 @interface ObjectPhotoVC : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, retain) IBOutlet UICollectionView *photoCollection;
 @property(nonatomic, retain) NSArray<NSString *> *imageArr;
-@property (weak, nonatomic) IBOutlet UIButton *leftArrow;
 
-@property (weak, nonatomic) IBOutlet UIButton *rightArrow;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarHeight;
 
 
@@ -34,7 +33,6 @@
 
 -(IBAction)backPressed:(id)sender;
 
--(IBAction)leftPressed:(id)sender;
--(IBAction)rightPressed:(id)sender;
+
 
 @end
