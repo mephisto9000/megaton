@@ -101,6 +101,12 @@
 
     [self.photoCollection registerClass:[PhotoCollectionViewCell class] forCellWithReuseIdentifier:@"photoCollectionCell"];
     
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureDetected:)];
+    panGestureRecognizer.delegate = self;
+    panGestureRecognizer.cancelsTouchesInView = NO;
+    _recognizerRightEnabled = NO;
+    _recognizerLeftEnabled = NO;
+    [photoCollection addGestureRecognizer:panGestureRecognizer];
    
     
 }
@@ -109,7 +115,7 @@
 - (void)didReceivePinchGesture:(UIPinchGestureRecognizer*)gesture
 {
     static CGFloat scaleStart;
-    
+ 
     NSLog(@"%f", self.scale);
 
     
@@ -232,15 +238,20 @@
    
 
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photoCollectionCell" forIndexPath:indexPath];
+    cell.scrollview.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    cell.scrollview.frame = CGRectMake( 0,  0, screenSizes.size.width, screenSizes.size.height );
     
-            
+    
+    _recognizerRightEnabled = YES;
+    _recognizerLeftEnabled = YES;
+    
     //cell.contentView.backgroundColor = [UIColor blackColor];
     //[[[cell contentView] subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     [self.operationManager GET:  imageArr[indexPath.row] 
                     parameters:nil
                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                           cell.scrollview.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                           
                            /*cell.scrollview.frame = CGRectMake(0, 0, cell.scrollview.frame.size.width, cell.scrollview.frame.size.height );*/
                            cell.imageView.image = responseObject;
                            
@@ -251,11 +262,7 @@
                            [cell.scrollview addGestureRecognizer:pinchGestureRecognizer];
                            
                            
-                           UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureDetected:)];
-                           //panGestureRecognizer.delegate = self;
-                           panGestureRecognizer.cancelsTouchesInView = NO;
-                           
-                           [cell.scrollview addGestureRecognizer:panGestureRecognizer];
+                          
                            
                            [cell setTag:indexPath.row];
                            
@@ -310,116 +317,172 @@
 - (void)panGestureDetected:(UIPanGestureRecognizer *)recognizer
 {
     UIGestureRecognizerState state = [recognizer state];
+    PhotoCollectionViewCell *currentCell;
+    CGFloat xScale = 1.0;
+    CGFloat screenWidth;
+    CGFloat screenHeight;
+    CGFloat imageWidth;
+    CGFloat imageHeight;
     
-   
+    for (PhotoCollectionViewCell *cell in [self.photoCollection visibleCells]) {
+        currentCell = cell;
+    }
     
-   
+    
     if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged)
     {
+       
+        xScale = currentCell.scrollview.transform.a;
+        screenWidth = screenSizes.size.width;
+        screenHeight = screenSizes.size.height;
+        imageWidth = screenWidth * xScale;
+        imageHeight = imageWidth * 224 / 358;
         
-        CGFloat xScale = recognizer.view.transform.a;
-        CGFloat screenWidth = screenSizes.size.width;
-        CGFloat screenHeight = screenSizes.size.height;
-        CGFloat imageWidth =screenWidth * xScale;
-        CGFloat imageHeight = imageWidth * 224 / 358;
         
-        CGFloat imageY = 0;
+        //CGFloat imageY = 0;
+        CGPoint translation = [recognizer translationInView:currentCell.scrollview];
+        CGRect imageFrame = [currentCell convertRect:currentCell.imageView.frame fromView:currentCell.scrollview];
         
-        if(imageHeight<screenHeight){
+       
+        
+        //imageFrame.origin.y = currentCell.imageView.frame.origin.y * xScale + currentCell.scrollview.frame.origin.y;
+        
+        
+        CGFloat translationX = translation.x;
+        CGFloat translationY = translation.y;
+        
+        
+        
+        if(xScale <= 1){
+            recognizer.enabled = YES;
             return;
         }
         
-        CGPoint translation = [recognizer translationInView:recognizer.view];
-      
-        [recognizer.view setTransform:CGAffineTransformTranslate(recognizer.view.transform, translation.x, translation.y)];
-        [recognizer setTranslation:CGPointZero inView:recognizer.view];
-        
-        /*if(recognizer.view.frame.size.width > screenWidth){
+        //Отключаем смещение высоты если высота изображения меньше высоты экрана
+        if(imageHeight <= screenHeight){
+            translationY = 0;
             
-            if(recognizer.view.frame.origin.x >= 0 && translation.x >= 0){
-              //   [photoCollection setScrollEnabled: YES];
-
-                [UIView animateWithDuration:0.5
-                                 animations: ^{
-                                     recognizer.view.frame = CGRectMake(0, recognizer.view.frame.origin.y, recognizer.view.frame.size.width, recognizer.view.frame.size.height );
-                                 } completion:nil];
-                
-            }else{
-                
-                
-                CGFloat visibleWidth = recognizer.view.frame.size.width + recognizer.view.frame.origin.x;
-                
-                if(visibleWidth <= screenWidth && translation.x <= 0){
-                     //recognizer.state = UIGestureRecognizerStateFailed;
-                     [UIView animateWithDuration:0.5
-                                     animations: ^{
-                                         recognizer.view.frame = CGRectMake(recognizer.view.frame.origin.x + (screenWidth - visibleWidth), recognizer.view.frame.origin.y, recognizer.view.frame.size.width, recognizer.view.frame.size.height );
-                                     } completion:nil];
-                    recognizer.enabled = NO;
-                }else{
-                  
-                    
-                    [recognizer.view setTransform:CGAffineTransformTranslate(recognizer.view.transform, translation.x, translation.y)];
-                    [recognizer setTranslation:CGPointZero inView:recognizer.view];
+        }
+        
+        [currentCell.scrollview setTransform:CGAffineTransformTranslate(currentCell.scrollview.transform, translationX, translationY)];
+        [recognizer setTranslation:CGPointZero inView:currentCell.scrollview];
+        
+        
+        CGFloat scrollPosY = currentCell.scrollview.frame.origin.y;
+        CGFloat scrollPosX = currentCell.scrollview.frame.origin.x;
+        if(translationY != 0){
+            imageFrame = [currentCell convertRect:currentCell.imageView.frame fromView:currentCell.scrollview];
+            if(translationY>0){
+                if((imageFrame.origin.y)>=0){
+                    scrollPosY = currentCell.imageView.frame.origin.y * xScale * -1;
                 }
-                
-                
-                
-                
-                
+            }else{
+                if((imageFrame.origin.y + imageHeight + translationY)<screenHeight){
+                    scrollPosY = currentCell.imageView.frame.origin.y * xScale * -1 + (screenHeight - imageHeight);
+                    
+                }
+            }
+        }
+        
+       
+        
+        
+        if(translationX != 0){
+            
+            
+            if(translationX>0){
+                 if(currentCell.scrollview.frame.origin.x>=0){
+                    scrollPosX = 0;
+                    
+                    
+                 }
+            }else{
+                if((currentCell.scrollview.frame.origin.x + currentCell.scrollview.frame.size.width + translationX)<screenSizes.size.width){
+                    scrollPosX = screenSizes.size.width - imageWidth;
+                    
+                    
+                    
+                }
             }
             
-        }else{
-           
-        }*/
+        }
+        currentCell.scrollview.frame = CGRectMake( scrollPosX,  scrollPosY, currentCell.scrollview.frame.size.width, currentCell.scrollview.frame.size.height );
+
         
+    }
+    
+    if (state == UIGestureRecognizerStateEnded || state == UIGestureRecognizerStateCancelled){
+        _recognizerRightEnabled = YES;
+        _recognizerLeftEnabled = YES;
+        if(currentCell.scrollview.frame.origin.x >= 0){
+            _recognizerLeftEnabled = NO;
+            _recognizerRightEnabled = YES;
+        }
         
+        if((currentCell.scrollview.frame.origin.x + currentCell.scrollview.frame.size.width)<=screenSizes.size.width){
+            _recognizerRightEnabled = NO;
+            _recognizerLeftEnabled = YES;
+        }
         
     }
 }
 
 
-/*- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)recognizer {
-    NSLog(@"rsdasdasdasWidth");
+- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)recognizer {
     
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    if(recognizer.view.frame.size.width <= screenWidth){
-        //[photoCollection setScrollEnabled: YES];
-         NSLog(@"recognizer.view.frame.size.width <= screenWidth");
-        return NO;
-    }else{
-        return YES;
-        CGPoint translation = [recognizer translationInView:recognizer.view];
-        NSLog(@"TEST4 %f", translation.x);
-        NSLog(@"recognizer.view.frame.origin.x %f", recognizer.view.frame.origin.x);
-
-        if(recognizer.view.frame.origin.x >=0 && recognizer.view.frame.origin.x < 10 && translation.x > 0){
-            [photoCollection setScrollEnabled: YES];
-            return NO;
-        }
-        
-        
-        
-        //[photoCollection setScrollEnabled: NO];
-        return YES;
-        
-        
-       
-
-        if(recognizer.view.frame.origin.x < 10 && translation.x > 0){
-            [photoCollection setScrollEnabled: YES];
-            return NO;
-        }
-
-        
-       
-        
+    CGFloat xScale = 1;
+    PhotoCollectionViewCell *currentCell = nil;
+    for (PhotoCollectionViewCell *cell in [self.photoCollection visibleCells]) {
+         xScale = cell.scrollview.transform.a;
+         currentCell = cell;
     }
-    return YES;
+    CGPoint translation = [recognizer translationInView:recognizer.view];
     
-}*/
+   
+    if(xScale>1){
+        
+        
+        
+        CGRect imageFrame = [currentCell convertRect:currentCell.imageView.frame fromView:currentCell.scrollview];
+        if(translation.x>0){
+            
+            if(currentCell.scrollview.frame.origin.x==0){
+                _recognizerLeftEnabled = NO;
+            }
+            
+            if(_recognizerLeftEnabled == NO){
+                return NO;
+            }
+        }
+        
+        if(translation.x<0){
+            
+             NSLog(@"Cell width %f", (currentCell.scrollview.frame.origin.x + currentCell.scrollview.frame.size.width));
+            NSLog(@"screenSizes.size.width %f", screenSizes.size.width);
+            
+            CGFloat CellScreen = currentCell.scrollview.frame.origin.x + currentCell.scrollview.frame.size.width-screenSizes.size.width-1;
+            
+            if(CellScreen < 0){
+                _recognizerRightEnabled = NO;
+            }
+            if(_recognizerRightEnabled == NO){
+                return NO;
+            }
+        }
+        
+        
+        
+        
+        
+        NSLog(@"enable all dir");
+       
+        return YES;
+    }
+    
+    
+    return NO;
+    
+}
 
 -(void) pinchGestureDetected: (UIPinchGestureRecognizer *) pinchRecogniser
 {
@@ -484,21 +547,24 @@
                             //ПРи уменьшение переживаем если только отступ от края меньше нуля
                             if(rightX<0){
                                  pinchRecogniser.view.frame = CGRectMake( screenSizes.size.width - pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                                
                             }
                         }else{
                             //Если отступ больше нуля
                             if(pinchRecogniser.view.frame.origin.x > 0){
                                  pinchRecogniser.view.frame = CGRectMake( 0, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                                
                             }
                         }
                         //Сохраняем на случай если начнется увелечение (этот параметр используется только для увелечения)
                         lastPoint.x = point.x;
-
+                        
                     }else{
                         //Выравниваем
                         pinchRecogniser.view.frame = CGRectMake( (screenSizes.size.width-pinchRecogniser.view.frame.size.width)/2, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
                         lastPoint.x = point.x;
                     }
+                    
                 }else{
                     
                     if(pinchRecogniser.view.frame.size.width >= screenSizes.size.width){
@@ -510,10 +576,12 @@
                         //Проверка изображени на лищний отступы
                         if(pinchRecogniser.view.frame.origin.x>0){
                             pinchRecogniser.view.frame = CGRectMake( 0, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                           
                         }else{
                             rightX = pinchRecogniser.view.frame.size.width + pinchRecogniser.view.frame.origin.x - screenSizes.size.width;
                             if(rightX < 0){
                                 pinchRecogniser.view.frame = CGRectMake( screenSizes.size.width - pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                               
                             }
 
                         }

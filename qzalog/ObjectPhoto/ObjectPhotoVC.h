@@ -29,7 +29,8 @@
 @property(nonatomic, retain) IBOutlet UIToolbar *toolbar;
 
 @property (nonatomic,assign) CGFloat scale;
-
+@property (nonatomic,assign) CGFloat recognizerRightEnabled;
+@property (nonatomic,assign) CGFloat recognizerLeftEnabled;
 
 -(IBAction)backPressed:(id)sender;
 
