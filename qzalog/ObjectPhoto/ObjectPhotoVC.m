@@ -107,6 +107,11 @@
     _recognizerRightEnabled = NO;
     _recognizerLeftEnabled = NO;
     [photoCollection addGestureRecognizer:panGestureRecognizer];
+    
+    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureDetected:)];
+    pinchGestureRecognizer.cancelsTouchesInView = NO;
+    pinchGestureRecognizer.delaysTouchesEnded = NO;
+    [photoCollection addGestureRecognizer:pinchGestureRecognizer];
    
     
 }
@@ -256,10 +261,7 @@
                            cell.imageView.image = responseObject;
                            
                           
-                           UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureDetected:)];
-                           pinchGestureRecognizer.cancelsTouchesInView = NO;
-                           pinchGestureRecognizer.delaysTouchesEnded = NO;
-                           [cell.scrollview addGestureRecognizer:pinchGestureRecognizer];
+                           
                            
                            
                           
@@ -440,9 +442,6 @@
     
    
     if(xScale>1){
-        
-        
-        
         CGRect imageFrame = [currentCell convertRect:currentCell.imageView.frame fromView:currentCell.scrollview];
         if(translation.x>0){
             
@@ -470,10 +469,6 @@
             }
         }
         
-        
-        
-        
-        
         NSLog(@"enable all dir");
        
         return YES;
@@ -491,6 +486,12 @@
     //Точка последнего центра между пальцами
     static CGPoint lastPoint;
    
+    PhotoCollectionViewCell *currentCell;
+    
+    for (PhotoCollectionViewCell *cell in [self.photoCollection visibleCells]) {
+        currentCell = cell;
+    }
+
     
     switch ([pinchRecogniser state])
     {
@@ -499,7 +500,7 @@
                 NSLog(@"Began");
                 [photoCollection setScrollEnabled: NO];
                 scaleStart = 1.0f;
-                lastPoint = [pinchRecogniser locationInView:[pinchRecogniser view]];
+                lastPoint = [pinchRecogniser locationInView:currentCell.scrollview];
                 
                 break;
             }
@@ -507,7 +508,7 @@
         case UIGestureRecognizerStateChanged:
             {
                 //Проверка маштаба на макс и мин
-                CGFloat currentScale = [[[pinchRecogniser view].layer valueForKeyPath:@"transform.scale"] floatValue];
+                CGFloat currentScale = [[currentCell.scrollview.layer valueForKeyPath:@"transform.scale"] floatValue];
                 
                 // Constants to adjust the max/min values of zoom
                 const CGFloat kMaxScale = 5.0;
@@ -517,42 +518,68 @@
                 scale = MIN(scale, kMaxScale / currentScale);
                 scale = MAX(scale, kMinScale / currentScale);
                 
-                [pinchRecogniser.view setTransform:CGAffineTransformScale(pinchRecogniser.view.transform, scale,scale)];
+                [currentCell.scrollview setTransform:CGAffineTransformScale(currentCell.scrollview.transform, scale,scale)];
                 [pinchRecogniser setScale:1.0];
                 scaleStart = pinchRecogniser.scale;
                
                 
                 //Расчет центра увел. блока
-                CGPoint point = [pinchRecogniser locationInView:[pinchRecogniser view]];
+                CGPoint point = [pinchRecogniser locationInView:currentCell.scrollview];
                 CGFloat scaleCenterX = point.x-lastPoint.x;
                 CGFloat scaleCenterY = 0;
                 
                 
                 //Получение отступа от левого края
-                CGFloat leftX = pinchRecogniser.view.frame.origin.x;
+                CGFloat leftX = currentCell.scrollview.frame.origin.x;
                 //Получение отступа от правого
-                CGFloat rightX = pinchRecogniser.view.frame.size.width + pinchRecogniser.view.frame.origin.x - screenSizes.size.width;
+                CGFloat rightX = currentCell.scrollview.frame.size.width + currentCell.scrollview.frame.origin.x - screenSizes.size.width;
                 
                 //Если фотка уменьшается
+                
+                CGFloat scrollY = currentCell.scrollview.frame.origin.y;
+                CGFloat xScale = currentCell.scrollview.transform.a;
+                CGFloat scrollImageY = currentCell.imageView.frame.origin.y * xScale;
+                
+                CGRect imageFrame = [currentCell convertRect:currentCell.imageView.frame fromView:currentCell.scrollview];
+                CGFloat imageWidth = screenWidth * xScale;
+                CGFloat imageHeight = imageWidth * 224 / 358;
+                
                 if(scale<=1){
                     
-                    if(pinchRecogniser.view.frame.size.width >= screenSizes.size.width){
+                    if(currentCell.scrollview.frame.size.width >= screenSizes.size.width){
+                        
+                        NSLog(@"Scale right corner %f", currentCell.scrollview.frame.origin.y);
+                        if(imageHeight > screenSizes.size.height){
+                            if(imageFrame.origin.y>0)
+                                scrollY = currentCell.imageView.frame.origin.y * xScale * -1;//+ (screenSizes.size.height-imageHeight)/2;
+                            
+                            if((imageFrame.origin.y + imageHeight)<screenSizes.size.height){
+                                scrollY = currentCell.imageView.frame.origin.y * xScale * -1 + (screenSizes.size.height - imageHeight);
+                                
+                            }
+                            
+                        }
+                        //if((currentCell.scrollview.frame.origin.y + currentCell.scrollview.frame.size.height)<screenSizes.size.height){
+                       //    scrollY = screenSizes.size.height - currentCell.scrollview.frame.size.height;
+                       // }
+                        
+                        
                         //Модуль нужен для сравнения последующего
                         if(leftX < 0)
                             leftX = leftX * -1;
 
                         //Если блок в большей степени смещен влево
                         if(leftX > rightX){
-                            NSLog(@"Scale right corner %f", rightX);
+                            
                             //ПРи уменьшение переживаем если только отступ от края меньше нуля
                             if(rightX<0){
-                                 pinchRecogniser.view.frame = CGRectMake( screenSizes.size.width - pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                                 currentCell.scrollview.frame = CGRectMake( screenSizes.size.width - currentCell.scrollview.frame.size.width, scrollY, currentCell.scrollview.frame.size.width, currentCell.scrollview.frame.size.height );
                                 
                             }
                         }else{
                             //Если отступ больше нуля
-                            if(pinchRecogniser.view.frame.origin.x > 0){
-                                 pinchRecogniser.view.frame = CGRectMake( 0, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                            if(currentCell.scrollview.frame.origin.x > 0){
+                                 currentCell.scrollview.frame = CGRectMake( 0, scrollY, currentCell.scrollview.frame.size.width, currentCell.scrollview.frame.size.height );
                                 
                             }
                         }
@@ -561,26 +588,26 @@
                         
                     }else{
                         //Выравниваем
-                        pinchRecogniser.view.frame = CGRectMake( (screenSizes.size.width-pinchRecogniser.view.frame.size.width)/2, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                        currentCell.scrollview.frame = CGRectMake( (screenSizes.size.width-currentCell.scrollview.frame.size.width)/2, currentCell.scrollview.frame.origin.y, currentCell.scrollview.frame.size.width, currentCell.scrollview.frame.size.height );
                         lastPoint.x = point.x;
                     }
                     
                 }else{
                     
-                    if(pinchRecogniser.view.frame.size.width >= screenSizes.size.width){
+                    if(currentCell.scrollview.frame.size.width >= screenSizes.size.width){
  
                         //Отцентровка изображения
-                        CGAffineTransform transformTranslate = CGAffineTransformTranslate([[pinchRecogniser view] transform], scaleCenterX, scaleCenterY);
-                        [pinchRecogniser view].transform = transformTranslate;
+                        CGAffineTransform transformTranslate = CGAffineTransformTranslate([currentCell.scrollview transform], scaleCenterX, scaleCenterY);
+                        currentCell.scrollview.transform = transformTranslate;
                         
                         //Проверка изображени на лищний отступы
-                        if(pinchRecogniser.view.frame.origin.x>0){
-                            pinchRecogniser.view.frame = CGRectMake( 0, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                        if(currentCell.scrollview.frame.origin.x>0){
+                            currentCell.scrollview.frame = CGRectMake( 0, currentCell.scrollview.frame.origin.y, currentCell.scrollview.frame.size.width, currentCell.scrollview.frame.size.height );
                            
                         }else{
-                            rightX = pinchRecogniser.view.frame.size.width + pinchRecogniser.view.frame.origin.x - screenSizes.size.width;
+                            rightX = currentCell.scrollview.frame.size.width + currentCell.scrollview.frame.origin.x - screenSizes.size.width;
                             if(rightX < 0){
-                                pinchRecogniser.view.frame = CGRectMake( screenSizes.size.width - pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.origin.y, pinchRecogniser.view.frame.size.width, pinchRecogniser.view.frame.size.height );
+                                currentCell.scrollview.frame = CGRectMake( screenSizes.size.width - currentCell.scrollview.frame.size.width, currentCell.scrollview.frame.origin.y, currentCell.scrollview.frame.size.width, currentCell.scrollview.frame.size.height );
                                
                             }
 
