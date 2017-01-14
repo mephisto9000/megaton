@@ -91,7 +91,7 @@
 		1BD60F261E099B51002EC008 /* arrow_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60F251E099B51002EC008 /* arrow_left.png */; };
 		973326721E0833EC00B711D0 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 973326711E0833EC00B711D0 /* MenuCell.m */; };
 		9733267D1E0839D000B711D0 /* SaleWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733267C1E0839D000B711D0 /* SaleWaysViewController.swift */; };
-		97922B801E22C62600CCD740 /* TapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97922B7F1E22C62600CCD740 /* TapGestureRecognizer.m */; };
+		97922B801E22C62600CCD740 /* CustomPinchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97922B7F1E22C62600CCD740 /* CustomPinchGestureRecognizer.m */; };
 		97922B871E23EF5E00CCD740 /* PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97922B861E23EF5E00CCD740 /* PhotoCollectionViewCell.m */; };
 		F2A2A171A40B088EB1EADDBD /* libPods-qzalog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */; };
 /* End PBXBuildFile section */
@@ -249,8 +249,8 @@
 		973326711E0833EC00B711D0 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		9733267B1E0839D000B711D0 /* qzalog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "qzalog-Bridging-Header.h"; sourceTree = "<group>"; };
 		9733267C1E0839D000B711D0 /* SaleWaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleWaysViewController.swift; sourceTree = "<group>"; };
-		97922B7E1E22C62600CCD740 /* TapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapGestureRecognizer.h; sourceTree = "<group>"; };
-		97922B7F1E22C62600CCD740 /* TapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapGestureRecognizer.m; sourceTree = "<group>"; };
+		97922B7E1E22C62600CCD740 /* CustomPinchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPinchGestureRecognizer.h; sourceTree = "<group>"; };
+		97922B7F1E22C62600CCD740 /* CustomPinchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPinchGestureRecognizer.m; sourceTree = "<group>"; };
 		97922B851E23EF5E00CCD740 /* PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		97922B861E23EF5E00CCD740 /* PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		B3B7A6EBF951F5930DEEC190 /* libPods-qzalog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qzalog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -588,8 +588,8 @@
 			children = (
 				1BD60F081E0516E5002EC008 /* ObjectPhotoVC.h */,
 				1BD60F091E0516E5002EC008 /* ObjectPhotoVC.m */,
-				97922B7E1E22C62600CCD740 /* TapGestureRecognizer.h */,
-				97922B7F1E22C62600CCD740 /* TapGestureRecognizer.m */,
+				97922B7E1E22C62600CCD740 /* CustomPinchGestureRecognizer.h */,
+				97922B7F1E22C62600CCD740 /* CustomPinchGestureRecognizer.m */,
 				97922B851E23EF5E00CCD740 /* PhotoCollectionViewCell.h */,
 				97922B861E23EF5E00CCD740 /* PhotoCollectionViewCell.m */,
 			);
@@ -868,7 +868,7 @@
 				1B662AD31DD8977C00BAB071 /* InitVC.m in Sources */,
 				1B1829C21DED545200C9154A /* MapVC.m in Sources */,
 				1B662AD91DD8977C00BAB071 /* qzalog.xcdatamodeld in Sources */,
-				97922B801E22C62600CCD740 /* TapGestureRecognizer.m in Sources */,
+				97922B801E22C62600CCD740 /* CustomPinchGestureRecognizer.m in Sources */,
 				1BCD65FD1DE9ACC800E9BEED /* RegionSpinnerVC.m in Sources */,
 				1B5473B81DE0518700903E21 /* CategoryDetailDataLoader.m in Sources */,
 				1BCD65F21DE526CF00E9BEED /* SearchEditCell.m in Sources */,

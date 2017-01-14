@@ -18,16 +18,16 @@
 
         _scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         //_scrollview.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height);
-        _scrollview.backgroundColor = [UIColor redColor];
+        //_scrollview.backgroundColor = [UIColor redColor];
         
         
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, _scrollview.frame.size.width, _scrollview.frame.size.width / 358 * 224)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, (_scrollview.frame.size.height - _scrollview.frame.size.width / 358 * 224)/2 + 6, _scrollview.frame.size.width, _scrollview.frame.size.width / 358 * 224)];
         
         //[_imageView setContentMode:UIViewContentModeScaleAspectFill];
         //_imageView.backgroundColor = [UIColor blueColor];
         
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        [_imageView setCenter:CGPointMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect))];
+        //CGRect screenRect = [[UIScreen mainScreen] bounds];
+        //[_imageView setCenter:CGPointMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect))];
         
         
               

@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
-@interface TapGestureRecognizer : UIGestureRecognizer
-
+@interface CustomPinchGestureRecognizer : UIPinchGestureRecognizer
 @end

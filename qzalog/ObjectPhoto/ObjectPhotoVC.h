@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TapGestureRecognizer.h"
+#import "CustomPinchGestureRecognizer.h"
 #import "PhotoCollectionViewCell.h"
+
 
 @interface ObjectPhotoVC : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
