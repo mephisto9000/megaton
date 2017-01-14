@@ -10,8 +10,10 @@
 
 @implementation CategoryDetailCell
 {
-    int starMode;
+    //int starMode;
 }
+
+@synthesize starMode;
 
 @synthesize adImage;
 @synthesize adTextLabel;
@@ -38,19 +40,20 @@
     
     NSString *query = [NSString stringWithFormat: @"select * from liked where object_id = %@", self.objectId];
     
-    NSLog(query);
-    
     NSArray *likedInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
     
-    
-    
-    
+    starMode = 1;
+     [starButton setImage: [UIImage imageNamed:@"star_circle_empty.png"] forState:UIControlStateNormal];
     if (likedInfo!=nil && [likedInfo count] > 0)
     {
         [self starButtonClicked:nil];
-    }
+        //[starButton setImage:  [UIImage imageNamed:@"star_circle.png"] forState:UIControlStateNormal];
+    }//else
+        //[starButton setImage: [UIImage imageNamed:@"star_circle_empty.png"] forState:UIControlStateNormal];
 
   }
+
+
 
 -(IBAction) starButtonClicked:(id) sender
 {
@@ -75,7 +78,7 @@
         query = [NSString stringWithFormat:@"delete from liked where object_id =  %@ ", self.objectId ];
     }
     
-    NSLog (query);
+    
     _dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
     
     [_dbManager executeQuery:query];
@@ -94,9 +97,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
-    //starMode = 1;
-    
+
     starMode = 1;
     
    

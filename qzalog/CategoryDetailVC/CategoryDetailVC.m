@@ -206,6 +206,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
     }
     
     
+        
     //сохраняем в ячейке objectId
     [cell setObjectId:cd.catDetId];
     

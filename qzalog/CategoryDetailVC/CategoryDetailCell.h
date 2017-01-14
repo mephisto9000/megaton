@@ -29,6 +29,8 @@
 @property(nonatomic, retain) IBOutlet UIButton *starButton;
 @property (weak, nonatomic) IBOutlet UIView *viewOut;
 
+@property (nonatomic,assign) CGFloat starMode;
+
 
 -(IBAction) starButtonClicked:(id) sender;
 
