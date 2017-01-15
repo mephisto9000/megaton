@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kvb-fP-op0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kvb-fP-op0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1401,6 +1401,50 @@
                                             <outlet property="titleLabel" destination="aga-01-29R" id="AyT-9h-RBk"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchEdit2Cell" rowHeight="70" id="u0G-KD-euV" customClass="SearchSelectCell">
+                                        <rect key="frame" x="0.0" y="238" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="u0G-KD-euV" id="lbt-ay-miO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" preservesSuperviewLayoutMargins="YES" text="Property name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLz-Sk-22d">
+                                                    <rect key="frame" x="8" y="11" width="359" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kRF-h3-j1m">
+                                                    <rect key="frame" x="0.0" y="14" width="375" height="40"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tzJ-Uh-uIE">
+                                                            <rect key="frame" x="8" y="5" width="345" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="tzJ-Uh-uIE" secondAttribute="trailing" constant="8" id="8xd-O9-YrU"/>
+                                                        <constraint firstAttribute="height" constant="40" id="JK5-BH-0mf"/>
+                                                        <constraint firstItem="tzJ-Uh-uIE" firstAttribute="leading" secondItem="kRF-h3-j1m" secondAttribute="leading" constant="8" id="lxm-8y-9zP"/>
+                                                        <constraint firstItem="tzJ-Uh-uIE" firstAttribute="top" secondItem="kRF-h3-j1m" secondAttribute="top" constant="5" id="roS-wI-WG7"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="gLz-Sk-22d" firstAttribute="leading" secondItem="lbt-ay-miO" secondAttribute="leadingMargin" constant="8" id="ZNi-Zk-vV7"/>
+                                                <constraint firstItem="gLz-Sk-22d" firstAttribute="trailing" secondItem="lbt-ay-miO" secondAttribute="trailingMargin" constant="8" id="w9D-QF-Wqh"/>
+                                            </constraints>
+                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                        </tableViewCellContentView>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="gLz-Sk-22d" id="22p-el-eqr"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="IOt-bf-hT9" id="e24-3F-h0M"/>
@@ -2367,10 +2411,10 @@
         <image name="star_white_empty.png" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uzr-ls-AU5"/>
-        <segue reference="4Lc-hZ-xw1"/>
-        <segue reference="nks-cD-6EA"/>
-        <segue reference="8we-2r-2yO"/>
         <segue reference="XaB-z7-dRJ"/>
+        <segue reference="8we-2r-2yO"/>
+        <segue reference="nks-cD-6EA"/>
+        <segue reference="uzr-ls-AU5"/>
+        <segue reference="lee-TP-Yzt"/>
     </inferredMetricsTieBreakers>
 </document>

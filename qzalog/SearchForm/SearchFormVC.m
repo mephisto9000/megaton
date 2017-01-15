@@ -13,6 +13,7 @@
 #import "CategorySpinnerVC.h"
 #import "SearchSelectCell.h"
 #import "SearchEditCell.h"
+#import "SearchEdit2Cell.h"
 #import "SearchCell.h"
 #import "CategoryDetailVC.h"
 #import "UserData.h"
@@ -252,28 +253,14 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
     if (indexPath.row == 0)
     {
        RegionCell *cell = (RegionCell *)[tableView dequeueReusableCellWithIdentifier:@"regionCell" forIndexPath:indexPath];
-        
-        /*if (cell == nil)
-            cell =  [ [RegionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"regionCell"];*/
-       
-        //[cell.regionCellView setBackgroundColor:[UIColor redColor]];
-        
-        
+
        
         CALayer *TopBorder = [CALayer layer];
-         TopBorder.frame = CGRectMake(0.0f, 0.0f, cell.regionCellView.bounds.size.width, 0.5f);
+        TopBorder.frame = CGRectMake(0.0f, 0.0f, cell.regionCellView.bounds.size.width, 0.5f);
         TopBorder.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
 
          [cell.regionCellView.layer addSublayer:TopBorder];
-      /*
-        CALayer *BottomBorder = [CALayer layer];
-        BottomBorder.frame = CGRectMake(0.0f, cell.regionCellView.bounds.size.height-1, cell.regionCellView.bounds.size.width, 1.0f);
-        BottomBorder.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
-        [cell.regionCellView.layer addSublayer:BottomBorder];
-*/
-
-        
-        
+      
         regionCell = cell;
         
         return cell;
@@ -317,31 +304,20 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         return cell;
     }
     
-    /*if (!cell)
-    {
-        if (so.type == 1)
-            cell = (UITableViewCell<SearchCell> *)[[SearchEditCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchEditCell" ];
+    if (so.type == 3){
+        SearchEdit2Cell *cell;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"searchEdit2Cell" forIndexPath:indexPath];
         
-        if (so.type == 2)
-        {
-            
-            cell =(UITableViewCell<SearchCell> *)[[SearchSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"searchSelectCell" ];
-            [((SearchSelectCell *)cell ) setSearchFormVC: self];
-        }
-        
-        
+        CALayer *TopBorder2 = [CALayer layer];
+        TopBorder2.frame = CGRectMake(0.0f, 0.0f, cell.fieldView.bounds.size.width, 0.5f);
+        TopBorder2.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+        [cell.fieldView.layer addSublayer:TopBorder2];
+        [cell initWithSearchObject:so];
+        return cell;
         
     }
     
     
-    
-    
-    [cell initWithSearchObject:so];
-    
-    NSLog(@"loading cell # %i %@ %@ %@", (int) indexPath.row, so.selectedValue1, so.selectedValue2, so.name); //, so.name
-    
-    
-    */
     return cell;
    
     

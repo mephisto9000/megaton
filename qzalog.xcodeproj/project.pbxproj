@@ -89,6 +89,7 @@
 		1BD60F221E0998A7002EC008 /* ic_category_link.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60F211E0998A7002EC008 /* ic_category_link.png */; };
 		1BD60F241E0998AC002EC008 /* ic_category_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60F231E0998AC002EC008 /* ic_category_arrow.png */; };
 		1BD60F261E099B51002EC008 /* arrow_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD60F251E099B51002EC008 /* arrow_left.png */; };
+		970681871E2BDA270036E187 /* SearchEdit2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 970681861E2BDA270036E187 /* SearchEdit2Cell.m */; };
 		973326721E0833EC00B711D0 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 973326711E0833EC00B711D0 /* MenuCell.m */; };
 		9733267D1E0839D000B711D0 /* SaleWaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9733267C1E0839D000B711D0 /* SaleWaysViewController.swift */; };
 		97922B801E22C62600CCD740 /* CustomPinchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 97922B7F1E22C62600CCD740 /* CustomPinchGestureRecognizer.m */; };
@@ -245,6 +246,8 @@
 		1BD60F231E0998AC002EC008 /* ic_category_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_category_arrow.png; sourceTree = "<group>"; };
 		1BD60F251E099B51002EC008 /* arrow_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left.png; sourceTree = "<group>"; };
 		47AB958328DC59D8977CC0FE /* Pods-qzalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qzalog.release.xcconfig"; path = "Pods/Target Support Files/Pods-qzalog/Pods-qzalog.release.xcconfig"; sourceTree = "<group>"; };
+		970681851E2BDA270036E187 /* SearchEdit2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchEdit2Cell.h; sourceTree = "<group>"; };
+		970681861E2BDA270036E187 /* SearchEdit2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchEdit2Cell.m; sourceTree = "<group>"; };
 		973326701E0833EC00B711D0 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
 		973326711E0833EC00B711D0 /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		9733267B1E0839D000B711D0 /* qzalog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "qzalog-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 				1BCD65F11DE526CF00E9BEED /* SearchEditCell.m */,
 				1B22AC4D1DF72E53008B4B15 /* RegionCell.h */,
 				1B22AC4E1DF72E53008B4B15 /* RegionCell.m */,
+				970681851E2BDA270036E187 /* SearchEdit2Cell.h */,
+				970681861E2BDA270036E187 /* SearchEdit2Cell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -855,6 +860,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BCD660E1DEAB84E00E9BEED /* ObjectDetailLoader.m in Sources */,
+				970681871E2BDA270036E187 /* SearchEdit2Cell.m in Sources */,
 				1B5473BE1DE0A43D00903E21 /* CategoryDetailCell.m in Sources */,
 				1B5473B01DE034EE00903E21 /* CategoryCell.h in Sources */,
 				1B1829CE1DEF410300C9154A /* UserData.m in Sources */,
