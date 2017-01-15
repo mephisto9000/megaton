@@ -410,6 +410,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 }
 
 
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -520,6 +521,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
 {
     [self performSegueWithIdentifier:TO_MAP sender:self];
 }
+
 
 
 //назад

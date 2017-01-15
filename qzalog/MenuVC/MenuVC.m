@@ -53,7 +53,7 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
     rowNum = [menuItems count];
     
     //градиентная заливка
-    [self setGradient];
+   // [self setGradient];
     
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter]
@@ -64,7 +64,7 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
 }
 
 - (void)setGradient {
-    UIView *bgView = [[UIView alloc] initWithFrame: self.view.frame];  //  CGRectMake(0.0f, 0.0f, 320.0f, 50.0f)
+    UIView *bgView = [[UIView alloc] initWithFrame: self.view.frame];
     gradient = [CAGradientLayer layer];
     gradient.frame = bgView.bounds;
     
@@ -76,13 +76,20 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
     [self.view.layer insertSublayer:gradient atIndex:0];
 }
 
+
+- (void)viewDidAppear:(BOOL)animated {
+    [gradient removeFromSuperlayer];
+    [self setGradient];
+   
+}
+
+
 - (void) orientationChanged:(NSNotification *)note
 {
     
     UIDevice * device = note.object;
-    
-   
     [gradient removeFromSuperlayer];
+    
      [self setGradient];
     
 }
@@ -154,6 +161,8 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
 }
 
 
+
+
 #pragma mark - Navigation
 
  //In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -170,5 +179,30 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
     }
 }
 
+
+@end
+
+@implementation UINavigationController (overrides)
+/*- (BOOL)shouldAutorotate
+{
+    id currentViewController = self.topViewController;
+    
+    if ([currentViewController isKindOfClass:[ObjectPhotoVC class]])
+        return YES;
+    
+    return YES;
+}*/
+- (NSUInteger)supportedInterfaceOrientations {
+    id currentViewController = self.topViewController;
+    if ([currentViewController isKindOfClass:[ObjectPhotoVC class]]){
+        //return [self.topViewController supportedInterfaceOrientations];
+        return UIInterfaceOrientationMaskAll;
+        
+    }
+    
+    return UIInterfaceOrientationMaskPortrait;
+   
+    
+}
 
 @end
