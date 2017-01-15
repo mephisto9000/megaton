@@ -182,16 +182,9 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
 
 @end
 
-@implementation UINavigationController (overrides)
-/*- (BOOL)shouldAutorotate
-{
-    id currentViewController = self.topViewController;
-    
-    if ([currentViewController isKindOfClass:[ObjectPhotoVC class]])
-        return YES;
-    
-    return YES;
-}*/
+/*@implementation UINavigationController (overrides)
+
+
 - (NSUInteger)supportedInterfaceOrientations {
     id currentViewController = self.topViewController;
     if ([currentViewController isKindOfClass:[ObjectPhotoVC class]]){
@@ -205,4 +198,4 @@ const NSString *TO_SALE_DISCREPTION = @"salesPage";
     
 }
 
-@end
+@end*/
