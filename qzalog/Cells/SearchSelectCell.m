@@ -30,6 +30,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    
+    
 
     //Detail Disclosure button
     CGRect screenRect = [[UIScreen mainScreen] bounds];
