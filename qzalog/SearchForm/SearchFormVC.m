@@ -475,7 +475,13 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         
         NSLog(@"search request str == %@", requestStr);
         
-        [catVC setUrl:requestStr];
+        //requestStr = [requestStr urlencode];
+        NSString* encodedUrl = [requestStr stringByAddingPercentEscapesUsingEncoding:
+                                NSUTF8StringEncoding];
+        
+        NSLog(@"search request str(encoded)  == %@", encodedUrl);
+        
+        [catVC setUrl:encodedUrl];
     }
 }
 
