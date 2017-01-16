@@ -23,7 +23,7 @@ const NSString *MENU_SEAGUE = @"goMenu";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 -(IBAction)jumpToMenu:(id)sender
