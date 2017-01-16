@@ -375,12 +375,12 @@
             if(translationX != 0){
                 if(translationX>0){
                     
-                    if(imageFrame.origin.x>=-1){
+                    if(imageFrame.origin.x>=0){
                         scrollPosX = (imageWidth - currentCell.scrollview.frame.size.width)/2;
                         
                     }
                 }else{
-                    if((imageFrame.origin.x + imageWidth + translationX-1)<screenSizes.size.width){
+                    if((imageFrame.origin.x + imageWidth + translationX)<screenSizes.size.width){
                         scrollPosX = -1 * (currentCell.scrollview.frame.size.width - screenWidth) - (imageWidth - currentCell.scrollview.frame.size.width)/2;
                         
                     }
@@ -439,11 +439,11 @@
                 _recognizerLeftEnabled = YES;
             }
         }else{
-            if(imageFrame.origin.x >= -1){
+            if(imageFrame.origin.x >= 0){
                 _recognizerLeftEnabled = NO;
                 _recognizerRightEnabled = YES;
             }
-            if((imageFrame.origin.x + imageWidth - 1)<=screenSizes.size.width){
+            if((imageFrame.origin.x + imageWidth)<=screenSizes.size.width){
                 _recognizerRightEnabled = NO;
                 _recognizerLeftEnabled = YES;
             }
