@@ -26,4 +26,8 @@
 +(void) setCategoryName : (NSString *) outCategoryName;
 
 
++(NSString *) dbName;
++(void) setDbName : (NSString *) outDbName;
+
+
 @end

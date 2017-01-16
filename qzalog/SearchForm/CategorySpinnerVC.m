@@ -91,7 +91,7 @@
     }
 
     //dbManager = [DBManager new];
-    dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    dbManager = [[DBManager alloc] initWithDatabaseFilename: [UserData dbName]];
 
     categoriesInfo = [[NSArray alloc] initWithArray:[dbManager loadDataFromDB:query]];
 

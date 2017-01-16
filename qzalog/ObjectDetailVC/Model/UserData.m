@@ -13,8 +13,20 @@ static NSString *regionName;
 
 static NSString *categoryId;
 static NSString *categoryName;
+static NSString *dbName;
 
 @implementation UserData
+
+
++(NSString *) dbName
+{
+    return dbName;
+}
+
++(void) setDbName : (NSString *) outDbName
+{
+    dbName = outDbName;
+}
 
 
 +(NSString *) regionId

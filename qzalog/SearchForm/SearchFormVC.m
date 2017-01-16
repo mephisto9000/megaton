@@ -13,6 +13,7 @@
 #import "CategorySpinnerVC.h"
 #import "SearchSelectCell.h"
 #import "SearchEditCell.h"
+#import "SearchEdit2Cell.h"
 #import "SearchCell.h"
 #import "CategoryDetailVC.h"
 #import "UserData.h"
@@ -315,6 +316,19 @@ const NSString *TO_CATEGORY_DETAIL = @"toCategoryDetail";
         [((SearchSelectCell *)cell ) setSearchFormVC: self];
          [cell initWithSearchObject:so];
         return cell;
+    }
+    
+    if (so.type == 3){
+        SearchEdit2Cell *cell;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"searchEdit2Cell" forIndexPath:indexPath];
+        
+        CALayer *TopBorder2 = [CALayer layer];
+        TopBorder2.frame = CGRectMake(0.0f, 0.0f, cell.fieldView.bounds.size.width, 0.5f);
+        TopBorder2.backgroundColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0].CGColor;
+        [cell.fieldView.layer addSublayer:TopBorder2];
+        [cell initWithSearchObject:so];
+        return cell;
+        
     }
     
     /*if (!cell)

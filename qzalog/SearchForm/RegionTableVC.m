@@ -47,7 +47,7 @@
 
 -(int) loadData: (NSInteger) regionId
 {
-    DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    DBManager *db = [[DBManager alloc] initWithDatabaseFilename:  [UserData dbName]];
     
     NSString *query ;
     

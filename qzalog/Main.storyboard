@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kvb-fP-op0">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kvb-fP-op0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1339,8 +1339,64 @@
                                             <outletCollection property="textFields" destination="WTr-ym-v0q" id="hDR-V4-zBd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchSelectCell" rowHeight="70" id="aK6-7J-Bc0" customClass="SearchSelectCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchEdit2Cell" rowHeight="70" id="KIN-Eg-CDC" userLabel="searchEdit2Cell" customClass="SearchEdit2Cell">
                                         <rect key="frame" x="0.0" y="168" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="KIN-Eg-CDC" id="ZRp-JR-KHF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" preservesSuperviewLayoutMargins="YES" text="Property name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udD-aS-Cgc">
+                                                    <rect key="frame" x="8" y="8" width="359" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.49019607840000001" green="0.49019607840000001" blue="0.49019607840000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YL0-yf-hUE">
+                                                    <rect key="frame" x="0.0" y="30" width="375" height="40"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMU-C8-gGL">
+                                                            <rect key="frame" x="8" y="5" width="332" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="KIN-Eg-CDC" id="0nd-ow-cx1"/>
+                                                            </connections>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="iMU-C8-gGL" firstAttribute="leading" secondItem="YL0-yf-hUE" secondAttribute="leading" constant="8" id="C6z-31-aKY"/>
+                                                        <constraint firstAttribute="height" constant="40" id="CPA-1a-Pf4"/>
+                                                        <constraint firstItem="iMU-C8-gGL" firstAttribute="width" secondItem="YL0-yf-hUE" secondAttribute="width" multiplier="3:10" constant="0.29999999999999999" id="EpF-6W-e9e"/>
+                                                        <constraint firstItem="iMU-C8-gGL" firstAttribute="top" secondItem="YL0-yf-hUE" secondAttribute="top" constant="5" id="MgE-Gn-IKT"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="YL0-yf-hUE" firstAttribute="leading" secondItem="ZRp-JR-KHF" secondAttribute="leading" id="2rt-Ce-zed"/>
+                                                <constraint firstItem="YL0-yf-hUE" firstAttribute="top" secondItem="udD-aS-Cgc" secondAttribute="bottom" constant="4" id="43t-N6-H9C"/>
+                                                <constraint firstItem="udD-aS-Cgc" firstAttribute="leading" secondItem="ZRp-JR-KHF" secondAttribute="leadingMargin" constant="8" id="9U1-EW-MuV"/>
+                                                <constraint firstAttribute="trailing" secondItem="YL0-yf-hUE" secondAttribute="trailing" id="FTc-xl-Kcr"/>
+                                                <constraint firstItem="udD-aS-Cgc" firstAttribute="trailing" secondItem="ZRp-JR-KHF" secondAttribute="trailingMargin" constant="8" id="bO1-MY-tZQ"/>
+                                                <constraint firstItem="YL0-yf-hUE" firstAttribute="top" secondItem="ZRp-JR-KHF" secondAttribute="top" constant="30" id="l4i-RS-AuR"/>
+                                            </constraints>
+                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="8"/>
+                                            <variation key="heightClass=regular-widthClass=regular" preservesSuperviewLayoutMargins="NO"/>
+                                        </tableViewCellContentView>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="fieldView" destination="YL0-yf-hUE" id="fHA-wS-cZl"/>
+                                            <outlet property="textView" destination="iMU-C8-gGL" id="YlW-Rs-3XV"/>
+                                            <outlet property="titleLabel" destination="udD-aS-Cgc" id="lfn-uj-2xs"/>
+                                            <outletCollection property="textFields" destination="iMU-C8-gGL" id="X2N-18-3VL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchSelectCell" rowHeight="70" id="aK6-7J-Bc0" customClass="SearchSelectCell">
+                                        <rect key="frame" x="0.0" y="238" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="aK6-7J-Bc0" id="2wC-R2-1Lw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
@@ -2368,9 +2424,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uzr-ls-AU5"/>
-        <segue reference="4Lc-hZ-xw1"/>
         <segue reference="nks-cD-6EA"/>
         <segue reference="8we-2r-2yO"/>
         <segue reference="XaB-z7-dRJ"/>
+        <segue reference="lee-TP-Yzt"/>
     </inferredMetricsTieBreakers>
 </document>

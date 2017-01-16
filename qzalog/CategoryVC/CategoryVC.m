@@ -135,7 +135,7 @@ const NSString *TO_SEARCH = @"toSearch";
     
     
     //загружаем базу
-    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    self.dbManager = [[DBManager alloc] initWithDatabaseFilename: [UserData dbName] ]; 
     
     //после ждем когда данные загрузятся
     [self loadData];

@@ -18,6 +18,8 @@
 
 const NSString *googleMapsApiKey = @"AIzaSyCu5vMkMJiusQx5_PFDVgmBYZ76C8uDQhc";
 
+const NSString *dbName = @"qzalog160117.db";
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -32,6 +34,8 @@ const NSString *googleMapsApiKey = @"AIzaSyCu5vMkMJiusQx5_PFDVgmBYZ76C8uDQhc";
     
     [UserData setCategoryId:@"31"];
     [UserData setCategoryName:@"Квартиры"];
+    
+    [UserData setDbName:dbName];
     
     return YES;
 }

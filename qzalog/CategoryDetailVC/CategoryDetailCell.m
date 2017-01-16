@@ -7,6 +7,7 @@
 //
 
 #import "CategoryDetailCell.h"
+#import "UserData.h"
 
 @implementation CategoryDetailCell
 {
@@ -36,7 +37,7 @@
     NSLog(@"creating cell categoryDetailCell");
     
     //NSString *query =
-    _dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    _dbManager = [[DBManager alloc] initWithDatabaseFilename:[UserData dbName]];
     
     NSString *query = [NSString stringWithFormat: @"select * from liked where object_id = %@", self.objectId];
     
@@ -79,7 +80,7 @@
     }
     
     
-    _dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    _dbManager = [[DBManager alloc] initWithDatabaseFilename: [UserData dbName] ]; 
     
     [_dbManager executeQuery:query];
     
