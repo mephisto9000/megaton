@@ -439,11 +439,11 @@
                 _recognizerLeftEnabled = YES;
             }
         }else{
-            if(imageFrame.origin.x >= -1){
+            if(imageFrame.origin.x >= -5){
                 _recognizerLeftEnabled = NO;
                 _recognizerRightEnabled = YES;
             }
-            if((imageFrame.origin.x + imageWidth - 1)<=screenSizes.size.width){
+            if((imageFrame.origin.x + imageWidth - 5)<=screenSizes.size.width){
                 _recognizerRightEnabled = NO;
                 _recognizerLeftEnabled = YES;
             }
@@ -466,6 +466,17 @@
    
     if(xScale>1){
         CGRect imageFrame = [currentCell convertRect:currentCell.imageView.frame fromView:currentCell.scrollview];
+        
+       
+        CGFloat imageWidth;
+        CGFloat imageHeight;
+        if(screenLanOrient == false){
+            imageWidth = screenSizes.size.width * xScale;
+            imageHeight = imageWidth * 224 / 358;
+        }else{
+            imageHeight = screenSizes.size.height * xScale;
+            imageWidth = imageHeight / 224 * 358;
+        }
         if(translation.x>0){
             //1 - это допускаемая погрещность
             if(currentCell.scrollview.frame.origin.x<=1 && currentCell.scrollview.frame.origin.x>=-1){
@@ -478,9 +489,13 @@
         }
         
         if(translation.x<0){
-            CGFloat CellScreen = currentCell.scrollview.frame.origin.x + currentCell.scrollview.frame.size.width-screenSizes.size.width-1;
+            CGFloat CellScreen = currentCell.scrollview.frame.origin.x + currentCell.scrollview.frame.size.width-screenSizes.size.width-5;
+            
             
             if(CellScreen < 0){
+                _recognizerRightEnabled = NO;
+            }
+            if((imageFrame.origin.x + imageWidth - 1)<=screenSizes.size.width){
                 _recognizerRightEnabled = NO;
             }
             if(_recognizerRightEnabled == NO){
