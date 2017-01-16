@@ -8,6 +8,7 @@
 
 #import "SearchObjectReader.h"
 #import "DBManager.h"
+#import "UserData.h"
 
 @interface SearchObjectReader()
 {
@@ -29,7 +30,7 @@
 
 @synthesize delegate;
 
-const NSString *DB_NAME = @"qzalog.db";
+
 
 -(id) init
 {
@@ -46,7 +47,7 @@ const NSString *DB_NAME = @"qzalog.db";
 -(void) loadData: (int) category_id
 {
     
-    dbManager = [[DBManager alloc] initWithDatabaseFilename:DB_NAME];
+    dbManager = [[DBManager alloc] initWithDatabaseFilename:[UserData dbName]];
     
     
     NSString *query = [NSString stringWithFormat:@"select form from categories where category_id = %i", category_id];

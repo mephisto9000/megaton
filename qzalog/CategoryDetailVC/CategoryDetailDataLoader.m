@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "MeetupCommunicatorDelegate.h"
 #import "DBManager.h"
+#import "UserData.h"
 
 @interface CategoryDetailDataLoader() <MeetupCommunicatorDelegate>
 {
@@ -111,7 +112,7 @@
 
 -(void) loadFavorite
 {
-    DBManager *dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    DBManager *dbManager = [[DBManager alloc] initWithDatabaseFilename:  [UserData dbName]];  
     
     NSString *query = @"select object_id from liked";
     

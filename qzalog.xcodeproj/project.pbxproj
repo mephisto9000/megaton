@@ -23,6 +23,7 @@
 		1B22AC3A1DF48E1D008B4B15 /* ic_menu_way.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B22AC391DF48E1D008B4B15 /* ic_menu_way.png */; };
 		1B22AC4C1DF72BFB008B4B15 /* RegionTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */; };
 		1B22AC4F1DF72E53008B4B15 /* RegionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B22AC4E1DF72E53008B4B15 /* RegionCell.m */; };
+		1B3882501E2CB7980031BD06 /* qzalog160117.db in Resources */ = {isa = PBXBuildFile; fileRef = 1B38824F1E2CB7980031BD06 /* qzalog160117.db */; };
 		1B49DC751DFBB58F00603806 /* SearchCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B49DC741DFBB58F00603806 /* SearchCache.m */; };
 		1B5473B01DE034EE00903E21 /* CategoryCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473AD1DE033EB00903E21 /* CategoryCell.h */; };
 		1B5473B11DE034EE00903E21 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5473AE1DE033EB00903E21 /* CategoryCell.m */; };
@@ -69,7 +70,6 @@
 		1BA9F8CA1DF194180079899F /* menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BA9F8C91DF194180079899F /* menu_icon.png */; };
 		1BA9F8CC1DF1C8590079899F /* back_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BA9F8CB1DF1C8590079899F /* back_icon.png */; };
 		1BA9F8CE1DF1CC480079899F /* KAZKOM.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BA9F8CD1DF1CC480079899F /* KAZKOM.png */; };
-		1BCD65E71DE45B6D00E9BEED /* qzalog.db in Resources */ = {isa = PBXBuildFile; fileRef = 1BCD65E61DE45B6D00E9BEED /* qzalog.db */; };
 		1BCD65EF1DE5234500E9BEED /* SearchSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCD65EE1DE5234500E9BEED /* SearchSelectCell.m */; };
 		1BCD65F21DE526CF00E9BEED /* SearchEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCD65F11DE526CF00E9BEED /* SearchEditCell.m */; };
 		1BCD65F41DE5F23F00E9BEED /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BCD65F31DE5F23F00E9BEED /* arrow_right.png */; };
@@ -138,6 +138,7 @@
 		1B22AC4B1DF72BFB008B4B15 /* RegionTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionTableVC.m; path = SearchForm/RegionTableVC.m; sourceTree = "<group>"; };
 		1B22AC4D1DF72E53008B4B15 /* RegionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegionCell.h; path = SearchForm/RegionCell.h; sourceTree = "<group>"; };
 		1B22AC4E1DF72E53008B4B15 /* RegionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionCell.m; path = SearchForm/RegionCell.m; sourceTree = "<group>"; };
+		1B38824F1E2CB7980031BD06 /* qzalog160117.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = qzalog160117.db; sourceTree = "<group>"; };
 		1B49DC731DFBB58F00603806 /* SearchCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchCache.h; path = SearchForm/SearchCache/SearchCache.h; sourceTree = "<group>"; };
 		1B49DC741DFBB58F00603806 /* SearchCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchCache.m; path = SearchForm/SearchCache/SearchCache.m; sourceTree = "<group>"; };
 		1B5473A71DE020AF00903E21 /* MeetupCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeetupCommunicatorDelegate.h; path = CategoryDataLoader/MeetupCommunicatorDelegate.h; sourceTree = "<group>"; };
@@ -210,7 +211,6 @@
 		1BA9F8C91DF194180079899F /* menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_icon.png; sourceTree = "<group>"; };
 		1BA9F8CB1DF1C8590079899F /* back_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_icon.png; sourceTree = "<group>"; };
 		1BA9F8CD1DF1CC480079899F /* KAZKOM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KAZKOM.png; sourceTree = "<group>"; };
-		1BCD65E61DE45B6D00E9BEED /* qzalog.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = qzalog.db; sourceTree = "<group>"; };
 		1BCD65E81DE482FC00E9BEED /* LoadListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadListener.h; path = utility/LoadListener.h; sourceTree = "<group>"; };
 		1BCD65EC1DE5231700E9BEED /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchCell.h; path = Cells/SearchCell.h; sourceTree = "<group>"; };
 		1BCD65ED1DE5234500E9BEED /* SearchSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchSelectCell.h; path = Cells/SearchSelectCell.h; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 				1B662AD41DD8977C00BAB071 /* Main.storyboard */,
 				1B662ADA1DD8977C00BAB071 /* Assets.xcassets */,
 				1B662ADC1DD8977C00BAB071 /* LaunchScreen.storyboard */,
-				1BCD65E61DE45B6D00E9BEED /* qzalog.db */,
+				1B38824F1E2CB7980031BD06 /* qzalog160117.db */,
 				1B662B031DD8AA8300BAB071 /* Main.storyboard */,
 				1B662ADF1DD8977C00BAB071 /* Info.plist */,
 				1B662AD71DD8977C00BAB071 /* qzalog.xcdatamodeld */,
@@ -774,6 +774,7 @@
 				1B22AC321DF48AB9008B4B15 /* logo_icon.png in Resources */,
 				1B1829D51DF08B6F00C9154A /* star_circle_empty.png in Resources */,
 				1B662B291DD8C1E800BAB071 /* category46.png in Resources */,
+				1B3882501E2CB7980031BD06 /* qzalog160117.db in Resources */,
 				1B662B251DD8C1E800BAB071 /* category33.png in Resources */,
 				1B662B041DD8AA8300BAB071 /* Main.storyboard in Resources */,
 				1B662ADB1DD8977C00BAB071 /* Assets.xcassets in Resources */,
@@ -785,7 +786,6 @@
 				1BA903F01E106C810035D768 /* info_image.png in Resources */,
 				1B662AD61DD8977C00BAB071 /* Main.storyboard in Resources */,
 				1B662B201DD8C1E800BAB071 /* category47.png in Resources */,
-				1BCD65E71DE45B6D00E9BEED /* qzalog.db in Resources */,
 				1B1829D71DF08B6F00C9154A /* star_white_empty.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -998,7 +998,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1040,7 +1040,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

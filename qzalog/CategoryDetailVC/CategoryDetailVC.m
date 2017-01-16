@@ -167,7 +167,7 @@ const NSString *TO_OBJECT_DETAIL = @"toObjectDetail";
                forControlEvents:UIControlEventValueChanged];
     
     //инициируем базу (коннект отрубается после каждого обращения
-    dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    dbManager = [[DBManager alloc] initWithDatabaseFilename:  [UserData dbName]];  
     
     segmentedControl.layer.cornerRadius = 5;
     segmentedControl.clipsToBounds = YES;

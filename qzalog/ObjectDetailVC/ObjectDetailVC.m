@@ -14,6 +14,7 @@
 #import "ObjectPhotoVC.h"
 #import "NetTools.h"
 #import "MapVC.h"
+#import "UserData.h"
 
 @interface ObjectDetailVC ()
 {
@@ -92,7 +93,7 @@ NSString const *TO_MAP1 = @"toMap";
 
     [odl loadData: self.objectId];
     
-    DBManager *dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    DBManager *dbManager = [[DBManager alloc] initWithDatabaseFilename:[UserData dbName]];
     
     NSString *query = [NSString stringWithFormat: @"select * from liked where object_id = %@", self.objectId];
     
@@ -606,7 +607,7 @@ NSString const *TO_MAP1 = @"toMap";
     }
     
     NSLog (query);
-    DBManager *dbManager = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    DBManager *dbManager = [[DBManager alloc] initWithDatabaseFilename: [UserData dbName]];  
     
     [dbManager executeQuery:query];
 }

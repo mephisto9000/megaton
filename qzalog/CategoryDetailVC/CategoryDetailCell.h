@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DBManager.h"
+#import "UserData.h"
 
 @interface CategoryDetailCell : UITableViewCell
 

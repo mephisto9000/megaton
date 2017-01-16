@@ -17,6 +17,7 @@
 @implementation AppDelegate
 
 const NSString *googleMapsApiKey = @"AIzaSyCu5vMkMJiusQx5_PFDVgmBYZ76C8uDQhc";
+const NSString *DBName = @"qzalog160117.db";
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -32,6 +33,8 @@ const NSString *googleMapsApiKey = @"AIzaSyCu5vMkMJiusQx5_PFDVgmBYZ76C8uDQhc";
     
     [UserData setCategoryId:@"31"];
     [UserData setCategoryName:@"Квартиры"];
+    
+    [UserData setDbName:DBName];
     
     return YES;
 }

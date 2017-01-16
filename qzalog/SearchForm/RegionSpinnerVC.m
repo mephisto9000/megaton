@@ -33,7 +33,7 @@
 
 -(void) loadData
 {
-    DBManager *db = [[DBManager alloc] initWithDatabaseFilename:@"qzalog.db"];
+    DBManager *db = [[DBManager alloc] initWithDatabaseFilename: [UserData dbName]];  
     
     NSString *query = @"select * from regions where parent is null";
     
